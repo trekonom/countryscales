@@ -2,11 +2,10 @@
 #'
 #' Format numbers as currencies
 #'
-#' @details Wrappers around the corrsponding functions from the
-#'    [scales](https://scales.r-lib.org/) package with default \code{big.mark = "."} and
-#'    \code{decimal.mark = ","}. For \code{euro_xxxx} the prefix defaults to ""
-#'    and the suffix to the euro sign, for \code{dollar_xxxx} the prefix defaults
-#'    to "$" and the suffix to ""
+#' @details German wrapper around scales::label_dollar with default \code{big.mark = "."} and
+#'    \code{decimal.mark = ","}. For \code{euro_de} the prefix defaults to ""
+#'    and the suffix to the euro sign, for \code{dollar_de} the prefix defaults
+#'    to "$" and the suffix to "".
 #'
 #' @inheritParams scales::label_dollar
 #' @param ... additional arguments passed to \code{\link[scales]{label_dollar}}, etc.

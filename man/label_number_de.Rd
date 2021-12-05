@@ -52,8 +52,7 @@ width (see \code{\link[base:format]{base::format()}}).}
 Force decimal display of numbers inserts a point every three digits.
 }
 \details{
-Wrappers around the corrsponding functions from the
-\href{https://scales.r-lib.org/}{scales} package with default \code{big.mark = "."} and
+German wrapper around scales::label_number with default \code{big.mark = "."} and
 \code{decimal.mark = ","}
 }
 \examples{

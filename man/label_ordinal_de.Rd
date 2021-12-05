@@ -8,7 +8,7 @@
 label_ordinal_de(
   prefix = "",
   suffix = "",
-  big.mark = " ",
+  big.mark = ".",
   rules = ordinal_german(),
   ...
 )
@@ -34,6 +34,10 @@ Name gives suffix, and value specifies which numbers to match.}
 \description{
 Round values to integers and display as ordinal values.
 }
+\details{
+German wrapper around scales::label_ordinal which by default uses
+German rules to convert numerics to ordnial and with default \code{big.mark = "."}.
+}
 \examples{
 require(scales)
 
@@ -44,7 +48,7 @@ demo_continuous(c(1, 5), labels = label_ordinal_de())
 demo_continuous(c(1, 10))
 demo_continuous(c(1, 10), labels = label_ordinal_de())
 demo_continuous(c(1, 10),
-                labels = label_ordinal_de(),
-                breaks = scales::breaks_width(2)
+  labels = label_ordinal_de(),
+  breaks = scales::breaks_width(2)
 )
 }

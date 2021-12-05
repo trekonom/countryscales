@@ -2,8 +2,7 @@
 #'
 #' Force decimal display of numbers inserts a point every three digits.
 #'
-#' @details Wrappers around the corrsponding functions from the
-#'    [scales](https://scales.r-lib.org/) package with default \code{big.mark = "."} and
+#' @details German wrapper around scales::label_number with default \code{big.mark = "."} and
 #'    \code{decimal.mark = ","}
 #'
 #' @inheritParams scales::label_number

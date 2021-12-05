@@ -2,8 +2,7 @@
 #'
 #' Force display of numbers as percentages.
 #'
-#' @details Wrappers around the corrsponding functions from the
-#'    [scales](https://scales.r-lib.org/) package with default \code{big.mark = "."} and
+#' @details German wrapper around scales::label_percent with default \code{big.mark = "."} and
 #'    \code{decimal.mark = ","}
 #'
 #' @inheritParams scales::label_percent

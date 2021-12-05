@@ -83,11 +83,10 @@ width (see \code{\link[base:format]{base::format()}}).}
 Format numbers as currencies
 }
 \details{
-Wrappers around the corrsponding functions from the
-\href{https://scales.r-lib.org/}{scales} package with default \code{big.mark = "."} and
-\code{decimal.mark = ","}. For \code{euro_xxxx} the prefix defaults to ""
-and the suffix to the euro sign, for \code{dollar_xxxx} the prefix defaults
-to "$" and the suffix to ""
+German wrapper around scales::label_dollar with default \code{big.mark = "."} and
+\code{decimal.mark = ","}. For \code{euro_de} the prefix defaults to ""
+and the suffix to the euro sign, for \code{dollar_de} the prefix defaults
+to "$" and the suffix to "".
 }
 \examples{
 # ex-label_euro_de.R
