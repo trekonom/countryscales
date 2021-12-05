@@ -4,9 +4,9 @@
 \name{gscales-package}
 \alias{gscales}
 \alias{gscales-package}
-\title{gscales: German scales for use with ggplot2}
+\title{gscales: German Scales}
 \description{
-What the package does (one paragraph).
+Make it easy to format numbers, axes and legends in German style.
 }
 \author{
 \strong{Maintainer}: Stefan Moog \email{moogs@gmxde} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})

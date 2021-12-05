@@ -1,10 +1,10 @@
 Package: gscales
-Title: German scales for use with ggplot2
+Title: German Scales
 Version: 0.0.1
 Authors@R: 
     person("Stefan", "Moog", , "moogs@gmxde", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Make it easy to format numbers, axes and legends in German style.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
