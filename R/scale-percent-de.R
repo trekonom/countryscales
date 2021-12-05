@@ -80,7 +80,7 @@ scale_x_percent_de <- function(name = waiver(),
   }
 
   sc <- continuous_scale(
-    aesthetics = descales_global$x_aes,
+    aesthetics = gscales_global$x_aes,
     scale_name = "position_c",
     palette = identity,
     name = name,
@@ -134,7 +134,7 @@ scale_y_percent_de <- function(name = waiver(),
   }
 
   sc <- continuous_scale(
-    aesthetics = descales_global$y_aes,
+    aesthetics = gscales_global$y_aes,
     scale_name = "position_c",
     palette = identity,
     name = name,
@@ -190,7 +190,7 @@ scale_x_number_de <- function(name = waiver(),
   }
 
   sc <- continuous_scale(
-    aesthetics = descales_global$x_aes,
+    aesthetics = gscales_global$x_aes,
     scale_name = "position_c",
     palette = identity,
     name = name,
@@ -244,7 +244,7 @@ scale_y_number_de <- function(name = waiver(),
   }
 
   sc <- continuous_scale(
-    aesthetics = descales_global$y_aes,
+    aesthetics = gscales_global$y_aes,
     scale_name = "position_c",
     palette = identity,
     name = name,
