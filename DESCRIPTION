@@ -1,6 +1,6 @@
-Package: descales
+Package: gscales
 Title: German scales for use with ggplot2
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person("Stefan", "Moog", , "moogs@gmxde", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
