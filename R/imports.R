@@ -1,4 +1,4 @@
-# Copy and paste from ggplot2
+# Helper functions. Copy and paste from ggplot2
 is.waive <- function(x) {
   inherits(x, "waiver")
 }
@@ -16,7 +16,8 @@ set_sec_axis <- function(sec.axis, scale) {
   }
   return(scale)
 }
-# if is.null helper
+
+# is.null helper
 "%||%" <- function(a, b) {
   if (!is.null(a)) a else b
 }
