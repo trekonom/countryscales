@@ -1,4 +1,4 @@
-#' @rdname scale_x_percent_de
+#' @rdname scale_x_number_de
 #' @export
 scale_x_dollar_de <- function(name = waiver(),
                               breaks = waiver(),
@@ -52,7 +52,7 @@ scale_x_dollar_de <- function(name = waiver(),
   set_sec_axis(sec.axis, sc)
 }
 
-#' @rdname scale_x_percent_de
+#' @rdname scale_x_number_de
 #' @export
 scale_y_dollar_de <- function(name = waiver(),
                               breaks = waiver(),

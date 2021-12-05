@@ -1,6 +1,23 @@
-#' @rdname scale_x_number_de
+#' German Style Positional Scales
+#'
+#' The scale_xxx_xxx_de family of functions makes it easy to style (numeric) axes
+#'     using standard number formatting used in Germany.
+#'
+#' * the `_number` ones format axis text as numbers.
+#'
+#' * the `_percent` ones format axis text as percentages.
+#'
+#' * the `_dollar` ones format axis text as dollars.
+#'
+#' * the `_euro` ones format axis text as euros.
+#'
+#' @inheritParams ggplot2::scale_x_continuous
+#' @inheritParams label_number_de
+#' @param prefix Symbol to display before value.
+#' @param suffix Symbol to display after value.
+#'
 #' @export
-scale_x_euro_de <- function(name = waiver(),
+scale_x_number_de <- function(name = waiver(),
                               breaks = waiver(),
                               minor_breaks = waiver(),
                               guide = waiver(),
@@ -14,11 +31,11 @@ scale_x_euro_de <- function(name = waiver(),
                               position = "bottom",
                               sec.axis = waiver(),
                               accuracy = 1, scale = 1,
-                              prefix = "", suffix = "\u20ac",
+                              prefix = "", suffix = "",
                               big.mark = ".", decimal.mark = ",",
                               trim = TRUE, ...) {
   labels <- if (missing(labels)) {
-    label_euro_de(
+    label_number_de(
       accuracy = accuracy,
       scale = scale,
       prefix = prefix,
@@ -54,7 +71,7 @@ scale_x_euro_de <- function(name = waiver(),
 
 #' @rdname scale_x_number_de
 #' @export
-scale_y_euro_de <- function(name = waiver(),
+scale_y_number_de <- function(name = waiver(),
                               breaks = waiver(),
                               minor_breaks = waiver(),
                               guide = waiver(),
@@ -68,11 +85,11 @@ scale_y_euro_de <- function(name = waiver(),
                               position = "left",
                               sec.axis = waiver(),
                               accuracy = 1, scale = 1,
-                              prefix = "", suffix = "\u20ac",
+                              prefix = "", suffix = "",
                               big.mark = ".", decimal.mark = ",",
                               trim = TRUE, ...) {
   labels <- if (missing(labels)) {
-    label_euro_de(
+    label_number_de(
       accuracy = accuracy,
       scale = scale,
       prefix = prefix,
