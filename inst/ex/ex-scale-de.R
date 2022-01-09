@@ -14,8 +14,8 @@ gapsum <- gapminder15 %>%
 
 ggplot(gapsum, aes(n, reorder(region, n))) +
   geom_col() +
-  scale_x_percent_de()
+  scale_x_percent_de(accuracy = .1)
 
 ggplot(gapsum, aes(reorder(region, n), n)) +
   geom_col() +
-  scale_y_percent_de()
+  scale_y_percent_de(accuracy = .1)
