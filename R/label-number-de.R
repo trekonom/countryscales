@@ -14,11 +14,11 @@
 #'
 #' @example inst/ex/ex-label_number_de.R
 label_number_de <- function(accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",", trim = TRUE, ...) {
-  scales::label_number(accuracy = accuracy, scale = scale, big.mark = big.mark, decimal.mark = decimal.mark, trim = trim, ...)
+  label_number(accuracy = accuracy, scale = scale, big.mark = big.mark, decimal.mark = decimal.mark, trim = trim, ...)
 }
 
 #' @rdname label_number_de
 #' @export
 number_de <- function(x, accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",", trim = TRUE, ...) {
-  scales::label_number(accuracy = accuracy, scale = scale, big.mark = big.mark, decimal.mark = decimal.mark, trim = trim, ...)(x)
+  label_number(accuracy = accuracy, scale = scale, big.mark = big.mark, decimal.mark = decimal.mark, trim = trim, ...)(x)
 }

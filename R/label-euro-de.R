@@ -17,7 +17,7 @@
 #' @example inst/ex/ex-label_euro_de.R
 label_euro <- function(accuracy = NULL, scale = 1, big.mark = ",", decimal.mark = ".", prefix = "", suffix = .euro, trim = TRUE,
                        largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
-  scales::label_dollar(
+  label_dollar(
     accuracy = accuracy, scale = scale,
     big.mark = big.mark, decimal.mark = decimal.mark,
     prefix = prefix, suffix = suffix, trim = trim,
@@ -30,7 +30,7 @@ label_euro <- function(accuracy = NULL, scale = 1, big.mark = ",", decimal.mark 
 #' @export
 euro <- function(x, accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",", prefix = "", suffix = .euro, trim = TRUE,
                  largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
-  scales::label_dollar(
+  label_dollar(
     accuracy = accuracy, scale = scale,
     big.mark = big.mark, decimal.mark = decimal.mark,
     prefix = prefix, suffix = suffix, trim = trim,
@@ -42,7 +42,7 @@ euro <- function(x, accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",",
 #' @export
 label_euro_de <- function(accuracy = 1, scale = 1, suffix = .euro, trim = TRUE,
                           largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
-  scales::label_dollar(
+  label_dollar(
     accuracy = accuracy, scale = scale,
     big.mark = ".", decimal.mark = ",",
     prefix = "", suffix = suffix, trim = trim,
@@ -55,7 +55,7 @@ label_euro_de <- function(accuracy = 1, scale = 1, suffix = .euro, trim = TRUE,
 #' @export
 euro_de <- function(x, accuracy = 1, scale = 1, suffix = .euro, trim = TRUE,
                     largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
-  scales::label_dollar(
+  label_dollar(
     accuracy = accuracy, scale = scale,
     big.mark = ".", decimal.mark = ",",
     prefix = "", suffix = suffix, trim = trim,
@@ -68,7 +68,7 @@ euro_de <- function(x, accuracy = 1, scale = 1, suffix = .euro, trim = TRUE,
 #' @export
 label_dollar_de <- function(accuracy = 1, scale = 1, prefix = .dollar, trim = TRUE,
                             largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
-  scales::label_dollar(
+  label_dollar(
     accuracy = accuracy, scale = scale,
     big.mark = ".", decimal.mark = ",",
     prefix = prefix, suffix = "", trim = trim,
@@ -80,7 +80,7 @@ label_dollar_de <- function(accuracy = 1, scale = 1, prefix = .dollar, trim = TR
 #' @export
 dollar_de <- function(x, accuracy = 1, scale = 1, prefix = .dollar, trim = TRUE,
                       largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
-  scales::label_dollar(
+  label_dollar(
     accuracy = accuracy, scale = scale,
     big.mark = ".", decimal.mark = ",",
     prefix = prefix, suffix = "", trim = trim,

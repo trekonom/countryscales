@@ -15,7 +15,7 @@
 #' @example inst/ex/ex-label_percent_de.R
 label_percent_de <- function(accuracy = 1, scale = 100, big.mark = ".", decimal.mark = ",", prefix = "",
                              suffix = "%", trim = TRUE, ...) {
-  scales::label_percent(
+  label_percent(
     accuracy = accuracy, scale = scale, big.mark = big.mark, decimal.mark = decimal.mark, prefix = "",
     suffix = suffix, trim = trim, ...
   )
@@ -25,7 +25,7 @@ label_percent_de <- function(accuracy = 1, scale = 100, big.mark = ".", decimal.
 #' @export
 percent_de <- function(x, accuracy = 1, scale = 100, big.mark = ".", decimal.mark = ",", prefix = "",
                        suffix = "%", trim = TRUE, ...) {
-  scales::label_percent(
+  label_percent(
     accuracy = accuracy, scale = scale, big.mark = big.mark, decimal.mark = decimal.mark, prefix = "",
     suffix = suffix, trim = trim, ...
   )(x)
