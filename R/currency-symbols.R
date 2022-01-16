@@ -10,7 +10,7 @@ NULL
 .euro <- "\u20AC"
 #' @export
 #' @rdname currency-symbols
-.dollar <- "\u0024"
+.dollar <- "$"
 #' @export
 #' @rdname currency-symbols
 .pound <- "\u00A3"
