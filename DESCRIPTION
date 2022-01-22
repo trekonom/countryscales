@@ -1,10 +1,10 @@
-Package: gscales
-Title: German Scales
+Package: countryscales
+Title: Country Scales
 Version: 0.0.1
 Authors@R: 
     person("Stefan", "Moog", , "moogs@gmxde", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Make it easy to format numbers, axes and legends in German style.
+Description: Make it easy to display numbers using country style conventions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
