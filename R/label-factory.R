@@ -14,39 +14,42 @@
 #' params <- list(big.mark = ".", decimal.mark = ",", suffix = "%")
 #' label_factory("de", "percent", "Germany", "German", params = params)
 label_factory <- function(iso2, unit, country, adjectival, params = list()) {
-
   fun_name <- paste("label", unit, iso2, sep = "_")
 
   # Title
-  fun_title <- sprintf("%s Style Number Formatting", adjectival) |>
+  fun_title <- sprintf("%s Number Formatting", adjectival) |>
     tag_app() |>
     ap_em_rox()
 
   # Description
   fun_desc1 <- c(
-    sprintf("The label_xxx_%s family of functions makes it easy to format numbers", iso2),
-    sprintf("    using standard number formatting used in %s.", country)
+    sprintf("The label_xxx_%s family of functions makes it easy to label numbers", iso2),
+    sprintf("    in decimal format, as percentages or as currencies applying the number"),
+    sprintf("    formatting style used in %s which uses a \"%s\" as the decimal mark", country, params$decimal.mark),
+    sprintf("    and a \"%s\" as the thousands seperator.", params$big.mark)
   ) |>
     purrr::map_chr(tag_app) |>
     purrr::reduce(c) |>
     ap_em_rox()
 
   fun_desc2 <- c(
-    " * the `_number` ones format numbers in decimal format.",
-    " * the `_percent` ones format numbers as percentages.",
-    " * the `_dollar` ones format numbers as dollars.",
-    " * the `_euro` ones format numbers as euros."
+    sprintf('All label_() functions return a "labelling" function, i.e. a function'),
+    sprintf("that takes a vector x and returns a character vector of length(x) giving"),
+    sprintf("a label for each input value."),
+    sprintf(""),
+    sprintf("Use"),
+    sprintf(" * `label_number_%s` to format numbers in decimal format.", iso2),
+    sprintf(" * `label_percent_%s` to format numbers as percentages.", iso2),
+    sprintf(" * `label_dollar_%s` to format numbers as dollars.", iso2),
+    sprintf(" * `label_euro_%s` to format numbers as euros.", iso2)
   ) |>
     purrr::map_chr(tag_app) |>
-    purrr::map(ap_em_rox) |>
-    purrr::reduce(c)
+    purrr::reduce(c) |>
+    ap_em_rox()
 
   # Parameters
   fun_params <- c(
-    "@inheritParams ggplot2::scale_x_continuous",
-    "@inheritParams scales::label_number",
-    "@param prefix Symbol to display before value.",
-    "@param suffix Symbol to display after value."
+    "@inheritParams scales::label_number"
   ) |>
     purrr::map_chr(tag_app) |>
     purrr::reduce(c) |>
@@ -74,7 +77,7 @@ label_factory <- function(iso2, unit, country, adjectival, params = list()) {
   # Function header
   fun_code <- c(
     fun_code,
-    sprintf('%s <- function(', thinkr::clean_vec(fun_name))
+    sprintf("%s <- function(", thinkr::clean_vec(fun_name))
   )
 
   default_params <- list(
@@ -91,7 +94,7 @@ label_factory <- function(iso2, unit, country, adjectival, params = list()) {
 
   # Function Arguments
   fun_args <- purrr::imap_chr(params, function(x, y) {
-    x <- if (is.null(x)) "NULL" else if (is.character(x)) paste0("\"", x ,"\"" ) else as.character(x)
+    x <- if (is.null(x)) "NULL" else if (is.character(x)) paste0("\"", x, "\"") else as.character(x)
     sprintf("  %s = %s,", thinkr::clean_vec(y), x)
   })
   fun_args <- c(fun_args, " ...) {")
@@ -111,12 +114,12 @@ label_factory <- function(iso2, unit, country, adjectival, params = list()) {
 }
 
 
-#fun_code <- fun_code[fun_code != ""]
+# fun_code <- fun_code[fun_code != ""]
 
-  # label_percent_de <- function(accuracy = 1, scale = 100, big.mark = ".", decimal.mark = ",", prefix = "",
-  #                              suffix = "%", trim = TRUE, ...) {
-  #   label_percent(
-  #     accuracy = accuracy, scale = scale, big.mark = big.mark, decimal.mark = decimal.mark, prefix = "",
-  #     suffix = suffix, trim = trim, ...
-  #   )
-  # }
+# label_percent_de <- function(accuracy = 1, scale = 100, big.mark = ".", decimal.mark = ",", prefix = "",
+#                              suffix = "%", trim = TRUE, ...) {
+#   label_percent(
+#     accuracy = accuracy, scale = scale, big.mark = big.mark, decimal.mark = decimal.mark, prefix = "",
+#     suffix = suffix, trim = trim, ...
+#   )
+# }
