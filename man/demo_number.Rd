@@ -7,7 +7,9 @@
 demo_number(x, scale_name)
 }
 \arguments{
-\item{scale_name}{}
+\item{x}{a numeric}
+
+\item{scale_name}{scale name}
 }
 \description{
 ggplo2 demo

@@ -1,9 +1,8 @@
 #' ggplo2 demo
 #'
-#' @param x
-#' @param scale_name
+#' @param x a numeric
+#' @param scale_name scale name
 #'
-#' @return
 #' @export
 #'
 #' @examples
