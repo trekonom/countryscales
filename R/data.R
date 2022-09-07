@@ -18,3 +18,11 @@
 
 #' @rdname gapminder
 "gapminder15"
+
+#' Locales
+#'
+#' A dataset containing specification of formatting styles to label numbers and
+#'    currencies for 320 countries.
+#'
+#' @source \url{https://lh.2xlibre.net}
+"locales"
