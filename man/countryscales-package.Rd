@@ -9,7 +9,7 @@
 Make it easy to display numbers using country style conventions.
 }
 \author{
-\strong{Maintainer}: Stefan Moog \email{moogs@gmxde} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Stefan Moog \email{moogs@gmx.de}
 
 }
 \keyword{internal}

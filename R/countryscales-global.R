@@ -1,6 +1,6 @@
 # Adapted from gggplot2
 #
-# Environment that holds various global settings for ggplot.
+# Environment that holds various global settings for countryscales.
 countryscales_global <- new.env(parent = emptyenv())
 
 # x aesthetics
