@@ -16,9 +16,7 @@ label_ordinal_de(
 ordinal_german(gender = c("maskulin", "feminin", "neutral"), digit = TRUE)
 }
 \arguments{
-\item{prefix}{Symbols to display before and after value.}
-
-\item{suffix}{Symbols to display before and after value.}
+\item{prefix, suffix}{Symbols to display before and after value.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
 

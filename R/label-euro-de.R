@@ -7,6 +7,7 @@
 #'    and the suffix to the euro sign, for \code{dollar_de} the prefix defaults
 #'    to "$" and the suffix to "".
 #'
+#' @param x a vector
 #' @inheritParams scales::label_dollar
 #' @param ... additional arguments passed to \code{\link[scales]{label_dollar}}, etc.
 #'
@@ -15,7 +16,8 @@
 #' @export
 #'
 #' @example inst/ex/ex-label_euro_de.R
-label_euro <- function(accuracy = NULL, scale = 1, big.mark = ",", decimal.mark = ".", prefix = "", suffix = .euro, trim = TRUE,
+label_euro <- function(accuracy = NULL, scale = 1, big.mark = " ", decimal.mark = ".",
+                       prefix = "", suffix = .euro, trim = TRUE,
                        largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
   label_dollar(
     accuracy = accuracy, scale = scale,
@@ -28,7 +30,8 @@ label_euro <- function(accuracy = NULL, scale = 1, big.mark = ",", decimal.mark 
 
 #' @rdname label_euro
 #' @export
-euro <- function(x, accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",", prefix = "", suffix = .euro, trim = TRUE,
+euro <- function(x, accuracy = 1, scale = 1, big.mark = " ", decimal.mark = ".",
+                 prefix = "", suffix = .euro, trim = TRUE,
                  largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
   label_dollar(
     accuracy = accuracy, scale = scale,
@@ -40,12 +43,13 @@ euro <- function(x, accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",",
 
 #' @rdname label_euro
 #' @export
-label_euro_de <- function(accuracy = 1, scale = 1, suffix = .euro, trim = TRUE,
+label_euro_de <- function(accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",",
+                          prefix = "", suffix = .euro, trim = TRUE,
                           largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
   label_dollar(
     accuracy = accuracy, scale = scale,
-    big.mark = ".", decimal.mark = ",",
-    prefix = "", suffix = suffix, trim = trim,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    prefix = prefix, suffix = suffix, trim = trim,
     largest_with_cents = largest_with_cents, negative_parens = negative_parens,
     ...
   )
@@ -53,12 +57,13 @@ label_euro_de <- function(accuracy = 1, scale = 1, suffix = .euro, trim = TRUE,
 
 #' @rdname label_euro
 #' @export
-euro_de <- function(x, accuracy = 1, scale = 1, suffix = .euro, trim = TRUE,
+euro_de <- function(x, accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",",
+                    prefix = "", suffix = .euro, trim = TRUE,
                     largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
   label_dollar(
     accuracy = accuracy, scale = scale,
-    big.mark = ".", decimal.mark = ",",
-    prefix = "", suffix = suffix, trim = trim,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    prefix = prefix, suffix = suffix, trim = trim,
     largest_with_cents = largest_with_cents, negative_parens = negative_parens,
     ...
   )(x)
@@ -66,24 +71,26 @@ euro_de <- function(x, accuracy = 1, scale = 1, suffix = .euro, trim = TRUE,
 
 #' @rdname label_euro
 #' @export
-label_dollar_de <- function(accuracy = 1, scale = 1, prefix = .dollar, trim = TRUE,
+label_dollar_de <- function(accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",",
+                            prefix = .dollar, suffix = "", trim = TRUE,
                             largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
   label_dollar(
     accuracy = accuracy, scale = scale,
-    big.mark = ".", decimal.mark = ",",
-    prefix = prefix, suffix = "", trim = trim,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    prefix = prefix, suffix = suffix, trim = trim,
     largest_with_cents = largest_with_cents, negative_parens = negative_parens, ...
   )
 }
 
 #' @rdname label_euro
 #' @export
-dollar_de <- function(x, accuracy = 1, scale = 1, prefix = .dollar, trim = TRUE,
+dollar_de <- function(x, accuracy = 1, scale = 1, big.mark = ".", decimal.mark = ",",
+                      prefix = .dollar, suffix = "", trim = TRUE,
                       largest_with_cents = 1e+05, negative_parens = FALSE, ...) {
   label_dollar(
     accuracy = accuracy, scale = scale,
-    big.mark = ".", decimal.mark = ",",
-    prefix = prefix, suffix = "", trim = trim,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    prefix = prefix, suffix = suffix, trim = trim,
     largest_with_cents = largest_with_cents, negative_parens = negative_parens, ...
   )(x)
 }

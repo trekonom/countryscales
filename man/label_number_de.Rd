@@ -33,7 +33,7 @@ difference between adjacent values.
 Applied to rescaled data.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
@@ -46,7 +46,7 @@ width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{additional arguments passed to \code{\link[scales]{label_number}}, etc.}
 
-\item{x}{A numeric vector to format.}
+\item{x}{a vector}
 }
 \description{
 Force decimal display of numbers inserts a point every three digits.
@@ -66,7 +66,15 @@ number_de(x, accuracy = .1)
 library(ggplot2)
 ggplot(gapminder15, aes(gdp_per_cap, life_exp)) +
   geom_point() +
+  scale_x_continuous(labels = label_number())
+
+ggplot(gapminder15, aes(gdp_per_cap, life_exp)) +
+  geom_point() +
   scale_x_continuous(labels = label_number_de())
+
+ggplot(gapminder15, aes(gdp_per_cap, life_exp)) +
+  geom_point() +
+  scale_x_number()
 }
 \seealso{
 \code{\link[scales]{label_number}}

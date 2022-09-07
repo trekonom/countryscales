@@ -12,7 +12,7 @@
 label_euro(
   accuracy = NULL,
   scale = 1,
-  big.mark = ",",
+  big.mark = " ",
   decimal.mark = ".",
   prefix = "",
   suffix = .euro,
@@ -26,8 +26,8 @@ euro(
   x,
   accuracy = 1,
   scale = 1,
-  big.mark = ".",
-  decimal.mark = ",",
+  big.mark = " ",
+  decimal.mark = ".",
   prefix = "",
   suffix = .euro,
   trim = TRUE,
@@ -39,6 +39,9 @@ euro(
 label_euro_de(
   accuracy = 1,
   scale = 1,
+  big.mark = ".",
+  decimal.mark = ",",
+  prefix = "",
   suffix = .euro,
   trim = TRUE,
   largest_with_cents = 1e+05,
@@ -50,6 +53,9 @@ euro_de(
   x,
   accuracy = 1,
   scale = 1,
+  big.mark = ".",
+  decimal.mark = ",",
+  prefix = "",
   suffix = .euro,
   trim = TRUE,
   largest_with_cents = 1e+05,
@@ -60,7 +66,10 @@ euro_de(
 label_dollar_de(
   accuracy = 1,
   scale = 1,
+  big.mark = ".",
+  decimal.mark = ",",
   prefix = .dollar,
+  suffix = "",
   trim = TRUE,
   largest_with_cents = 1e+05,
   negative_parens = FALSE,
@@ -71,7 +80,10 @@ dollar_de(
   x,
   accuracy = 1,
   scale = 1,
+  big.mark = ".",
+  decimal.mark = ",",
   prefix = .dollar,
+  suffix = "",
   trim = TRUE,
   largest_with_cents = 1e+05,
   negative_parens = FALSE,
@@ -79,13 +91,13 @@ dollar_de(
 )
 }
 \arguments{
-\item{accuracy}{Number to round to. If \code{NULL}, the default,
+\item{accuracy, largest_with_cents}{Number to round to. If \code{NULL}, the default,
 values will be rounded to the nearest integer, unless any of the
 values has non-zero fractional component (e.g. cents) and the largest
 value is less than \code{largest_with_cents} which by default is 100,000.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
@@ -93,23 +105,17 @@ large.}
 \item{decimal.mark}{The character to be used to indicate the numeric
 decimal point.}
 
-\item{prefix}{Symbols to display before and after value.}
-
-\item{suffix}{Symbols to display before and after value.}
+\item{prefix, suffix}{Symbols to display before and after value.}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
 
-\item{largest_with_cents}{Number to round to. If \code{NULL}, the default,
-values will be rounded to the nearest integer, unless any of the
-values has non-zero fractional component (e.g. cents) and the largest
-value is less than \code{largest_with_cents} which by default is 100,000.}
-
-\item{negative_parens}{Display negative using parentheses?}
+\item{negative_parens}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use
+\code{style_negative = "parens"} instead.}
 
 \item{...}{additional arguments passed to \code{\link[scales]{label_dollar}}, etc.}
 
-\item{x}{A numeric vector}
+\item{x}{a vector}
 }
 \description{
 Format numbers as currencies

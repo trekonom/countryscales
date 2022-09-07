@@ -37,7 +37,7 @@ difference between adjacent values.
 Applied to rescaled data.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
@@ -45,16 +45,18 @@ large.}
 \item{decimal.mark}{The character to be used to indicate the numeric
 decimal point.}
 
-\item{prefix}{Symbols to display before and after value.}
+\item{prefix}{Additional text to display before the number. The suffix is
+applied to absolute value before \code{style_positive} and \code{style_negative} are
+processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
 
-\item{suffix}{Symbols to display before and after value.}
+\item{suffix}{Additional text to display after the number.}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{additional arguments passed to \code{\link[scales]{label_percent}}, etc.}
 
-\item{x}{A numeric vector to format.}
+\item{x}{a vector}
 }
 \description{
 Force display of numbers as percentages.
