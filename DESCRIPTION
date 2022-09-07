@@ -1,17 +1,19 @@
 Package: countryscales
 Title: Country Scales
-Version: 0.0.1
+Version: 0.0.1.9001
 Authors@R: 
-    person("Stefan", "Moog", , "moogs@gmxde", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person("Stefan", "Moog", , "moogs@gmx.de", role = c("aut", "cre"))
 Description: Make it easy to display numbers using country style conventions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Imports: 
     ggplot2,
-    scales
+    purrr,
+    scales,
+    styler,
+    thinkr
 Depends: 
     R (>= 2.10)
 LazyData: true
