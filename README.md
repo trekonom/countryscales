@@ -26,17 +26,16 @@ Let’s say you have to prepare a report or charts where you have to
 
 -   use country specific style conventions to display numbers which
     differ from the default anglo-american style,
--   display numbers on charts, axes or legends using decimal format, as
-    percentages or currencies.
+-   display numbers on charts, axes or legends in decimal format, as
+    percentages or as currencies.
 
 To achieve that the `scales` package provides a family of easy to use
 functions like `scales::label_number` or `scales::percent` which could
 also be passed to the `labels` argument of `ggplot2`s family of scale
 functions.
 
-However, even with these helpers formatting numbers and styling axes
-quickly becomes cumbersome and annoying in practice as you always have
-to
+However, in practice formatting numbers and styling axes quickly becomes
+cumbersome and annoying as you always have to
 
 -   set the decimal and grouping marks if deviating from the defaults so
     you end up with something like
@@ -57,14 +56,16 @@ to
 
 A first and simple solution to this problem would be to add some simple
 wrappers at the beginning of your R script or R markdown document like
-e.g.
 
-    my_label_number <- function() scales::label_number(big.mark = ".", decimal.mark = ",")
+    my_label_number <- function() {
+      scales::label_number(big.mark = ".", decimal.mark = ",")
+    }
 
-but then you end up copy and pasting from one report to the next, so
-sooner or later you probably put these helpers inside package … and
-that’s the goal of `countryscales`: Providing out-of-the-box functions
-to format numbers using country style conventions.
+But then you end up copy and pasting from one report to the next, so
+sooner or later you probably put these helpers inside package.
+
+And that’s the goal of `countryscales`: Providing out-of-the-box helpers
+to format numbers using country-specific style conventions.
 
 As a first example consider formatting a number according to style
 conventions used in Germany and several other European countries where a
@@ -81,9 +82,8 @@ label_number(big.mark = ".", decimal.mark = ",", accuracy = .1)(x)
 #> [1] "12.345.690,0"
 ```
 
-Using `countryscales` this could be achieved with less typing by calling
-`label_number_de` which by default uses a dot (`.`) as the big mark or
-thousands seperator and a comma (`,`) as the decimal mark:
+Using `countryscales` this could be achieved with less typing using
+`countryscales::label_number_de`:
 
 ``` r
 library(countryscales)
@@ -92,9 +92,9 @@ label_number_de(accuracy = .1)(x)
 #> [1] "12.345.690,0"
 ```
 
-To provide an example of using `countryscales` to style a chart made
-with `ggplot2` let’s first prepare a small example dataset of the top 10
-countries according to population size:
+To provide an example of using `countryscales` with `ggplot2` let’s
+first prepare a small example dataset of the top 10 countries according
+to population size:
 
 ``` r
 top10_pop <- gapminder15[order(-gapminder15$pop), c("country", "pop")]
@@ -111,7 +111,8 @@ library(ggplot2)
 p <- ggplot(top10_pop, aes(pop, reorder(country, pop))) +
   geom_col() +
   theme_minimal() +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank()) +
   labs(
     x = NULL, y = NULL,
     title = "Top 10 of countries by population size in 2015",
@@ -120,18 +121,26 @@ p <- ggplot(top10_pop, aes(pop, reorder(country, pop))) +
 ```
 
 While this chart is fine it’s not ready for publication. Let’s say we
-want display numbers on the x axis in decimal format and additionally
-add the share of each country on World population as percentage values
-to the bars using German style conventions. Using `scales` this could be
-achieved like so:
+want to display population sizes on the x axis in decimal format and
+additionally add the share of each country on World population formatted
+as percentages as labels to the bars using German style conventions.
+
+Using `scales` this could be achieved like so:
 
 ``` {style-scales}
 p +
   # Add percentages to bars using German style conventions
-  geom_text(aes(label = label_percent(big.mark = ".", decimal.mark = ",", accuracy = .1)(pct)), 
-            hjust = 1.1, size = 8 / .pt, color = "white") +
+  geom_text(
+    aes(
+      label = label_percent(big.mark = ".", 
+                            decimal.mark = ",", 
+                            accuracy = .1)(pct)), 
+    hjust = 1.1, size = 8 / .pt, color = "white") +
   # Format numbers as percentages
-  scale_x_continuous(labels = label_number(big.mark = ".", decimal.mark = ","), expand = c(0, 0, .05, 0))
+  scale_x_continuous(
+    labels = label_number(big.mark = ".", 
+                          decimal.mark = ","), 
+    expand = c(0, 0, .05, 0))
 ```
 
 As this simple example shows displaying numbers in decimal format or as
@@ -145,8 +154,10 @@ so:
 ``` r
 p +
   # Add percentages to bars using German style conventions
-  geom_text(aes(label = label_percent_de(accuracy = .1)(pct)), 
-            hjust = 1.1, size = 8 / .pt, color = "white") +
+  geom_text(
+    aes(
+      label = label_percent_de(accuracy = .1)(pct)), 
+    hjust = 1.1, size = 8 / .pt, color = "white") +
   # Format numbers as percentages
   scale_x_number_de(expand = c(0, 0, .05, 0))
 ```
