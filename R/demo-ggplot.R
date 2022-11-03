@@ -7,8 +7,8 @@
 #'
 #' @examples
 #' demo_number(c(32, 212), scale_name = "number")
-demo_number <- function(x, scale_name) {
-  demo_ggplot(x, paste("scale", "x", scale_name, sep = "_"))
+demo_number <- function(x, scale_name, locale = "en_US") {
+  demo_ggplot(x, paste("scale", "x", scale_name, sep = "_"), locale = locale)
 }
 
 demo_ggplot <- function(x, scale_name, ...) {

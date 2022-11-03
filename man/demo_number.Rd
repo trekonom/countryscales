@@ -4,7 +4,7 @@
 \alias{demo_number}
 \title{ggplo2 demo}
 \usage{
-demo_number(x, scale_name)
+demo_number(x, scale_name, locale = "en_US")
 }
 \arguments{
 \item{x}{a numeric}
