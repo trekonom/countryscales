@@ -37,7 +37,7 @@ scale_x_number_de <- function(name = waiver(),
                               prefix = "", suffix = "",
                               big.mark = NULL, decimal.mark = NULL,
                               trim = TRUE, ...) {
-  scale_x_number(
+  scale_x_number_locale(
     name = name,
     breaks = breaks,
     minor_breaks = minor_breaks,
@@ -82,7 +82,7 @@ scale_y_number_de <- function(name = waiver(),
                               prefix = "", suffix = "",
                               big.mark = NULL, decimal.mark = NULL,
                               trim = TRUE, ...) {
-  scale_y_number(
+  scale_y_number_locale(
     name = name,
     breaks = breaks,
     minor_breaks = minor_breaks,
@@ -128,7 +128,7 @@ scale_x_percent_de <- function(name = waiver(),
                                big.mark = NULL, decimal.mark = NULL,
                                trim = TRUE, ...) {
 
-  scale_x_percent(
+  scale_x_percent_locale(
     name = name,
     breaks = breaks,
     minor_breaks = minor_breaks,
@@ -174,7 +174,7 @@ scale_y_percent_de <- function(name = waiver(),
                                big.mark = NULL, decimal.mark = NULL,
                                trim = TRUE, ...) {
 
-  scale_y_percent(
+  scale_y_percent_locale(
     name = name,
     breaks = breaks,
     minor_breaks = minor_breaks,

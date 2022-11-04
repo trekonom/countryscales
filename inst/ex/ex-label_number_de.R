@@ -8,12 +8,8 @@ number_de(x, accuracy = .1)
 library(ggplot2)
 ggplot(gapminder15, aes(gdp_per_cap, life_exp)) +
   geom_point() +
-  scale_x_continuous(labels = label_number())
+  scale_x_continuous(labels = label_number_locale())
 
 ggplot(gapminder15, aes(gdp_per_cap, life_exp)) +
   geom_point() +
   scale_x_continuous(labels = label_number_de())
-
-ggplot(gapminder15, aes(gdp_per_cap, life_exp)) +
-  geom_point() +
-  scale_x_number()

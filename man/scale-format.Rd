@@ -2,17 +2,17 @@
 % Please edit documentation in R/scale-locale.R
 \name{scale-format}
 \alias{scale-format}
-\alias{scale_x_number}
-\alias{scale_y_number}
-\alias{scale_x_percent}
-\alias{scale_y_percent}
-\alias{scale_x_comma}
-\alias{scale_y_comma}
-\alias{scale_x_dollar}
-\alias{scale_y_dollar}
+\alias{scale_x_number_locale}
+\alias{scale_y_number_locale}
+\alias{scale_x_percent_locale}
+\alias{scale_y_percent_locale}
+\alias{scale_x_comma_locale}
+\alias{scale_y_comma_locale}
+\alias{scale_x_dollar_locale}
+\alias{scale_y_dollar_locale}
 \title{Formatted Positional Scales}
 \usage{
-scale_x_number(
+scale_x_number_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
@@ -37,7 +37,7 @@ scale_x_number(
   ...
 )
 
-scale_y_number(
+scale_y_number_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
@@ -62,7 +62,7 @@ scale_y_number(
   ...
 )
 
-scale_x_percent(
+scale_x_percent_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
@@ -87,7 +87,7 @@ scale_x_percent(
   ...
 )
 
-scale_y_percent(
+scale_y_percent_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
@@ -112,7 +112,7 @@ scale_y_percent(
   ...
 )
 
-scale_x_comma(
+scale_x_comma_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
@@ -136,7 +136,7 @@ scale_x_comma(
   ...
 )
 
-scale_y_comma(
+scale_y_comma_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
@@ -160,7 +160,7 @@ scale_y_comma(
   ...
 )
 
-scale_x_dollar(
+scale_x_dollar_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
@@ -184,7 +184,7 @@ scale_x_dollar(
   ...
 )
 
-scale_y_dollar(
+scale_y_dollar_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),

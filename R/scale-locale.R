@@ -19,7 +19,7 @@ NULL
 
 #' @rdname scale-format
 #' @export
-scale_x_number <- function(name = waiver(),
+scale_x_number_locale <- function(name = waiver(),
                                   breaks = waiver(),
                                   minor_breaks = waiver(),
                                   guide = waiver(),
@@ -70,7 +70,7 @@ scale_x_number <- function(name = waiver(),
 
 #' @rdname scale-format
 #' @export
-scale_y_number <- function(name = waiver(),
+scale_y_number_locale <- function(name = waiver(),
                            breaks = waiver(),
                            minor_breaks = waiver(),
                            guide = waiver(),
@@ -121,7 +121,7 @@ scale_y_number <- function(name = waiver(),
 
 #' @rdname scale-format
 #' @export
-scale_x_percent <- function(name = waiver(),
+scale_x_percent_locale <- function(name = waiver(),
                            breaks = waiver(),
                            minor_breaks = waiver(),
                            guide = waiver(),
@@ -174,7 +174,7 @@ scale_x_percent <- function(name = waiver(),
 
 #' @rdname scale-format
 #' @export
-scale_y_percent <- function(name = waiver(),
+scale_y_percent_locale <- function(name = waiver(),
                             breaks = waiver(),
                             minor_breaks = waiver(),
                             guide = waiver(),
@@ -227,7 +227,7 @@ scale_y_percent <- function(name = waiver(),
 
 #' @rdname scale-format
 #' @export
-scale_x_comma <- function(name = waiver(),
+scale_x_comma_locale <- function(name = waiver(),
                           breaks = waiver(),
                           minor_breaks = waiver(),
                           guide = waiver(),
@@ -271,7 +271,7 @@ scale_x_comma <- function(name = waiver(),
 
 #' @rdname scale-format
 #' @export
-scale_y_comma <- function(name = waiver(),
+scale_y_comma_locale <- function(name = waiver(),
                           breaks = waiver(),
                           minor_breaks = waiver(),
                           guide = waiver(),
@@ -318,7 +318,7 @@ scale_y_comma <- function(name = waiver(),
 
 #' @rdname scale-format
 #' @export
-scale_x_dollar <- function(name = waiver(),
+scale_x_dollar_locale <- function(name = waiver(),
                            breaks = waiver(),
                            minor_breaks = waiver(),
                            guide = waiver(),
@@ -362,7 +362,7 @@ scale_x_dollar <- function(name = waiver(),
 
 #' @rdname scale-format
 #' @export
-scale_y_dollar <- function(name = waiver(),
+scale_y_dollar_locale <- function(name = waiver(),
                            breaks = waiver(),
                            minor_breaks = waiver(),
                            guide = waiver(),

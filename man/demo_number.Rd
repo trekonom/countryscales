@@ -17,5 +17,5 @@ demo_number(x, scale_name, ...)
 ggplo2 demo
 }
 \examples{
-demo_number(c(32, 212), scale_name = "number")
+demo_number(c(32, 212), scale_name = "number_locale")
 }
