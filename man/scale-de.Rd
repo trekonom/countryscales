@@ -10,7 +10,7 @@
 \alias{scale_y_dollar_de}
 \alias{scale_x_euro_de}
 \alias{scale_y_euro_de}
-\title{Formatted Positional Scales}
+\title{German Style Positional Scales}
 \usage{
 scale_x_number_de(
   name = waiver(),

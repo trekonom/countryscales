@@ -1,4 +1,4 @@
-#' Formatted Positional Scales
+#' German Style Positional Scales
 #'
 #' The scale_xxx_xxx family of functions makes it easy to format axis text
 #'     in decimal format, as percentages or as currencies.
