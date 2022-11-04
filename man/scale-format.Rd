@@ -38,8 +38,8 @@ scale_x_number_de(
   scale = 1,
   prefix = "",
   suffix = "",
-  big.mark = ".",
-  decimal.mark = ",",
+  big.mark = NULL,
+  decimal.mark = NULL,
   trim = TRUE,
   ...
 )
@@ -62,8 +62,8 @@ scale_y_number_de(
   scale = 1,
   prefix = "",
   suffix = "",
-  big.mark = ".",
-  decimal.mark = ",",
+  big.mark = NULL,
+  decimal.mark = NULL,
   trim = TRUE,
   ...
 )
@@ -85,9 +85,9 @@ scale_x_percent_de(
   accuracy = 1,
   scale = 100,
   prefix = "",
-  suffix = "\%",
-  big.mark = ".",
-  decimal.mark = ",",
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
   trim = TRUE,
   ...
 )
@@ -104,14 +104,14 @@ scale_y_percent_de(
   oob = censor,
   na.value = NA_real_,
   trans = "identity",
-  position = "left",
+  position = "bottom",
   sec.axis = waiver(),
   accuracy = 1,
   scale = 100,
   prefix = "",
-  suffix = "\%",
-  big.mark = ".",
-  decimal.mark = ",",
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
   trim = TRUE,
   ...
 )
@@ -232,7 +232,7 @@ scale_x_number(
   suffix = "",
   big.mark = NULL,
   decimal.mark = NULL,
-  locale = "en_US",
+  locale = "en-US",
   trim = TRUE,
   ...
 )
@@ -249,7 +249,7 @@ scale_y_number(
   oob = censor,
   na.value = NA_real_,
   trans = "identity",
-  position = "bottom",
+  position = "left",
   sec.axis = waiver(),
   accuracy = 1,
   scale = 1,
@@ -257,7 +257,7 @@ scale_y_number(
   suffix = "",
   big.mark = NULL,
   decimal.mark = NULL,
-  locale = "en_US",
+  locale = "en-US",
   trim = TRUE,
   ...
 )
@@ -282,7 +282,7 @@ scale_x_percent(
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,
-  locale = "en_US",
+  locale = "en-US",
   trim = TRUE,
   ...
 )
@@ -299,7 +299,7 @@ scale_y_percent(
   oob = censor,
   na.value = NA_real_,
   trans = "identity",
-  position = "bottom",
+  position = "left",
   sec.axis = waiver(),
   accuracy = 1,
   scale = 100,
@@ -307,7 +307,7 @@ scale_y_percent(
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,
-  locale = "en_US",
+  locale = "en-US",
   trim = TRUE,
   ...
 )

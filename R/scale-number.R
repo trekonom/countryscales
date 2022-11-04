@@ -36,14 +36,12 @@ scale_x_number <- function(name = waiver(),
                                   prefix = "", suffix = "",
                                   big.mark = NULL,
                                   decimal.mark = NULL,
-                                  locale = "en_US",
+                                  locale = "en-US",
                                   trim = TRUE, ...) {
 
-  locale <- match.arg(locale, unique(countryscales::locales$locale))
-  locale <- countryscales::locales[countryscales::locales$locale %in% locale, ]
-
-  big.mark <- big.mark %||% locale[["thousands_sep"]]
-  decimal.mark <- decimal.mark %||% locale[["decimal_point"]]
+  locale <- check_locale(locale)
+  big.mark <- check_big(big.mark, locale)
+  decimal.mark <- check_decimal(decimal.mark, locale)
 
   sc <- number_scale(
     aesthetics = countryscales_global$x_aes,
@@ -83,20 +81,18 @@ scale_y_number <- function(name = waiver(),
                            oob = censor,
                            na.value = NA_real_,
                            trans = "identity",
-                           position = "bottom",
+                           position = "left",
                            sec.axis = waiver(),
                            accuracy = 1, scale = 1,
                            prefix = "", suffix = "",
                            big.mark = NULL,
                            decimal.mark = NULL,
-                           locale = "en_US",
+                           locale = "en-US",
                            trim = TRUE, ...) {
 
-  locale <- match.arg(locale, unique(countryscales::locales$locale))
-  locale <- countryscales::locales[countryscales::locales$locale %in% locale, ]
-
-  big.mark <- big.mark %||% locale[["thousands_sep"]]
-  decimal.mark <- decimal.mark %||% locale[["decimal_point"]]
+  locale <- check_locale(locale)
+  big.mark <- check_big(big.mark, locale)
+  decimal.mark <- check_decimal(decimal.mark, locale)
 
   sc <- number_scale(
     aesthetics = countryscales_global$y_aes,
@@ -142,14 +138,12 @@ scale_x_percent <- function(name = waiver(),
                            prefix = "", suffix = NULL,
                            big.mark = NULL,
                            decimal.mark = NULL,
-                           locale = "en_US",
+                           locale = "en-US",
                            trim = TRUE, ...) {
 
-  locale <- match.arg(locale, unique(countryscales::locales$locale))
-  locale <- countryscales::locales[countryscales::locales$locale %in% locale, ]
-
-  big.mark <- big.mark %||% locale[["thousands_sep"]]
-  decimal.mark <- decimal.mark %||% locale[["decimal_point"]]
+  locale <- check_locale(locale)
+  big.mark <- check_big(big.mark, locale)
+  decimal.mark <- check_decimal(decimal.mark, locale)
   suffix <- suffix %||% paste0(rep(" ", locale[["p_sep_by_space"]]), "%")
 
   sc <- number_scale(
@@ -191,21 +185,19 @@ scale_y_percent <- function(name = waiver(),
                             oob = censor,
                             na.value = NA_real_,
                             trans = "identity",
-                            position = "bottom",
+                            position = "left",
                             sec.axis = waiver(),
                             accuracy = 1, scale = 100,
                             prefix = "", suffix = NULL,
                             big.mark = NULL,
                             decimal.mark = NULL,
-                            locale = "en_US",
+                            locale = "en-US",
                             trim = TRUE, ...) {
 
-  locale <- match.arg(locale, unique(countryscales::locales$locale))
-  locale <- countryscales::locales[countryscales::locales$locale %in% locale, ]
-
-  big.mark <- big.mark %||% locale[["thousands_sep"]]
-  decimal.mark <- decimal.mark %||% locale[["decimal_point"]]
-  suffix <- suffix %||% paste0(rep(" ", locale[["p_sep_by_space"]]), "%")
+  locale <- check_locale(locale)
+  big.mark <- check_big(big.mark, locale)
+  decimal.mark <- check_decimal(decimal.mark, locale)
+  suffix <- check_suffix(suffix, locale)
 
   sc <- number_scale(
     aesthetics = countryscales_global$y_aes,
