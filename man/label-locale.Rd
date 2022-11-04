@@ -3,7 +3,7 @@
 \name{label-locale}
 \alias{label-locale}
 \alias{label_number_locale}
-\alias{label_perent_locale}
+\alias{label_percent_locale}
 \title{Formatteing numbers}
 \usage{
 label_number_locale(
@@ -18,7 +18,7 @@ label_number_locale(
   ...
 )
 
-label_perent_locale(
+label_percent_locale(
   accuracy = NULL,
   scale = 1,
   prefix = "",

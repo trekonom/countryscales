@@ -33,7 +33,7 @@ label_number_locale <- function(accuracy = NULL, scale = 1, prefix = "",
 
 #' @rdname label-locale
 #' @export
-label_perent_locale <- function(accuracy = NULL, scale = 1, prefix = "",
+label_percent_locale <- function(accuracy = NULL, scale = 1, prefix = "",
                                 suffix = NULL, big.mark = NULL, decimal.mark = NULL,
                                 locale = "en-US",
                                 trim = TRUE, ...) {
