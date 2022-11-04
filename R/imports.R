@@ -16,8 +16,3 @@ set_sec_axis <- function(sec.axis, scale) {
   }
   return(scale)
 }
-
-# is.null helper
-"%||%" <- function(a, b) {
-  if (!is.null(a)) a else b
-}
