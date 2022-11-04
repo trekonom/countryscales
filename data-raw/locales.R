@@ -91,7 +91,6 @@ locales <- locales %>%
   filter(!is.na(url)) %>%
   mutate(
     across(c(decimal_point, thousands_sep, mon_decimal_point, mon_thousands_sep), stringi::stri_escape_unicode),
-    #across(c(decimal_point, thousands_sep, mon_decimal_point, mon_thousands_sep), str_replace, "\\", "\\"),
     across(c(thousands_sep), ~ ifelse(grepl("local", .x, fixed = TRUE), NA_character_, .x)),
     across(c(decimal_point), ~ ifelse(grepl("^% see LC_MONETARY", .x), mon_decimal_point, .x)),
     across(c(thousands_sep, mon_thousands_sep), ~ ifelse(grepl("% <NNBSP> (0X202F)", .x, fixed = TRUE), "\\u20ff", .x))
