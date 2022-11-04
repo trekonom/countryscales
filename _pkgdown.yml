@@ -1,28 +1,29 @@
-url: ~
+url: https://trekonom.github.io/countryscales/
 template:
   bootstrap: 5
 reference:
-- title: "Axis labels"
-  desc: >
+- title: Axis labels
+  desc: |
     Functions for formatting numbers.
   contents:
   - matches("^label_.*?_locale")
   - starts_with("label_")
-- title: "Positional Scales"
-  desc: >
+- title: Positional Scales
+  desc: |
     Functions for formatting positional scales as numbers, percents or currencies.
   contents:
   - matches("^scale_.*?_locale")
   - starts_with("scale_")
-- title: "Misc"
-  desc: >
+- title: Misc
+  desc: |
     Miscellaneous Functions
   contents:
   - show_locales
   - demo_number
-- title: "Data"
-  desc: "Datasets"
+- title: Data
+  desc: Datasets
   contents:
   - gapminder
   - gapminder15
   - locales
+
