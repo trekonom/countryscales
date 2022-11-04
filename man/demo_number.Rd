@@ -4,12 +4,14 @@
 \alias{demo_number}
 \title{ggplo2 demo}
 \usage{
-demo_number(x, scale_name, locale = "en_US")
+demo_number(x, scale_name, ...)
 }
 \arguments{
 \item{x}{a numeric}
 
 \item{scale_name}{scale name}
+
+\item{...}{further arguments to be passed to the scale}
 }
 \description{
 ggplo2 demo
