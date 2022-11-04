@@ -22,7 +22,7 @@ check_decimal <- function(x, locale) {
   check_mark(x, locale, "decimal_point")
 }
 
-check_suffix <- function(x, locale) {
+check_suffix <- function(x, locale, suffix = "%") {
   x <- check_mark(x, locale, "p_sep_by_space")
-  paste0(strrep(" ", x), "%")
+  paste0(strrep(" ", x), suffix)
 }
