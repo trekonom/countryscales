@@ -8,6 +8,14 @@
 \description{
 Make it easy to display numbers using country style conventions.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/trekonom/countryscales}
+  \item Report bugs at \url{https://github.com/trekonom/countryscales/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Stefan Moog \email{moogs@gmx.de}
 
