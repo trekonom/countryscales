@@ -13,12 +13,12 @@
 #' @param prefix Symbol to display before value.
 #' @param suffix Symbol to display after value.
 #'
-#' @name scale-format
+#' @name scale-de
 #'
 #' @example inst/ex/ex-scale-de.R
 NULL
 
-#' @rdname scale-format
+#' @rdname scale-de
 #' @export
 scale_x_number_de <- function(name = waiver(),
                               breaks = waiver(),
@@ -63,7 +63,7 @@ scale_x_number_de <- function(name = waiver(),
   )
 }
 
-#' @rdname scale-format
+#' @rdname scale-de
 #' @export
 scale_y_number_de <- function(name = waiver(),
                               breaks = waiver(),
@@ -108,7 +108,7 @@ scale_y_number_de <- function(name = waiver(),
   )
 }
 
-#' @rdname scale-format
+#' @rdname scale-de
 #' @export
 scale_x_percent_de <- function(name = waiver(),
                                breaks = waiver(),
@@ -154,7 +154,7 @@ scale_x_percent_de <- function(name = waiver(),
   )
 }
 
-#' @rdname scale-format
+#' @rdname scale-de
 #' @export
 scale_y_percent_de <- function(name = waiver(),
                                breaks = waiver(),
@@ -200,7 +200,7 @@ scale_y_percent_de <- function(name = waiver(),
   )
 }
 
-#' @rdname scale-format
+#' @rdname scale-de
 #' @export
 scale_x_dollar_de <- function(name = waiver(),
                               breaks = waiver(),
@@ -244,7 +244,7 @@ scale_x_dollar_de <- function(name = waiver(),
   set_sec_axis(sec.axis, sc)
 }
 
-#' @rdname scale-format
+#' @rdname scale-de
 #' @export
 scale_y_dollar_de <- function(name = waiver(),
                               breaks = waiver(),
@@ -290,7 +290,7 @@ scale_y_dollar_de <- function(name = waiver(),
   sc
 }
 
-#' @rdname scale-format
+#' @rdname scale-de
 #' @export
 scale_x_euro_de <- function(name = waiver(),
                             breaks = waiver(),
@@ -334,7 +334,7 @@ scale_x_euro_de <- function(name = waiver(),
   set_sec_axis(sec.axis, sc)
 }
 
-#' @rdname scale-format
+#' @rdname scale-de
 #' @export
 scale_y_euro_de <- function(name = waiver(),
                             breaks = waiver(),
