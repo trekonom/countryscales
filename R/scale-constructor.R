@@ -8,7 +8,7 @@
 #' @param prefix Symbol to display before value.
 #' @param suffix Symbol to display after value.
 #'
-#' @export
+#' @noRd
 number_scale <- function(aesthetics, scale_name, palette,
                          name = waiver(),
                          breaks = waiver(),
