@@ -144,7 +144,7 @@ scale_x_percent <- function(name = waiver(),
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)
-  suffix <- suffix %||% paste0(rep(" ", locale[["p_sep_by_space"]]), "%")
+  suffix <- check_suffix(suffix, locale, suffix = "%")
 
   sc <- number_scale(
     aesthetics = countryscales_global$x_aes,
@@ -197,7 +197,7 @@ scale_y_percent <- function(name = waiver(),
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)
-  suffix <- check_suffix(suffix, locale)
+  suffix <- check_suffix(suffix, locale, suffix = "%")
 
   sc <- number_scale(
     aesthetics = countryscales_global$y_aes,
