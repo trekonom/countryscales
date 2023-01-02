@@ -1,17 +1,17 @@
-#' Formatteing numbers
+#' Formatting numbers
 #'
-#' The label_xxx_xxx family of functions makes it easy to format numbers
+#' The label_xxx_locale family of functions makes it easy to format numbers
 #'     in decimal format, as percentages or as currencies.
 #'
-#' * the `_number` ones format axis text as numbers.
-#' * the `_percent` ones format axis text as percentages.
-#' * the `_dollar` ones format axis text as dollars.
-#' * the `_euro` ones format axis text as euros.
+#' * the `number` ones format axis text as numbers.
+#' * the `percent` ones format axis text as percentages.
+#' * the `dollar` ones format axis text as dollars.
+#' * the `euro` ones format axis text as euros.
 #'
 #' @inheritParams scales::label_number
 #' @param prefix Symbol to display before value.
 #' @param suffix Symbol to display after value.
-#' @param locale locale string. Defaults to "en_US"
+#' @param locale locale string. Defaults to "en-US"
 #'
 #' @name label-locale
 NULL
