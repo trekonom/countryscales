@@ -1,13 +1,13 @@
 Package: countryscales
 Title: Country Scales
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R: 
     person("Stefan", "Moog", , "moogs@gmx.de", role = c("aut", "cre"))
 Description: Make it easy to display numbers using country style conventions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Imports: 
     ggplot2,
     scales,
@@ -18,3 +18,7 @@ LazyData: true
 URL: https://github.com/trekonom/countryscales,
     https://trekonom.github.io/countryscales/
 BugReports: https://github.com/trekonom/countryscales/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
