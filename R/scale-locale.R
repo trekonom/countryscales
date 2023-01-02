@@ -3,16 +3,16 @@
 #' The scale_xxx_xxx family of functions makes it easy to format axis text
 #'     in decimal format, as percentages or as currencies.
 #'
-#' * the `_number` ones format axis text as numbers.
-#' * the `_percent` ones format axis text as percentages.
-#' * the `_dollar` ones format axis text as dollars.
-#' * the `_euro` ones format axis text as euros.
+#' * the `number` ones format axis text as numbers.
+#' * the `percent` ones format axis text as percentages.
+#' * the `dollar` ones format axis text as dollars.
+#' * the `euro` ones format axis text as euros.
 #'
 #' @inheritParams ggplot2::scale_x_continuous
 #' @inheritParams scales::label_number
 #' @param prefix Symbol to display before value.
 #' @param suffix Symbol to display after value.
-#' @param locale locale string. Defaults to "en_US"
+#' @param locale locale string. Defaults to "en-US"
 #'
 #' @name scale-format
 NULL

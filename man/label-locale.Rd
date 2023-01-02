@@ -4,7 +4,7 @@
 \alias{label-locale}
 \alias{label_number_locale}
 \alias{label_percent_locale}
-\title{Formatteing numbers}
+\title{Formatting numbers}
 \usage{
 label_number_locale(
   accuracy = NULL,
@@ -51,7 +51,7 @@ large.}
 \item{decimal.mark}{The character to be used to indicate the numeric
 decimal point.}
 
-\item{locale}{locale string. Defaults to "en_US"}
+\item{locale}{locale string. Defaults to "en-US"}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
@@ -59,14 +59,14 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 }
 \description{
-The label_xxx_xxx family of functions makes it easy to format numbers
+The label_xxx_locale family of functions makes it easy to format numbers
 in decimal format, as percentages or as currencies.
 }
 \details{
 \itemize{
-\item the \verb{_number} ones format axis text as numbers.
-\item the \verb{_percent} ones format axis text as percentages.
-\item the \verb{_dollar} ones format axis text as dollars.
-\item the \verb{_euro} ones format axis text as euros.
+\item the \code{number} ones format axis text as numbers.
+\item the \code{percent} ones format axis text as percentages.
+\item the \code{dollar} ones format axis text as dollars.
+\item the \code{euro} ones format axis text as euros.
 }
 }
