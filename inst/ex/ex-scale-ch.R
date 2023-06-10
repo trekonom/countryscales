@@ -1,0 +1,6 @@
+demo_number(c(-1e6, 1e6), scale_name = "number_ch")
+# scale_x_number_ch()
+demo_number(c(-1e6, 1e6), scale_name = "percent_ch")
+# scale_x_percent_ch()
+#demo_number(c(-1e6, 1e6), scale_name = "dollar_ch")
+# scale_x_dollar_ch()

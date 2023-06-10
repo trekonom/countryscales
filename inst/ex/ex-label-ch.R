@@ -1,0 +1,6 @@
+demo_continuous(c(-1e6, 1e6), labels = label_number_ch())
+# scale_x_continuous(labels = label_number_ch())
+demo_continuous(c(-1e6, 1e6), labels = label_percent_ch())
+# scale_x_continuous(labels = label_percent_ch())
+#demo_continuous(c(-1e6, 1e6), labels = label_dollar_ch())
+# scale_x_continuous(labels = label_dollar_ch())

@@ -17,7 +17,7 @@
 #'
 #' @export
 #'
-#' @example inst/ex/ex-label_number_ch.R
+#' @example inst/ex/ex-label-ch.R
 label_number_ch <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = NULL, decimal.mark = NULL, trim = TRUE, ...) {
   label_number_locale(accuracy = accuracy, scale = scale, prefix = prefix, suffix = suffix,
                big.mark = big.mark, decimal.mark = decimal.mark, locale = "de-CH", trim = trim, ...)
