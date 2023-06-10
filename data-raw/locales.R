@@ -96,6 +96,9 @@ locales <- locales %>%
     across(c(thousands_sep, mon_thousands_sep), ~ ifelse(grepl("% <NNBSP> (0X202F)", .x, fixed = TRUE), "\\u20ff", .x))
   )
 
+locales[] <- lapply(locales[], stringi::stri_escape_unicode)
+locales[] <- lapply(locales[], function(x) gsub('\\\\', '\\', x, fixed = TRUE))
+
 usethis::use_data(locales, overwrite = TRUE)
 
-distinct(locales, decimal_point, thousands_sep)
+#dplyr::distinct(locales, locale, decimal_point, thousands_sep) |> View()
