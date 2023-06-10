@@ -12,6 +12,7 @@ Make it easy to display numbers using country style conventions.
 Useful links:
 \itemize{
   \item \url{https://github.com/trekonom/countryscales}
+  \item \url{https://trekonom.github.io/countryscales/}
   \item Report bugs at \url{https://github.com/trekonom/countryscales/issues}
 }
 
