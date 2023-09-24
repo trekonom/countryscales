@@ -4,6 +4,7 @@
 \alias{label-locale}
 \alias{label_number_locale}
 \alias{label_percent_locale}
+\alias{label_currency_locale}
 \title{Formatting numbers}
 \usage{
 label_number_locale(
@@ -25,6 +26,21 @@ label_percent_locale(
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,
+  locale = "en-US",
+  trim = TRUE,
+  ...
+)
+
+label_currency_locale(
+  accuracy = NULL,
+  scale = 1,
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
+  p_sep_by = NULL,
+  n_sep_by = NULL,
+  currency = .dollar,
   locale = "en-US",
   trim = TRUE,
   ...
