@@ -75,12 +75,23 @@ map_specs <- function(locale_specs, what) {
     transpose() %>%
     pluck("result") %>%
     bind_rows(.id = "locale") %>%
-    mutate(across(!locale, str_replace, pattern = "^glib.*$", replacement = NA_character_))
+    mutate(across(
+      !locale,
+      ~ str_replace(.x, pattern = "^glib.*$", replacement = NA_character_)
+    ))
 }
 
 lc_numeric <- map_specs(locale_specs, what = "LC_NUMERIC")
-lc_monetary <- map_specs(locale_specs, what = "LC_MONETARY") %>%
-  mutate(positive_sign = coalesce(positive_sign, positive_sign...1, positive_sign...6)) %>%
+lc_monetary <- map_specs(locale_specs, what = "LC_MONETARY")
+
+list_positive_sign <- lc_monetary[grepl("^positive_sign", names(lc_monetary))]
+lc_monetary <- lc_monetary %>%
+  mutate(positive_sign = coalesce(
+    !!!list_positive_sign
+    # positive_sign,
+    # positive_sign...1,
+    # positive_sign...6
+  )) %>%
   select(-matches("\\.{3}\\d$"))
 
 locales <- locales %>%
@@ -90,15 +101,44 @@ locales <- locales %>%
 locales <- locales %>%
   filter(!is.na(url)) %>%
   mutate(
-    across(c(decimal_point, thousands_sep, mon_decimal_point, mon_thousands_sep), stringi::stri_escape_unicode),
-    across(c(thousands_sep), ~ ifelse(grepl("local", .x, fixed = TRUE), NA_character_, .x)),
-    across(c(decimal_point), ~ ifelse(grepl("^% see LC_MONETARY", .x), mon_decimal_point, .x)),
-    across(c(thousands_sep, mon_thousands_sep), ~ ifelse(grepl("% <NNBSP> (0X202F)", .x, fixed = TRUE), "\\u20ff", .x))
+    across(
+      c(
+        decimal_point, thousands_sep, mon_decimal_point,
+        mon_thousands_sep
+      ),
+      stringi::stri_escape_unicode
+    ),
+    across(
+      c(thousands_sep),
+      ~ ifelse(grepl("local", .x, fixed = TRUE), NA_character_, .x)
+    ),
+    across(
+      c(decimal_point),
+      ~ ifelse(grepl("^% see LC_MONETARY", .x), mon_decimal_point, .x)
+    ),
+    across(
+      c(thousands_sep, mon_thousands_sep),
+      ~ ifelse(grepl("% <NNBSP> (0X202F)", .x, fixed = TRUE), "\\u20ff", .x)
+    )
   )
 
 locales[] <- lapply(locales[], stringi::stri_escape_unicode)
-locales[] <- lapply(locales[], function(x) gsub('\\\\', '\\', x, fixed = TRUE))
+locales[] <- lapply(
+  locales[],
+  function(x) gsub("\\\\", "\\", x, fixed = TRUE)
+)
+
+to_integer <- c(
+  "frac_digits", "int_frac_digits", "p_sep_by_space"
+)
+locales[to_integer] <- lapply(locales[to_integer], as.integer)
+
+to_logical <- c("p_cs_precedes", "n_cs_precedes")
+locales[to_logical] <- lapply(
+  locales[to_logical],
+  \(x) as.logical(as.integer(x))
+)
 
 usethis::use_data(locales, overwrite = TRUE)
 
-#dplyr::distinct(locales, locale, decimal_point, thousands_sep) |> View()
+# dplyr::distinct(locales, locale, decimal_point, thousands_sep) |> View()
