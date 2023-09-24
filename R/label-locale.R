@@ -12,6 +12,11 @@
 #' @param prefix Symbol to display before value.
 #' @param suffix Symbol to display after value.
 #' @param locale locale string. Defaults to "en-US"
+#' @param p_sep_by separator between currency symbol and positive
+#'     monteary value
+#' @param n_sep_by separator between currency symbol and negative
+#'     monteary value
+#' @param currency symbol
 #'
 #' @name label-locale
 NULL

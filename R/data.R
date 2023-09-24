@@ -26,3 +26,6 @@
 #'
 #' @source \url{https://lh.2xlibre.net}
 "locales"
+
+#' @rdname locales
+"locales2"

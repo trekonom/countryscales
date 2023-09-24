@@ -73,6 +73,14 @@ decimal point.}
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+
+\item{p_sep_by}{separator between currency symbol and positive
+monteary value}
+
+\item{n_sep_by}{separator between currency symbol and negative
+monteary value}
+
+\item{currency}{symbol}
 }
 \description{
 The label_xxx_locale family of functions makes it easy to format numbers

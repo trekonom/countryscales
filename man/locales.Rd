@@ -3,15 +3,20 @@
 \docType{data}
 \name{locales}
 \alias{locales}
+\alias{locales2}
 \title{Locales}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 311 rows and 30 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 577 rows and 41 columns.
 }
 \source{
 \url{https://lh.2xlibre.net}
 }
 \usage{
 locales
+
+locales2
 }
 \description{
 A dataset containing specification of formatting styles to label numbers and
