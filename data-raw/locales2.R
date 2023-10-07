@@ -32,6 +32,17 @@ sep_by <- function(x) {
   sep_by
 }
 
+percent_sep_by <- function(x) {
+  sep_by <- x
+  sep_by[] <- "0"
+
+  sep_by[
+    grepl("%\u00a0(#|0)", x) | grepl("(#|0)\u00a0%", x)
+  ] <- "1"
+
+  sep_by
+}
+
 cs_precedes <- function(x) {
   cs_precedes <- x
   cs_precedes[] <- TRUE
@@ -106,7 +117,8 @@ locales <- locales |>
     thousands_sep = group,
     decimal_point = decimal,
     mon_thousands_sep = group,
-    mon_decimal_point = decimal
+    mon_decimal_point = decimal,
+    percent_sep_by_space = percent_sep_by(percent_format)
   )
 
 x <- locales |>

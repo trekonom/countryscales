@@ -8,7 +8,7 @@
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 311 rows and 30 columns.
 
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 577 rows and 41 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 577 rows and 42 columns.
 }
 \source{
 \url{https://lh.2xlibre.net}
