@@ -39,18 +39,31 @@ label_number_locale <- function(accuracy = NULL, scale = 1, prefix = "",
 
 #' @rdname label-locale
 #' @export
-label_percent_locale <- function(accuracy = NULL, scale = 100, prefix = "",
+label_percent_locale <- function(accuracy = NULL, scale = 100, prefix = NULL,
                                  suffix = NULL, big.mark = NULL, decimal.mark = NULL,
                                  locale = "en-US",
                                  trim = TRUE, ...) {
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)
-  suffix <- suffix %||% paste0(rep("\u00a0", locale[["percent_sep_by_space"]]), "%")
+  style_negative <- locale[["style_negative"]]
+  style_positive <- locale[["style_positive"]]
+
+  if (locale[["percent_precedes"]]) {
+    prefix <- prefix %||% paste0("%", rep("\u00a0", locale[["percent_sep_by"]]))
+    suffix <- suffix %||% ""
+  } else {
+    prefix <- prefix %||% ""
+    suffix <- suffix %||% paste0(rep("\u00a0", locale[["percent_sep_by"]]), "%")
+  }
+
 
   label_number(
     accuracy = accuracy, scale = scale, prefix = prefix, suffix = suffix,
-    big.mark = big.mark, decimal.mark = decimal.mark, trim = trim, ...
+    big.mark = big.mark, decimal.mark = decimal.mark, trim = trim,
+    style_negative = style_negative,
+    style_positive = style_positive,
+    ...
   )
 }
 

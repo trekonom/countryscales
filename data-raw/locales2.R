@@ -43,6 +43,14 @@ percent_sep_by <- function(x) {
   sep_by
 }
 
+percent_precedes <- function(x) {
+  percent_precedes <- logical(length(x))
+
+  percent_precedes[grepl("^%\u00a0?(#|0)", x)] <- TRUE
+
+  percent_precedes
+}
+
 cs_precedes <- function(x) {
   cs_precedes <- x
   cs_precedes[] <- TRUE
@@ -90,7 +98,7 @@ locales <- i18n::numbers |>
     ),
     across(c(p_currency_format, n_currency_format), trimws),
     across(
-      c(p_currency_format, n_currency_format),
+      c(p_currency_format, n_currency_format, minus_sign, plus_sign),
       ~ gsub("\u200e", "", .x, fixed = TRUE)
     ),
     across(
@@ -118,7 +126,14 @@ locales <- locales |>
     decimal_point = decimal,
     mon_thousands_sep = group,
     mon_decimal_point = decimal,
-    percent_sep_by_space = percent_sep_by(percent_format)
+    percent_sep_by = percent_sep_by(percent_format),
+    percent_precedes = percent_precedes(percent_format),
+    style_negative = case_match(
+      minus_sign,
+      "\u2212" ~ "minus",
+      .default = "hyphen"
+    ),
+    style_positive = "none"
   )
 
 x <- locales |>
