@@ -34,8 +34,8 @@ test_that("returns same formatted strings as Intl.js", {
 })
 
 test_that("uses a ’ as big.mark and a . as decimal mark", {
-  expect_equal(label_number_us()(1200.243), "1\u2019200")
+  expect_equal(label_number_us()(1200.243), "1,200")
   expect_equal(label_number_us(accuracy = .1)(1.243), "1.2")
-  expect_equal(label_percent_us()(.243), "24\u00a0%")
-  expect_equal(label_percent_us(accuracy = .1)(.243), "24.3\u00a0%")
+  expect_equal(label_percent_us()(.243), "24%")
+  expect_equal(label_percent_us(accuracy = .1)(.243), "24.3%")
 })
