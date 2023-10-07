@@ -6,10 +6,6 @@
 \alias{scale_y_number_ch}
 \alias{scale_x_percent_ch}
 \alias{scale_y_percent_ch}
-\alias{scale_x_dollar_ch}
-\alias{scale_y_dollar_ch}
-\alias{scale_x_euro_ch}
-\alias{scale_y_euro_ch}
 \title{Swiss Style Positional Scales}
 \usage{
 scale_x_number_ch(
@@ -104,102 +100,6 @@ scale_y_percent_ch(
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-scale_x_dollar_ch(
-  name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
-  labels = waiver(),
-  limits = NULL,
-  expand = waiver(),
-  oob = censor,
-  na.value = NA_real_,
-  trans = "identity",
-  position = "bottom",
-  sec.axis = waiver(),
-  accuracy = 1,
-  scale = 1,
-  prefix = "$",
-  suffix = "",
-  big.mark = ".",
-  decimal.mark = ",",
-  trim = TRUE,
-  ...
-)
-
-scale_y_dollar_ch(
-  name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
-  labels = waiver(),
-  limits = NULL,
-  expand = waiver(),
-  oob = censor,
-  na.value = NA_real_,
-  trans = "identity",
-  position = "left",
-  sec.axis = waiver(),
-  accuracy = 1,
-  scale = 1,
-  prefix = "$",
-  suffix = "",
-  big.mark = ".",
-  decimal.mark = ",",
-  trim = TRUE,
-  ...
-)
-
-scale_x_euro_ch(
-  name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
-  labels = waiver(),
-  limits = NULL,
-  expand = waiver(),
-  oob = censor,
-  na.value = NA_real_,
-  trans = "identity",
-  position = "bottom",
-  sec.axis = waiver(),
-  accuracy = 1,
-  scale = 1,
-  prefix = "",
-  suffix = .euro,
-  big.mark = ".",
-  decimal.mark = ",",
-  trim = TRUE,
-  ...
-)
-
-scale_y_euro_ch(
-  name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
-  labels = waiver(),
-  limits = NULL,
-  expand = waiver(),
-  oob = censor,
-  na.value = NA_real_,
-  trans = "identity",
-  position = "left",
-  sec.axis = waiver(),
-  accuracy = 1,
-  scale = 1,
-  prefix = "",
-  suffix = .euro,
-  big.mark = ".",
-  decimal.mark = ",",
   trim = TRUE,
   ...
 )
