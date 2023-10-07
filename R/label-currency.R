@@ -2,8 +2,8 @@ label_currency <- function(accuracy = NULL, scale = 1, prefix = "",
                            suffix = "", big.mark = " ", decimal.mark = ".",
                            p_sign = NULL,
                            n_sign = NULL,
-                           sep_prefix_positive = c("0", "1", "2"),
-                           sep_prefix_negative = c("0", "1", "2"),
+                           p_sep_by = c("0", "1", "2"),
+                           n_sep_by = c("0", "1", "2"),
                            scale_cut = NULL,
                            trim = TRUE, ...) {
   # force_all(
@@ -89,7 +89,6 @@ currency <- function(x, accuracy = NULL, scale = 1,
   prefix <- suffix <- x
   prefix[] <- suffix[] <- ""
 
-  #browser()
   # CS symbol
   if (p_cs_precedes) {
     prefix[!sign < 0] <- currency
@@ -169,24 +168,6 @@ currency <- function(x, accuracy = NULL, scale = 1,
     suffix[sign < 0] <- paste0(suffix[sign < 0], n_sign)
   }
 
-  #
-  # if (n_sep_by == "0") {
-  #   prefix_ret[sign < 0] <- paste0(n_sign, prefix)
-  # } else if (n_sep_by == "1") {
-  #   prefix_ret[sign < 0] <- paste0(prefix, n_sign)
-  # } else if (n_sep_by == "2") {
-  #   prefix_ret[sign < 0] <- paste0(prefix, " ", n_sign)
-  # }
-  #
-  # suffix_ret <- rep(suffix, length(sign))
-  # if (!suffix == "") {
-  #   if (p_sep_by %in% c("1", "2")) {
-  #     suffix_ret[!sign < 0] <- paste0(" ", suffix)
-  #   }
-  #   if (n_sep_by %in% c("1", "2")) {
-  #     suffix_ret[sign < 0] <- paste0(" ", suffix)
-  #   }
-  # }
   ret <- paste0(prefix, ret, suffix)
   ret[sign > 0] <- paste0(p_sign, ret[sign > 0])
 
