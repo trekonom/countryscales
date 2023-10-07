@@ -136,21 +136,21 @@ currency <- function(x, accuracy = NULL, scale = 1,
 
   if (p_cs_precedes) {
     if (p_sep_by == "1") {
-      prefix[!sign < 0] <- paste0(prefix[!sign < 0], " ")
+      prefix[!sign < 0] <- paste0(prefix[!sign < 0], "\u00a0")
     }
   } else {
     if (p_sep_by == "1") {
-      suffix[!sign < 0] <- paste0(" ", suffix[!sign < 0])
+      suffix[!sign < 0] <- paste0("\u00a0", suffix[!sign < 0])
     }
   }
 
   if (n_cs_precedes) {
     if (n_sep_by == "1") {
-      prefix[sign < 0] <- paste0(prefix[sign < 0], " ")
+      prefix[sign < 0] <- paste0(prefix[sign < 0], "\u00a0")
     }
   } else {
     if (n_sep_by == "1") {
-      suffix[sign < 0] <- paste0(" ", suffix[sign < 0])
+      suffix[sign < 0] <- paste0("\u00a0", suffix[sign < 0])
     }
   }
 
