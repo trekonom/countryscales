@@ -1,6 +1,6 @@
 Package: countryscales
 Title: Country Scales
-Version: 0.1.3.9000
+Version: 0.1.4.9000
 Authors@R: 
     person("Stefan", "Moog", , "moogs@gmx.de", role = c("aut", "cre"))
 Description: Make it easy to display numbers using country style conventions.
@@ -15,7 +15,7 @@ Imports:
     scales,
     stringi
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5.0)
 LazyData: true
 URL: https://github.com/trekonom/countryscales,
     https://trekonom.github.io/countryscales/
