@@ -12,7 +12,7 @@ in decimal format, as percentages or as currencies."><!-- mathjax --><script src
     
     <a class="navbar-brand me-2" href="../index.html">countryscales</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,102 +146,6 @@ in decimal format, as percentages or as currencies.</p>
 <span>  suffix <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  big.mark <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  decimal.mark <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  <span class="va">...</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">scale_x_dollar_de</span><span class="op">(</span></span>
-<span>  name <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  minor_breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  n.breaks <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  labels <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  limits <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  oob <span class="op">=</span> <span class="va">censor</span>,</span>
-<span>  na.value <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
-<span>  trans <span class="op">=</span> <span class="st">"identity"</span>,</span>
-<span>  position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
-<span>  sec.axis <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  prefix <span class="op">=</span> <span class="st">"$"</span>,</span>
-<span>  suffix <span class="op">=</span> <span class="st">""</span>,</span>
-<span>  big.mark <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
-<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  <span class="va">...</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">scale_y_dollar_de</span><span class="op">(</span></span>
-<span>  name <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  minor_breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  n.breaks <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  labels <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  limits <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  oob <span class="op">=</span> <span class="va">censor</span>,</span>
-<span>  na.value <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
-<span>  trans <span class="op">=</span> <span class="st">"identity"</span>,</span>
-<span>  position <span class="op">=</span> <span class="st">"left"</span>,</span>
-<span>  sec.axis <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  prefix <span class="op">=</span> <span class="st">"$"</span>,</span>
-<span>  suffix <span class="op">=</span> <span class="st">""</span>,</span>
-<span>  big.mark <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
-<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  <span class="va">...</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">scale_x_euro_de</span><span class="op">(</span></span>
-<span>  name <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  minor_breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  n.breaks <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  labels <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  limits <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  oob <span class="op">=</span> <span class="va">censor</span>,</span>
-<span>  na.value <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
-<span>  trans <span class="op">=</span> <span class="st">"identity"</span>,</span>
-<span>  position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
-<span>  sec.axis <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
-<span>  suffix <span class="op">=</span> <span class="va">.euro</span>,</span>
-<span>  big.mark <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
-<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  <span class="va">...</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">scale_y_euro_de</span><span class="op">(</span></span>
-<span>  name <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  minor_breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  n.breaks <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  labels <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  limits <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  oob <span class="op">=</span> <span class="va">censor</span>,</span>
-<span>  na.value <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
-<span>  trans <span class="op">=</span> <span class="st">"identity"</span>,</span>
-<span>  position <span class="op">=</span> <span class="st">"left"</span>,</span>
-<span>  sec.axis <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  prefix <span class="op">=</span> <span class="st">""</span>,</span>
-<span>  suffix <span class="op">=</span> <span class="va">.euro</span>,</span>
-<span>  big.mark <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>  decimal.mark <span class="op">=</span> <span class="st">","</span>,</span>
 <span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
