@@ -21,7 +21,7 @@ label_number_locale(
 
 label_percent_locale(
   accuracy = NULL,
-  scale = 1,
+  scale = 100,
   prefix = "",
   suffix = NULL,
   big.mark = NULL,
