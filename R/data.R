@@ -28,3 +28,10 @@
 #'
 #' @source \url{https://rich-iannone.github.io/i18n/}
 "locales"
+
+#' COPY AND PASTE from the i18n package
+#'
+#' A table with localized currency attributes and descriptors
+#'
+#' @source \url{https://rich-iannone.github.io/i18n/}
+"currencies"
