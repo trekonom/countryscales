@@ -7,19 +7,6 @@ label_currency <- function(accuracy = NULL, scale = 1, currency = NULL,
                            n_sep_by = c("0", "1", "2"),
                            scale_cut = NULL,
                            trim = TRUE, ...) {
-  # force_all(
-  #   accuracy,
-  #   scale,
-  #   prefix,
-  #   suffix,
-  #   big.mark,
-  #   decimal.mark,
-  #   style_positive,
-  #   style_negative,
-  #   scale_cut,
-  #   trim,
-  #   ...
-  # )
   function(x) {
     currency(
       x,
@@ -61,6 +48,8 @@ currency <- function(x, accuracy = NULL, scale = 1,
 
   p_sep_by <- arg_match(p_sep_by)
   n_sep_by <- arg_match(n_sep_by)
+
+  ### COPY AND PASTE from scales::label_number
   if (!is.null(scale_cut)) {
     cut <- scale_cut(x,
       breaks = scale_cut, scale = scale,
@@ -88,6 +77,7 @@ currency <- function(x, accuracy = NULL, scale = 1,
     )
   }
   ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
+  ###
 
   prefix <- suffix <- x
   prefix[] <- suffix[] <- ""
@@ -181,6 +171,7 @@ currency <- function(x, accuracy = NULL, scale = 1,
 
 # Helpers -----------------------------------------------------------------
 
+### COPY AND PASTE from scales pkg
 precision <- function(x) {
   x <- unique(x)
   # ignore NA and Inf/-Inf
