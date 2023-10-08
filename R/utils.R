@@ -41,3 +41,18 @@ check_p_sep_space <- function(x, locale) {
 check_n_sep_space <- function(x, locale) {
   check_mark(x, locale, "n_sep_by_space")
 }
+
+currency_symbol <- function(locale, currency) {
+  i18n::cldr_currencies(
+    locale = locale_name(locale),
+    currency = i18n::currency_code_list[[currency]]
+  )
+}
+
+locale_name <- function(locale) {
+  countryscales::locales[
+    countryscales::locales$locale == locale,
+    "locale_name",
+    drop = TRUE
+  ]
+}

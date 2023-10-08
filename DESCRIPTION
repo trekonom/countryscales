@@ -13,7 +13,8 @@ Imports:
     plyr,
     rlang,
     scales,
-    stringi
+    stringi,
+    i18n
 Depends: 
     R (>= 3.5.0)
 LazyData: true

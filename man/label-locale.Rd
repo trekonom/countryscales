@@ -40,7 +40,7 @@ label_currency_locale(
   decimal.mark = NULL,
   p_sep_by = NULL,
   n_sep_by = NULL,
-  currency = .dollar,
+  currency = "USD",
   locale = "en-US",
   trim = TRUE,
   ...

@@ -1,4 +1,5 @@
-label_currency <- function(accuracy = NULL, scale = 1, prefix = "",
+label_currency <- function(accuracy = NULL, scale = 1, currency = NULL,
+                           prefix = "",
                            suffix = "", big.mark = " ", decimal.mark = ".",
                            p_sign = NULL,
                            n_sign = NULL,
@@ -24,6 +25,7 @@ label_currency <- function(accuracy = NULL, scale = 1, prefix = "",
       x,
       accuracy = accuracy,
       scale = scale,
+      currency = currency,
       prefix = prefix,
       suffix = suffix,
       big.mark = big.mark,
@@ -56,6 +58,7 @@ currency <- function(x, accuracy = NULL, scale = 1,
   if (length(x) == 0) {
     return(character())
   }
+
   p_sep_by <- arg_match(p_sep_by)
   n_sep_by <- arg_match(n_sep_by)
   if (!is.null(scale_cut)) {
