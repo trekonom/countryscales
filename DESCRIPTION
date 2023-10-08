@@ -13,7 +13,6 @@ Imports:
     plyr,
     rlang,
     scales,
-    stringi,
     i18n
 Depends: 
     R (>= 3.5.0)

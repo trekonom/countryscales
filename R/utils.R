@@ -9,8 +9,7 @@ check_locale <- function(x) {
 }
 
 check_mark <- function(x, locale, what) {
-  x <- x %||% locale[[what]]
-  stringi::stri_unescape_unicode(x)
+  x %||% locale[[what]]
 }
 
 check_big <- function(x, locale) {
