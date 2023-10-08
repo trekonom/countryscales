@@ -16,6 +16,8 @@
 #' @param currency currency symbol
 #'
 #' @name label-locale
+#'
+#' @example inst/ex/ex-label-locale.R
 NULL
 
 #' @rdname label-locale
