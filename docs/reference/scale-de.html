@@ -12,7 +12,7 @@ in decimal format, as percentages or as currencies."><!-- mathjax --><script src
     
     <a class="navbar-brand me-2" href="../index.html">countryscales</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -148,6 +148,56 @@ in decimal format, as percentages or as currencies.</p>
 <span>  decimal.mark <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scale_x_currency_de</span><span class="op">(</span></span>
+<span>  name <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  minor_breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  n.breaks <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  limits <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  oob <span class="op">=</span> <span class="va">censor</span>,</span>
+<span>  na.value <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
+<span>  trans <span class="op">=</span> <span class="st">"identity"</span>,</span>
+<span>  position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>  sec.axis <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  currency <span class="op">=</span> <span class="st">"$"</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scale_y_currency_de</span><span class="op">(</span></span>
+<span>  name <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  minor_breaks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  n.breaks <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  limits <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  oob <span class="op">=</span> <span class="va">censor</span>,</span>
+<span>  na.value <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
+<span>  trans <span class="op">=</span> <span class="st">"identity"</span>,</span>
+<span>  position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>  sec.axis <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/waiver.html" class="external-link">waiver</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  accuracy <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  scale <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  suffix <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  big.mark <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  decimal.mark <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  currency <span class="op">=</span> <span class="st">"$"</span>,</span>
+<span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -279,11 +329,13 @@ large.</p></dd>
 
 
 <dt>prefix</dt>
-<dd><p>Symbol to display before value.</p></dd>
+<dd><p>Additional text to display before the number. The suffix is
+applied to absolute value before <code>style_positive</code> and <code>style_negative</code> are
+processed so that <code>prefix = "$"</code> will yield (e.g.) <code>-$1</code> and <code>($1)</code>.</p></dd>
 
 
 <dt>suffix</dt>
-<dd><p>Symbol to display after value.</p></dd>
+<dd><p>Additional text to display after the number.</p></dd>
 
 
 <dt>big.mark</dt>
@@ -303,14 +355,17 @@ width (see <code><a href="https://rdrr.io/r/base/format.html" class="external-li
 <dt>...</dt>
 <dd><p>Other arguments passed on to <code>scale_(x|y)_continuous()</code></p></dd>
 
+
+<dt>currency</dt>
+<dd><p>currency symbol</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     
-<ul><li><p>the <code>_number</code> ones format axis text as numbers.</p></li>
-<li><p>the <code>_percent</code> ones format axis text as percentages.</p></li>
-<li><p>the <code>_dollar</code> ones format axis text as dollars.</p></li>
-<li><p>the <code>_euro</code> ones format axis text as euros.</p></li>
+<ul><li><p>the <code>number</code> ones format axis text in decimal format.</p></li>
+<li><p>the <code>percent</code> ones format axis text as percentages.</p></li>
+<li><p>the <code>currency</code> ones format axis text as currencies.</p></li>
 </ul></div>
 
     <div class="section level2">
