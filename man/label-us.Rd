@@ -132,6 +132,6 @@ demo_continuous(c(-1, 1),
   labels = label_percent_us(accuracy = .1)
 )
 demo_continuous(c(-1, 1),
-  labels = label_currency_us(accuracy = .1, currency = "USD")
+  labels = label_currency_us(accuracy = .1)
 )
 }
