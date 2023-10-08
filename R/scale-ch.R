@@ -217,7 +217,7 @@ scale_x_currency_ch <- function(name = waiver(),
                                suffix = NULL,
                                big.mark = NULL,
                                decimal.mark = NULL,
-                               currency = "$",
+                               currency = "CHF",
                                trim = TRUE, ...) {
 
   scale_x_currency_locale(
@@ -268,7 +268,7 @@ scale_y_currency_ch <- function(name = waiver(),
                                     suffix = NULL,
                                     big.mark = NULL,
                                     decimal.mark = NULL,
-                                    currency = "$",
+                                    currency = "CHF",
                                     trim = TRUE, ...) {
 
   scale_y_currency_locale(

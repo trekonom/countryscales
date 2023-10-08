@@ -6,6 +6,8 @@
 \alias{number_ch}
 \alias{label_percent_ch}
 \alias{percent_ch}
+\alias{label_currency_ch}
+\alias{currency_ch}
 \title{Swiss Style Formatting of Numbers}
 \usage{
 label_number_ch(
@@ -53,6 +55,31 @@ percent_ch(
   trim = TRUE,
   ...
 )
+
+label_currency_ch(
+  accuracy = 1,
+  scale = 1,
+  currency = "CHF",
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
+  trim = TRUE,
+  ...
+)
+
+currency_ch(
+  x,
+  accuracy = 1,
+  scale = 1,
+  currency = "CHF",
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
+  trim = TRUE,
+  ...
+)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -83,6 +110,8 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
 \item{x}{a numeric}
+
+\item{currency}{currency symbol}
 }
 \description{
 The label_xxx_xxx family of functions makes it easy to format numbers

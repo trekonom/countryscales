@@ -217,7 +217,7 @@ scale_x_currency_de <- function(name = waiver(),
                                 suffix = NULL,
                                 big.mark = NULL,
                                 decimal.mark = NULL,
-                                currency = "$",
+                                currency = "EUR",
                                 trim = TRUE, ...) {
 
   scale_x_currency_locale(
@@ -268,7 +268,7 @@ scale_y_currency_de <- function(name = waiver(),
                                 suffix = NULL,
                                 big.mark = NULL,
                                 decimal.mark = NULL,
-                                currency = "$",
+                                currency = "EUR",
                                 trim = TRUE, ...) {
 
   scale_y_currency_locale(

@@ -15,27 +15,92 @@
 #' @export
 #'
 #' @example inst/ex/ex-label-de.R
-label_number_de <- function(accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = NULL, decimal.mark = NULL, trim = TRUE, ...) {
-  label_number_locale(accuracy = accuracy, scale = scale, prefix = prefix, suffix = suffix,
-               big.mark = big.mark, decimal.mark = decimal.mark, locale = "de-DE", trim = trim, ...)
+label_number_de <- function(accuracy = 1, scale = 1,
+                            prefix = "", suffix = "",
+                            big.mark = NULL, decimal.mark = NULL,
+                            trim = TRUE, ...) {
+  label_number_locale(
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    locale = "de-DE",
+    trim = trim,
+    ...
+  )
 }
 
 #' @rdname label-de
 #' @export
-number_de <- function(x, accuracy = 1, scale = 1, prefix = "", suffix = "", big.mark = NULL, decimal.mark = NULL, trim = TRUE, ...) {
-  label_number_de(accuracy = accuracy, scale = scale, big.mark = big.mark, decimal.mark = decimal.mark, trim = trim, ...)(x)
+number_de <- function(x, accuracy = 1, scale = 1,
+                      prefix = "", suffix = "",
+                      big.mark = NULL, decimal.mark = NULL,
+                      trim = TRUE, ...) {
+  label_number_de(
+    accuracy = accuracy, scale = scale,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )(x)
 }
 
 #' @rdname label-de
 #' @export
-label_percent_de <- function(accuracy = 1, scale = 100, prefix = "", suffix = NULL, big.mark = NULL, decimal.mark = NULL, trim = TRUE, ...) {
-  label_percent_locale(accuracy = accuracy, scale = scale, prefix = prefix, suffix = suffix,
-               big.mark = big.mark, decimal.mark = decimal.mark, locale = "de-DE", trim = trim, ...)
+label_percent_de <- function(accuracy = 1, scale = 100,
+                             prefix = "", suffix = NULL,
+                             big.mark = NULL, decimal.mark = NULL,
+                             trim = TRUE, ...) {
+  label_percent_locale(
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    locale = "de-DE",
+    trim = trim,
+    ...
+  )
 }
 
 #' @rdname label-de
 #' @export
-percent_de <- function(x, accuracy = 1, scale = 100, prefix = "", suffix = NULL, big.mark = NULL, decimal.mark = NULL, trim = TRUE, ...) {
-  label_percent_de(accuracy = accuracy, scale = scale, prefix = prefix, suffix = suffix,
-               big.mark = big.mark, decimal.mark = decimal.mark, ltrim = trim, ...)(x)
+percent_de <- function(x, accuracy = 1, scale = 100,
+                       prefix = "", suffix = NULL,
+                       big.mark = NULL, decimal.mark = NULL,
+                       trim = TRUE, ...) {
+  label_percent_de(
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )(x)
+}
+
+#' @rdname label-de
+#' @export
+label_currency_de <- function(accuracy = 1, scale = 1, currency = "EUR",
+                              prefix = NULL, suffix = NULL,
+                              big.mark = NULL, decimal.mark = NULL,
+                              trim = TRUE, ...) {
+  label_currency_locale(
+    accuracy = accuracy, scale = scale, currency = currency,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    locale = "de-DE",
+    trim = trim,
+    ...
+  )
+}
+
+#' @rdname label-de
+#' @export
+currency_de <- function(x, accuracy = 1, scale = 1, currency = "EUR",
+                        prefix = NULL, suffix = NULL,
+                        big.mark = NULL, decimal.mark = NULL,
+                        trim = TRUE, ...) {
+  label_currency_de(
+    accuracy = accuracy, scale = scale, currency = currency,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )(x)
 }

@@ -6,6 +6,8 @@
 \alias{number_us}
 \alias{label_percent_us}
 \alias{percent_us}
+\alias{label_currency_us}
+\alias{currency_us}
 \title{US Style Formatting of Numbers}
 \usage{
 label_number_us(
@@ -53,6 +55,31 @@ percent_us(
   trim = TRUE,
   ...
 )
+
+label_currency_us(
+  accuracy = 1,
+  scale = 1,
+  currency = "USD",
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
+  trim = TRUE,
+  ...
+)
+
+currency_us(
+  x,
+  accuracy = 1,
+  scale = 1,
+  currency = "USD",
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
+  trim = TRUE,
+  ...
+)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -83,6 +110,8 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
 \item{x}{a numeric}
+
+\item{currency}{currency symbol}
 }
 \description{
 The label_xxx_xxx family of functions makes it easy to format numbers
@@ -99,7 +128,10 @@ in decimal format, as percentages or as currencies.
 demo_continuous(c(-1e6, 1e6),
   labels = label_number_us()
 )
-demo_continuous(c(0, .01),
-  labels = label_percent_us(accuracy = .01)
+demo_continuous(c(-1, 1),
+  labels = label_percent_us(accuracy = .1)
+)
+demo_continuous(c(-1, 1),
+  labels = label_currency_us(accuracy = .1, currency = "USD")
 )
 }
