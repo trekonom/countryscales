@@ -291,8 +291,8 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{currency}{currency symbol}
 }
 \description{
-The scale_xxx_xxx family of functions makes it easy to format axis text
-in decimal format, as percentages or as currencies.
+The scale_x/y_xxx_xxx family of functions makes it easy to format
+axis text in decimal format, as percentages or as currencies.
 }
 \details{
 \itemize{
