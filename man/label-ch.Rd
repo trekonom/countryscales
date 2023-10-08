@@ -66,9 +66,11 @@ Applied to rescaled data.}
 formatting. This is useful if the underlying data is very small or very
 large.}
 
-\item{prefix}{Symbol to display before value.}
+\item{prefix}{Additional text to display before the number. The suffix is
+applied to absolute value before \code{style_positive} and \code{style_negative} are
+processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
 
-\item{suffix}{Symbol to display after value.}
+\item{suffix}{Additional text to display after the number.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
 
@@ -88,10 +90,9 @@ in decimal format, as percentages or as currencies.
 }
 \details{
 \itemize{
-\item the \verb{_number} ones format axis text as numbers.
-\item the \verb{_percent} ones format axis text as percentages.
-\item the \verb{_dollar} ones format axis text as dollars.
-\item the \verb{_euro} ones format axis text as euros.
+\item \code{label_number_ch} formats numbers in decimal format.
+\item \code{label_percent_ch} formats numbers as percentages.
+\item \code{label_currency_ch} formats numbers as currencies.
 }
 }
 \examples{

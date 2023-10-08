@@ -6,10 +6,8 @@
 \alias{scale_y_number_locale}
 \alias{scale_x_percent_locale}
 \alias{scale_y_percent_locale}
-\alias{scale_x_comma_locale}
-\alias{scale_y_comma_locale}
-\alias{scale_x_dollar_locale}
-\alias{scale_y_dollar_locale}
+\alias{scale_x_currency_locale}
+\alias{scale_y_currency_locale}
 \title{Formatted Positional Scales}
 \usage{
 scale_x_number_locale(
@@ -78,7 +76,7 @@ scale_x_percent_locale(
   sec.axis = waiver(),
   accuracy = 1,
   scale = 100,
-  prefix = "",
+  prefix = NULL,
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,
@@ -103,7 +101,7 @@ scale_y_percent_locale(
   sec.axis = waiver(),
   accuracy = 1,
   scale = 100,
-  prefix = "",
+  prefix = NULL,
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,
@@ -112,7 +110,7 @@ scale_y_percent_locale(
   ...
 )
 
-scale_x_comma_locale(
+scale_x_currency_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
@@ -128,15 +126,17 @@ scale_x_comma_locale(
   sec.axis = waiver(),
   accuracy = 1,
   scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = ",",
-  decimal.mark = ".",
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
+  locale = "en-US",
+  currency = "$",
   trim = TRUE,
   ...
 )
 
-scale_y_comma_locale(
+scale_y_currency_locale(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
@@ -152,58 +152,12 @@ scale_y_comma_locale(
   sec.axis = waiver(),
   accuracy = 1,
   scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = ",",
-  decimal.mark = ".",
-  trim = TRUE,
-  ...
-)
-
-scale_x_dollar_locale(
-  name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
-  labels = waiver(),
-  limits = NULL,
-  expand = waiver(),
-  oob = censor,
-  na.value = NA_real_,
-  trans = "identity",
-  position = "bottom",
-  sec.axis = waiver(),
-  accuracy = 1,
-  scale = 1,
-  prefix = "$",
-  suffix = "",
-  big.mark = " ",
-  decimal.mark = ".",
-  trim = TRUE,
-  ...
-)
-
-scale_y_dollar_locale(
-  name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
-  labels = waiver(),
-  limits = NULL,
-  expand = waiver(),
-  oob = censor,
-  na.value = NA_real_,
-  trans = "identity",
-  position = "left",
-  sec.axis = waiver(),
-  accuracy = 1,
-  scale = 1,
-  prefix = "$",
-  suffix = "",
-  big.mark = " ",
-  decimal.mark = ".",
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
+  locale = "en-US",
+  currency = "$",
   trim = TRUE,
   ...
 )
@@ -316,9 +270,11 @@ Applied to rescaled data.}
 formatting. This is useful if the underlying data is very small or very
 large.}
 
-\item{prefix}{Symbol to display before value.}
+\item{prefix}{Additional text to display before the number. The suffix is
+applied to absolute value before \code{style_positive} and \code{style_negative} are
+processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
 
-\item{suffix}{Symbol to display after value.}
+\item{suffix}{Additional text to display after the number.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
 
@@ -331,6 +287,8 @@ decimal point.}
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \verb{scale_(x|y)_continuous()}}
+
+\item{currency}{currency symbol}
 }
 \description{
 The scale_xxx_xxx family of functions makes it easy to format axis text
@@ -338,9 +296,8 @@ in decimal format, as percentages or as currencies.
 }
 \details{
 \itemize{
-\item the \code{number} ones format axis text as numbers.
+\item the \code{number} ones format axis text in decimal format.
 \item the \code{percent} ones format axis text as percentages.
-\item the \code{dollar} ones format axis text as dollars.
-\item the \code{euro} ones format axis text as euros.
+\item the \code{currency} ones format axis text as currencies.
 }
 }

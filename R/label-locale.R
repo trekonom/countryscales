@@ -3,20 +3,17 @@
 #' The label_xxx_locale family of functions makes it easy to format numbers
 #'     in decimal format, as percentages or as currencies.
 #'
-#' * the `number` ones format axis text as numbers.
-#' * the `percent` ones format axis text as percentages.
-#' * the `dollar` ones format axis text as dollars.
-#' * the `euro` ones format axis text as euros.
+#' * `label_number_locale` formats numbers in decimal format.
+#' * `label_percent_locale` formats numbers as percentages.
+#' * `label_currency_locale` formats numbers as currencies.
 #'
 #' @inheritParams scales::label_number
-#' @param prefix Symbol to display before value.
-#' @param suffix Symbol to display after value.
 #' @param locale locale string. Defaults to "en-US"
 #' @param p_sep_by separator between currency symbol and positive
 #'     monteary value
 #' @param n_sep_by separator between currency symbol and negative
 #'     monteary value
-#' @param currency symbol
+#' @param currency currency symbol
 #'
 #' @name label-locale
 NULL
@@ -43,6 +40,7 @@ label_percent_locale <- function(accuracy = NULL, scale = 100, prefix = NULL,
                                  suffix = NULL, big.mark = NULL, decimal.mark = NULL,
                                  locale = "en-US",
                                  trim = TRUE, ...) {
+
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)

@@ -3,15 +3,11 @@
 #' The scale_xxx_xxx family of functions makes it easy to format axis text
 #'     in decimal format, as percentages or as currencies.
 #'
-#' * the `_number` ones format axis text as numbers.
-#' * the `_percent` ones format axis text as percentages.
-#' * the `_dollar` ones format axis text as dollars.
-#' * the `_euro` ones format axis text as euros.
+#' * the `number` ones format axis text in decimal format.
+#' * the `percent` ones format axis text as percentages.
+#' * the `currency` ones format axis text as currencies.
 #'
-#' @inheritParams ggplot2::scale_x_continuous
-#' @inheritParams scales::label_number
-#' @param prefix Symbol to display before value.
-#' @param suffix Symbol to display after value.
+#' @inheritParams scale_x_number_locale
 #'
 #' @name scale-ch
 #'
@@ -124,7 +120,7 @@ scale_x_percent_ch <- function(name = waiver(),
                                position = "bottom",
                                sec.axis = waiver(),
                                accuracy = 1, scale = 100,
-                               prefix = "", suffix = NULL,
+                               prefix = NULL, suffix = NULL,
                                big.mark = NULL, decimal.mark = NULL,
                                trim = TRUE, ...) {
 
@@ -170,7 +166,7 @@ scale_y_percent_ch <- function(name = waiver(),
                                position = "left",
                                sec.axis = waiver(),
                                accuracy = 1, scale = 100,
-                               prefix = "", suffix = NULL,
+                               prefix = NULL, suffix = NULL,
                                big.mark = NULL, decimal.mark = NULL,
                                trim = TRUE, ...) {
 
@@ -194,6 +190,108 @@ scale_y_percent_ch <- function(name = waiver(),
     suffix = suffix,
     big.mark = big.mark,
     decimal.mark = decimal.mark,
+    locale = "de-CH",
+    trim = trim,
+    ...
+  )
+}
+
+#' @rdname scale-ch
+#' @export
+scale_x_currency_ch <- function(name = waiver(),
+                               breaks = waiver(),
+                               minor_breaks = waiver(),
+                               guide = waiver(),
+                               n.breaks = NULL,
+                               labels = waiver(),
+                               limits = NULL,
+                               expand = waiver(),
+                               oob = censor,
+                               na.value = NA_real_,
+                               trans = "identity",
+                               position = "bottom",
+                               sec.axis = waiver(),
+                               accuracy = 1,
+                               scale = 1,
+                               prefix = NULL,
+                               suffix = NULL,
+                               big.mark = NULL,
+                               decimal.mark = NULL,
+                               currency = "$",
+                               trim = TRUE, ...) {
+
+  scale_x_currency_locale(
+    name = name,
+    breaks = breaks,
+    minor_breaks = minor_breaks,
+    guide = guide,
+    n.breaks = n.breaks,
+    labels = labels,
+    limits = limits,
+    expand = expand,
+    oob = oob,
+    na.value = na.value,
+    trans = trans,
+    position = position,
+    sec.axis = sec.axis,
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    currency = currency,
+    locale = "de-CH",
+    trim = trim,
+    ...
+  )
+}
+
+#' @rdname scale-ch
+#' @export
+scale_y_currency_ch <- function(name = waiver(),
+                                    breaks = waiver(),
+                                    minor_breaks = waiver(),
+                                    guide = waiver(),
+                                    n.breaks = NULL,
+                                    labels = waiver(),
+                                    limits = NULL,
+                                    expand = waiver(),
+                                    oob = censor,
+                                    na.value = NA_real_,
+                                    trans = "identity",
+                                    position = "bottom",
+                                    sec.axis = waiver(),
+                                    accuracy = 1,
+                                    scale = 1,
+                                    prefix = NULL,
+                                    suffix = NULL,
+                                    big.mark = NULL,
+                                    decimal.mark = NULL,
+                                    currency = "$",
+                                    trim = TRUE, ...) {
+
+  scale_y_currency_locale(
+    name = name,
+    breaks = breaks,
+    minor_breaks = minor_breaks,
+    guide = guide,
+    n.breaks = n.breaks,
+    labels = labels,
+    limits = limits,
+    expand = expand,
+    oob = oob,
+    na.value = na.value,
+    trans = trans,
+    position = position,
+    sec.axis = sec.axis,
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    currency = currency,
     locale = "de-CH",
     trim = trim,
     ...

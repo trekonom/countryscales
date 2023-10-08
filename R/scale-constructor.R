@@ -5,8 +5,6 @@
 #'
 #' @inheritParams ggplot2::continuous_scale
 #' @inheritParams scales::label_number
-#' @param prefix Symbol to display before value.
-#' @param suffix Symbol to display after value.
 #'
 #' @noRd
 number_scale <- function(aesthetics, scale_name, palette,
@@ -29,7 +27,7 @@ number_scale <- function(aesthetics, scale_name, palette,
                          trim = TRUE, ...) {
 
   if (is.waive(labels)) {
-    labels <- number_format(
+    labels <- label_number(
       accuracy = accuracy,
       scale = scale,
       prefix = prefix,
