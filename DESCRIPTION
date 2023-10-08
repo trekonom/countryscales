@@ -1,6 +1,6 @@
 Package: countryscales
 Title: Country Scales
-Version: 0.1.6.9000
+Version: 0.1.7
 Authors@R: 
     person("Stefan", "Moog", , "moogs@gmx.de", role = c("aut", "cre"))
 Description: Make it easy to display numbers using country style conventions.
