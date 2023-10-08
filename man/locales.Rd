@@ -3,23 +3,20 @@
 \docType{data}
 \name{locales}
 \alias{locales}
-\alias{locales2}
 \title{Locales}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 311 rows and 30 columns.
-
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 577 rows and 45 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 802 rows and 46 columns.
 }
 \source{
-\url{https://lh.2xlibre.net}
+\url{https://rich-iannone.github.io/i18n/}
 }
 \usage{
 locales
-
-locales2
 }
 \description{
-A dataset containing specification of formatting styles to label numbers and
-currencies for 320 countries.
+A dataset containing specification of formatting styles to label numbers,
+percentages and currencies for 574 locales based on
+CLDR (Common Locale Data Repository) data provided by the
+\href{https://rich-iannone.github.io/i18n/}{i18n} package.
 }
 \keyword{datasets}

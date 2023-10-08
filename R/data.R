@@ -21,11 +21,10 @@
 
 #' Locales
 #'
-#' A dataset containing specification of formatting styles to label numbers and
-#'    currencies for 320 countries.
+#' A dataset containing specification of formatting styles to label numbers,
+#'    percentages and currencies for 574 locales based on
+#'    CLDR (Common Locale Data Repository) data provided by the
+#'    [i18n](https://rich-iannone.github.io/i18n/) package.
 #'
-#' @source \url{https://lh.2xlibre.net}
+#' @source \url{https://rich-iannone.github.io/i18n/}
 "locales"
-
-#' @rdname locales
-"locales2"

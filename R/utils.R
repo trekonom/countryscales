@@ -4,8 +4,8 @@
 
 
 check_locale <- function(x) {
-  x <- match.arg(x, unique(countryscales::locales2$locale))
-  countryscales::locales2[countryscales::locales2$locale %in% x, ]
+  x <- match.arg(x, unique(countryscales::locales$locale))
+  countryscales::locales[countryscales::locales$locale %in% x, ]
 }
 
 check_mark <- function(x, locale, what) {

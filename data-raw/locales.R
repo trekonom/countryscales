@@ -1,144 +1,224 @@
-## code to prepare `locales` dataset goes here
-library(rvest)
+## code to prepare `locales2` dataset goes here
+library(i18n)
 library(tidyverse)
 
-url <- "https://lh.2xlibre.net/locales/"
-html <- read_html(url)
+PATTERN_SEPARATOR <- ";"
+QUOTE <- "'"
+PATTERN_DIGIT <- "#"
+PATTERN_ZERO_DIGIT <- "0"
+PATTERN_GROUPING_SEPARATOR <- ","
+PATTERN_DECIMAL_SEPARATOR <- "."
+PATTERN_CURRENCY_SIGN <- "\u00A4"
+PATTERN_PER_MILLE <- "\u2030"
+PER_MILLE_SCALE <- 1000
+PATTERN_PERCENT <- "%"
+PERCENT_SCALE <- 100
+PATTERN_EXPONENT <- "E"
+PATTERN_PLUS <- "+"
 
-locales <- html %>%
-  html_table() %>%
-  pluck(1) %>%
-  select(locale = 1, lang = 2, cntry = 3)
+sep_by <- function(x) {
+  sep_by <- x
+  sep_by[] <- "0"
 
-urls <- html %>%
-  html_nodes("a[href^='/locale']") %>%
-  map_dfr(function(x) {
-    data.frame(
-      locale = html_text2(x),
-      url = html_attr(x, "href")
-    )
-  })
+  sep_by[
+    grepl("\u00A4\u00a0(#|0)", x) | grepl("(#|0)\u00a0\u00A4", x)
+  ] <- "1"
 
-base_url <- "https://lh.2xlibre.net"
-locales <- locales %>%
-  right_join(urls, by = "locale") %>%
-  filter(!grepl("@", locale)) %>%
+  sep_by[
+    grepl("\u00A4\u00a0(\\+|\\-)(#|0)", x) |
+      grepl("(#|0)(\\+|\\-)\u00a0\u00A4", x)
+  ] <- "2"
+
+  sep_by
+}
+
+percent_sep_by <- function(x) {
+  sep_by <- x
+  sep_by[] <- "0"
+
+  sep_by[
+    grepl("%\u00a0(#|0)", x) | grepl("(#|0)\u00a0%", x)
+  ] <- "1"
+
+  sep_by
+}
+
+percent_precedes <- function(x) {
+  percent_precedes <- logical(length(x))
+
+  percent_precedes[grepl("^%\u00a0?(#|0)", x)] <- TRUE
+
+  percent_precedes
+}
+
+cs_precedes <- function(x) {
+  cs_precedes <- x
+  cs_precedes[] <- TRUE
+
+  cs_precedes[grepl("(#|0).*?\u00A4", x)] <- FALSE
+
+  cs_precedes
+}
+
+sign_posn <- function(x) {
+  sign_posn <- x
+  sign_posn[] <- 1
+
+  sign_posn[
+    grepl("\u00A4.+?(\\+|\\-)", x) &
+      grepl("(0|#).*?(\\+|\\-)", x)
+  ] <- 2
+
+  sign_posn[grepl("(\\+|\\-)\u00A4", x)] <- 3
+  sign_posn[grepl("\u00A4(\\+|\\-)", x)] <- 4
+
+  sign_posn
+}
+
+symbol_sign <- function(x, pattern, default) {
+  symbol_sign <- x
+  symbol_sign[] <- ""
+
+  symbol_sign[grepl(pattern, x)] <- default
+
+  symbol_sign
+}
+
+locales <- i18n::numbers |>
+  separate_wider_delim(currency_format,
+    names = c("p_currency_format", "n_currency_format"),
+    delim = ";",
+    too_few = "align_start",
+    cols_remove = FALSE
+  ) |>
   mutate(
-    lang_iso2 = gsub("^([a-z]{2}).*?$", "\\1", locale),
-    cntry_iso2 = gsub("^.*?_([A-Z]{2})$", "\\1", locale),
-    cntry_iso2 = tolower(cntry_iso2),
-    url = paste0(base_url, url),
-    lang = gsub("\\—", "", lang),
-    lang = trimws(lang),
-    cntry = stringr::str_to_title(cntry)
-  )
-
-read_locale <- function(locale_str) {
-  url <- locales[locales$locale == locale_str, "url", drop = TRUE]
-
-  html <- rvest::read_html(url)
-
-  tbls <- html |>
-    rvest::html_nodes("div.cat_section") |>
-    rvest::html_table() |>
-    lapply(function(x) {
-      if (nrow(x) > 0) {
-        names(x) <- c("comment", "value", "example")
-        x$value <- gsub("\\n.*$", "", x$value)
-      }
-      x
-    })
-
-  names(tbls) <- html |>
-    rvest::html_nodes("h3.cat") |>
-    rvest::html_text2()
-  names(tbls) <- gsub("^.*?\\((.*)\\)", "\\1", names(tbls))
-
-  return(tbls)
-}
-
-locale_str <- locales$locale
-names(locale_str) <- locale_str
-
-locale_specs <- purrr::map(locale_str, read_locale)
-
-read_specs <- function(x, what) {
-  xx <- x[[what]]["value"]
-  xx <- as.data.frame(t(xx))
-  names(xx) <- gsub("^.*?\\(([a-z_]+)\\).*$", "\\1", x[[what]][["comment"]])
-  row.names(xx) <- NULL
-  xx
-}
-safe_read_specs <- purrr::safely(read_specs)
-map_specs <- function(locale_specs, what) {
-  purrr::map(locale_specs, safe_read_specs, what = what) %>%
-    transpose() %>%
-    pluck("result") %>%
-    bind_rows(.id = "locale") %>%
-    mutate(across(
-      !locale,
-      ~ str_replace(.x, pattern = "^glib.*$", replacement = NA_character_)
-    ))
-}
-
-lc_numeric <- map_specs(locale_specs, what = "LC_NUMERIC")
-lc_monetary <- map_specs(locale_specs, what = "LC_MONETARY")
-
-list_positive_sign <- lc_monetary[grepl("^positive_sign", names(lc_monetary))]
-lc_monetary <- lc_monetary %>%
-  mutate(positive_sign = coalesce(
-    !!!list_positive_sign
-    # positive_sign,
-    # positive_sign...1,
-    # positive_sign...6
-  )) %>%
-  select(-matches("\\.{3}\\d$"))
-
-locales <- locales %>%
-  right_join(lc_numeric) %>%
-  right_join(lc_monetary)
-
-locales <- locales %>%
-  filter(!is.na(url)) %>%
-  mutate(
+    n_currency_format = coalesce(
+      n_currency_format,
+      paste0("-", p_currency_format)
+    ),
+    across(c(p_currency_format, n_currency_format), trimws),
     across(
-      c(
-        decimal_point, thousands_sep, mon_decimal_point,
-        mon_thousands_sep
-      ),
-      stringi::stri_escape_unicode
+      c(p_currency_format, n_currency_format,
+        minus_sign, plus_sign, percent_sign),
+      ~ gsub("\u200e", "", .x, fixed = TRUE)
     ),
     across(
-      c(thousands_sep),
-      ~ ifelse(grepl("local", .x, fixed = TRUE), NA_character_, .x)
-    ),
-    across(
-      c(decimal_point),
-      ~ ifelse(grepl("^% see LC_MONETARY", .x), mon_decimal_point, .x)
-    ),
-    across(
-      c(thousands_sep, mon_thousands_sep),
-      ~ ifelse(grepl("% <NNBSP> (0X202F)", .x, fixed = TRUE), "\\u20ff", .x)
+      c(p_currency_format, n_currency_format),
+      ~ gsub("\u200f", "", .x, fixed = TRUE)
     )
   )
 
-locales[] <- lapply(locales[], stringi::stri_escape_unicode)
-locales[] <- lapply(
-  locales[],
-  function(x) gsub("\\\\", "\\", x, fixed = TRUE)
-)
+x <- locales |>
+  count(p_currency_format, n_currency_format) |>
+  pull(n_currency_format)
 
-to_integer <- c(
-  "frac_digits", "int_frac_digits", "p_sep_by_space"
-)
-locales[to_integer] <- lapply(locales[to_integer], as.integer)
+locales <- locales |>
+  mutate(
+    n_cs_neg = str_locate(n_currency_format, "\\-")[, 1],
+    p_cs_precedes = cs_precedes(p_currency_format),
+    n_cs_precedes = cs_precedes(n_currency_format),
+    p_sep_by_space = sep_by(p_currency_format),
+    n_sep_by_space = sep_by(n_currency_format),
+    p_sign_posn = sign_posn(p_currency_format),
+    n_sign_posn = sign_posn(n_currency_format),
+    p_sign = symbol_sign(p_currency_format, "\\+", plus_sign),
+    n_sign = symbol_sign(n_currency_format, "\\-", minus_sign),
+    thousands_sep = group,
+    decimal_point = decimal,
+    mon_thousands_sep = group,
+    mon_decimal_point = decimal,
+    percent_sep_by = percent_sep_by(percent_format),
+    percent_precedes = percent_precedes(percent_format),
+    style_negative = case_match(
+      minus_sign,
+      "\u2212" ~ "minus",
+      .default = "hyphen"
+    ),
+    style_positive = "none"
+  )
 
-to_logical <- c("p_cs_precedes", "n_cs_precedes")
-locales[to_logical] <- lapply(
-  locales[to_logical],
-  \(x) as.logical(as.integer(x))
-)
+x <- locales |>
+  count(
+    p_currency_format, n_currency_format,
+    p_cs_precedes, n_cs_precedes,
+    p_sep_by_space, n_sep_by_space,
+    p_sign_posn, n_sign_posn,
+    p_sign, n_sign
+  )
+
+locales <- locales |>
+  bind_rows(
+    locales |>
+      left_join(default_locales, by = c("locale" = "base_locale")) |>
+      filter(!is.na(default_locale)) |>
+      rename(locale_name = locale) |>
+      mutate(
+        locale = default_locale
+      ) |>
+      select(-default_locale)
+  )
+
+locales <- locales |>
+  mutate(locale_name = coalesce(locale_name, locale)) |>
+  arrange(locale)
 
 usethis::use_data(locales, overwrite = TRUE)
 
-# dplyr::distinct(locales, locale, decimal_point, thousands_sep) |> View()
+# parseAffix <- function(x) {
+#   affix = ""
+#   inQuote = FALSE
+#   while (parseCharacterAffix(affix) && pattern.read().isNotEmpty) {}
+#   return toString(affix)
+# }
+#
+#
+#
+# bool parseCharacterAffix(StringBuffer affix) {
+#   if (pattern.atEnd) return false;
+#   var ch = pattern.peek();
+#   if (ch == QUOTE) {
+#     var peek = pattern.peek(2);
+#     if (peek.length == 2 && peek[1] == QUOTE) {
+#       pattern.pop();
+#       affix.write(QUOTE); // 'don''t'
+#     } else {
+#       inQuote = !inQuote;
+#     }
+#     return true;
+#   }
+#
+#
+#   if (inQuote) {
+#     affix.write(ch);
+#   } else {
+#     switch (ch) {
+#       case PATTERN_DIGIT:
+#         case PATTERN_ZERO_DIGIT:
+#         case PATTERN_GROUPING_SEPARATOR:
+#         case PATTERN_DECIMAL_SEPARATOR:
+#         case PATTERN_SEPARATOR:
+#         return false;
+#       case PATTERN_CURRENCY_SIGN:
+#         // TODO(alanknight): Handle the local/global/portable currency signs
+#       affix.write(currencySymbol);
+#       break;
+#       case PATTERN_PERCENT:
+#         if (result.multiplier != 1 && result.multiplier != PERCENT_SCALE) {
+#           throw const FormatException('Too many percent/permill');
+#         }
+#       result.multiplier = PERCENT_SCALE;
+#       affix.write(symbols.PERCENT);
+#       break;
+#       case PATTERN_PER_MILLE:
+#         if (result.multiplier != 1 && result.multiplier != PER_MILLE_SCALE) {
+#           throw const FormatException('Too many percent/permill');
+#         }
+#       result.multiplier = PER_MILLE_SCALE;
+#       affix.write(symbols.PERMILL);
+#       break;
+#       default:
+#         affix.write(ch);
+#     }
+#   }
+#   return true;
+# }
