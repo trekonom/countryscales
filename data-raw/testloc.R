@@ -9,7 +9,7 @@ ct$eval(
   )
 )
 
-locs <- locales2$locale
+locs <- locales$locale
 
 testlocale <- lapply(locs, \(x) {
   ct$eval(sprintf("var foo = numberFormats('%s');", x))
