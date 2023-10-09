@@ -113,6 +113,19 @@ x <- locales |>
   pull(n_currency_format)
 
 locales <- locales |>
+  # Fix. Wrong group and decimal delimiters
+  mutate(
+    group = case_match(
+      locale,
+      "en-ZA" ~ ",",
+      .default = group
+    ),
+    decimal = case_match(
+      locale,
+      "en-ZA" ~ ".",
+      .default = decimal
+    )
+  ) |>
   mutate(
     n_cs_neg = str_locate(n_currency_format, "\\-")[, 1],
     p_cs_precedes = cs_precedes(p_currency_format),
@@ -162,63 +175,20 @@ locales <- locales |>
   mutate(locale_name = coalesce(locale_name, locale)) |>
   arrange(locale)
 
-usethis::use_data(locales, overwrite = TRUE)
+# Only latin numbering systems
+locales_latn <- locales[
+  locales$default_numbering_system == "latn",
+  "locale",
+  drop = TRUE
+]
+# No special groupings
+locales_grouping <- locales[
+  !grepl("#,##,#", locales$decimal_format, fixed = TRUE),
+  "locale",
+  drop = TRUE
+]
+locales_to_include <- intersect(locales_latn, locales_grouping)
 
-# parseAffix <- function(x) {
-#   affix = ""
-#   inQuote = FALSE
-#   while (parseCharacterAffix(affix) && pattern.read().isNotEmpty) {}
-#   return toString(affix)
-# }
-#
-#
-#
-# bool parseCharacterAffix(StringBuffer affix) {
-#   if (pattern.atEnd) return false;
-#   var ch = pattern.peek();
-#   if (ch == QUOTE) {
-#     var peek = pattern.peek(2);
-#     if (peek.length == 2 && peek[1] == QUOTE) {
-#       pattern.pop();
-#       affix.write(QUOTE); // 'don''t'
-#     } else {
-#       inQuote = !inQuote;
-#     }
-#     return true;
-#   }
-#
-#
-#   if (inQuote) {
-#     affix.write(ch);
-#   } else {
-#     switch (ch) {
-#       case PATTERN_DIGIT:
-#         case PATTERN_ZERO_DIGIT:
-#         case PATTERN_GROUPING_SEPARATOR:
-#         case PATTERN_DECIMAL_SEPARATOR:
-#         case PATTERN_SEPARATOR:
-#         return false;
-#       case PATTERN_CURRENCY_SIGN:
-#         // TODO(alanknight): Handle the local/global/portable currency signs
-#       affix.write(currencySymbol);
-#       break;
-#       case PATTERN_PERCENT:
-#         if (result.multiplier != 1 && result.multiplier != PERCENT_SCALE) {
-#           throw const FormatException('Too many percent/permill');
-#         }
-#       result.multiplier = PERCENT_SCALE;
-#       affix.write(symbols.PERCENT);
-#       break;
-#       case PATTERN_PER_MILLE:
-#         if (result.multiplier != 1 && result.multiplier != PER_MILLE_SCALE) {
-#           throw const FormatException('Too many percent/permill');
-#         }
-#       result.multiplier = PER_MILLE_SCALE;
-#       affix.write(symbols.PERMILL);
-#       break;
-#       default:
-#         affix.write(ch);
-#     }
-#   }
-#   return true;
-# }
+locales <- locales |>
+  filter(locale %in% locales_to_include)
+usethis::use_data(locales, overwrite = TRUE)
