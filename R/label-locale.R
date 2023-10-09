@@ -90,9 +90,8 @@ label_currency_locale <- function(accuracy = NULL, scale = 1,
   big.mark <- check_big_currency(big.mark, locale)
   decimal.mark <- check_decimal_currency(decimal.mark, locale)
 
-
-  p_sign <- "" %||% locale[["positive_sign"]]
-  n_sign <- "-" %||% locale[["negative_sign"]]
+  p_sign <- locale[["p_sign"]]
+  n_sign <- locale[["n_sign"]]
 
   p_cs_precedes <- locale[["p_cs_precedes"]]
   n_cs_precedes <- locale[["n_cs_precedes"]]
