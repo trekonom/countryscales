@@ -5,15 +5,16 @@ function numberFormats(locale) {
     });
     const currencyFormatter = new Intl.NumberFormat(locale, {
         style: 'currency',
-        currency: 'USD'
+        currency: 'USD',
+        minimumFractionDigits: 0
     });
 
-    const number_pos = numberFormatter.format(123456.789);
-    const number_neg = numberFormatter.format(-123456.789);
+    const number_pos = numberFormatter.format(123456);
+    const number_neg = numberFormatter.format(-123456);
     const percent_pos = percentFormatter.format(.789);
     const percent_neg = percentFormatter.format(-.789);
-    const currency_pos = currencyFormatter.format(123456.789);
-    const currency_neg = currencyFormatter.format(-123456.789);
+    const currency_pos = currencyFormatter.format(123456);
+    const currency_neg = currencyFormatter.format(-123456);
 
     return {
       "locale": locale,
