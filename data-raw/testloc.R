@@ -18,11 +18,17 @@ testlocale <- lapply(locs, \(x) {
   dplyr::bind_rows() |>
   mutate(
     across(
-      c(number_neg, percent_neg, currency_neg),
+      c(
+        number_pos, percent_pos, currency_pos,
+        number_neg, percent_neg, currency_neg
+      ),
       ~ gsub("\u200e", "", .x, fixed = TRUE)
     ),
     across(
-      c(number_neg, percent_neg, currency_neg),
+      c(
+        number_pos, percent_pos, currency_pos,
+        number_neg, percent_neg, currency_neg
+      ),
       ~ gsub("\u200f", "", .x, fixed = TRUE)
     )
   )
