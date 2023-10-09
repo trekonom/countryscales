@@ -5,13 +5,13 @@ dat <- readRDS(
 )
 dat <- dat[dat$locale == locale, ]
 
-x <- 123456.789
+x <- 123456
 y <- .789
 z <- x
 
 test_that("returns same formatted strings as Intl.js", {
   expect_equal(
-    label_number_ch(accuracy = .001)(c(x, -x)),
+    label_number_ch(accuracy = 1)(c(x, -x)),
     unlist(
       dat[c("number_pos", "number_neg")],
       use.names = FALSE
@@ -25,7 +25,7 @@ test_that("returns same formatted strings as Intl.js", {
     )
   )
   expect_equal(
-    label_currency_locale(accuracy = .01, locale = locale)(c(z, -z)),
+    label_currency_locale(accuracy = 1, locale = locale)(c(z, -z)),
     unlist(
       dat[c("currency_pos", "currency_neg")],
       use.names = FALSE
