@@ -2,87 +2,7 @@
 library(i18n)
 library(tidyverse)
 
-PATTERN_SEPARATOR <- ";"
-QUOTE <- "'"
-PATTERN_DIGIT <- "#"
-PATTERN_ZERO_DIGIT <- "0"
-PATTERN_GROUPING_SEPARATOR <- ","
-PATTERN_DECIMAL_SEPARATOR <- "."
-PATTERN_CURRENCY_SIGN <- "\u00A4"
-PATTERN_PER_MILLE <- "\u2030"
-PER_MILLE_SCALE <- 1000
-PATTERN_PERCENT <- "%"
-PERCENT_SCALE <- 100
-PATTERN_EXPONENT <- "E"
-PATTERN_PLUS <- "+"
-
-sep_by <- function(x) {
-  sep_by <- x
-  sep_by[] <- "0"
-
-  sep_by[
-    grepl("\u00A4\u00a0(#|0)", x) | grepl("(#|0)\u00a0\u00A4", x)
-  ] <- "1"
-
-  sep_by[
-    grepl("\u00A4\u00a0(\\+|\\-)(#|0)", x) |
-      grepl("(#|0)(\\+|\\-)\u00a0\u00A4", x)
-  ] <- "2"
-
-  sep_by
-}
-
-percent_sep_by <- function(x) {
-  sep_by <- x
-  sep_by[] <- "0"
-
-  sep_by[
-    grepl("%\u00a0(#|0)", x) | grepl("(#|0)\u00a0%", x)
-  ] <- "1"
-
-  sep_by
-}
-
-percent_precedes <- function(x) {
-  percent_precedes <- logical(length(x))
-
-  percent_precedes[grepl("^%\u00a0?(#|0)", x)] <- TRUE
-
-  percent_precedes
-}
-
-cs_precedes <- function(x) {
-  cs_precedes <- x
-  cs_precedes[] <- TRUE
-
-  cs_precedes[grepl("(#|0).*?\u00A4", x)] <- FALSE
-
-  cs_precedes
-}
-
-sign_posn <- function(x) {
-  sign_posn <- x
-  sign_posn[] <- 1
-
-  sign_posn[
-    grepl("\u00A4.+?(\\+|\\-)", x) &
-      grepl("(0|#).*?(\\+|\\-)", x)
-  ] <- 2
-
-  sign_posn[grepl("(\\+|\\-)\u00A4", x)] <- 3
-  sign_posn[grepl("\u00A4(\\+|\\-)", x)] <- 4
-
-  sign_posn
-}
-
-symbol_sign <- function(x, pattern, default) {
-  symbol_sign <- x
-  symbol_sign[] <- ""
-
-  symbol_sign[grepl(pattern, x)] <- default
-
-  symbol_sign
-}
+source("data-raw/utils-locales.R")
 
 locales <- i18n::numbers |>
   # Fixes.
@@ -101,7 +21,39 @@ locales <- i18n::numbers |>
     # Currency format
     currency_format = case_match(
       locale,
-      "zgh" ~ "#,##0.00\u00a0¤",
+      c(
+        "zgh", "twq", "ses",
+        "seh", "sbp", "rwk",
+        "rn", "luo", "lu", "lg",
+        "ksb", "khq", "kab", "dje",
+        "bez", "agq"
+      ) ~ "#,##0.00\u00a0\u00a4",
+      c(
+        "he"
+      ) ~ "\u00a0#,##0.00\u00a0\u00a4;-#,##0.00\u00a0\u00a4",
+      c(
+        "ur", "und", "nds-NL", "nds",
+        "lkt", "lag", "ks-Deva"
+      ) ~ "\u00a4#,##0.00",
+      c(
+        "af", "und", "nds-NL", "nds",
+        "lkt", "lag", "ks-Deva"
+      ) ~ "\u00a4#,##0.00",
+      .default = currency_format
+    ),
+    currency_format = case_when(
+      grepl("^af", locale) ~ "\u00a4\u00a0#,##0.00",
+      grepl("^shi", locale) ~ "#,##0.00\u00a0\u00a4",
+      grepl("^ar", locale) ~ "#,##0.00\u00a0\u00a4",
+      grepl("^ms", locale) ~ "\u00a4\u00a0#,##0.00",
+      grepl("^en\\-(AU)", locale) ~ "\u00a4\u00a0#,##0.00;-\u00a4\u00a0#,##0.00",
+      grepl("^en\\-(FI|DE|BE|AT)", locale) ~ "\u00a4#,##0.00;-\u00a4#,##0.00",
+      grepl("^en\\-(NL)", locale) ~ "\u00a4#,##0.00;-\u00a4#,##0.00",
+      grepl("^en\\-(SI)", locale) ~ "\u00a4#,##0.00",
+      grepl("^es\\-(NI|PA|MX|HN|GT|BZ|BR|419)", locale) ~ "\u00a4\u00a0#,##0.00;-\u00a4\u00a0#,##0.00",
+      grepl("^es\\-(BO|CR)", locale) ~ "\u00a4\u00a0#,##0.00",
+      grepl("^es\\-(VE)", locale) ~ "\u00a4\u00a0#,##0.00;\u00a4-#,##0.00",
+      grepl("^es\\-(PY)", locale) ~ "\u00a4\u00a0#,##0.00;\u00a4\u00a0-#,##0.00",
       .default = currency_format
     )
   ) |>
@@ -118,8 +70,10 @@ locales <- i18n::numbers |>
     ),
     across(c(p_currency_format, n_currency_format), trimws),
     across(
-      c(p_currency_format, n_currency_format,
-        minus_sign, plus_sign, percent_sign),
+      c(
+        p_currency_format, n_currency_format,
+        minus_sign, plus_sign, percent_sign
+      ),
       ~ gsub("\u200e", "", .x, fixed = TRUE)
     ),
     across(
@@ -154,7 +108,16 @@ locales <- locales |>
       "\u2212" ~ "minus",
       .default = "hyphen"
     ),
-    style_positive = "none"
+    style_positive = "none",
+    mon_thousands_sep = case_when(
+      grepl("^en\\-(SI|NL|DE|FI|BE|AT)", locale) ~ ",",
+      grepl("^de-AT", locale) ~ ".",
+      .default = mon_thousands_sep
+    ),
+    mon_decimal_point = case_when(
+      grepl("^en\\-(SI|NL|DE|FI|BE|AT)", locale) ~ ".",
+      .default = mon_decimal_point
+    )
   )
 
 x <- locales |>
