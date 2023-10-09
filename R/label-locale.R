@@ -29,10 +29,16 @@ label_number_locale <- function(accuracy = NULL, scale = 1, prefix = "",
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)
+  style_negative <- locale[["style_negative"]]
+  style_positive <- locale[["style_positive"]]
 
   label_number(
-    accuracy = accuracy, scale = scale, prefix = prefix, suffix = suffix,
-    big.mark = big.mark, decimal.mark = decimal.mark, trim = trim, ...
+    accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
+    big.mark = big.mark, decimal.mark = decimal.mark,
+    style_negative = style_negative,
+    style_positive = style_positive,
+    trim = trim, ...
   )
 }
 
