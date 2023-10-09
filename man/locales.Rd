@@ -5,7 +5,7 @@
 \alias{locales}
 \title{Locales}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 802 rows and 46 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 695 rows and 46 columns.
 }
 \source{
 \url{https://rich-iannone.github.io/i18n/}

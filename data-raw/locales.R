@@ -85,6 +85,26 @@ symbol_sign <- function(x, pattern, default) {
 }
 
 locales <- i18n::numbers |>
+  # Fixes.
+  mutate(
+    # Wrong group and decimal delimiters
+    group = case_match(
+      locale,
+      "en-ZA" ~ ",",
+      .default = group
+    ),
+    decimal = case_match(
+      locale,
+      "en-ZA" ~ ".",
+      .default = decimal
+    ),
+    # Currency format
+    currency_format = case_match(
+      locale,
+      "zgh" ~ "#,##0.00\u00a0¤",
+      .default = currency_format
+    )
+  ) |>
   separate_wider_delim(currency_format,
     names = c("p_currency_format", "n_currency_format"),
     delim = ";",
@@ -113,19 +133,6 @@ x <- locales |>
   pull(n_currency_format)
 
 locales <- locales |>
-  # Fix. Wrong group and decimal delimiters
-  mutate(
-    group = case_match(
-      locale,
-      "en-ZA" ~ ",",
-      .default = group
-    ),
-    decimal = case_match(
-      locale,
-      "en-ZA" ~ ".",
-      .default = decimal
-    )
-  ) |>
   mutate(
     n_cs_neg = str_locate(n_currency_format, "\\-")[, 1],
     p_cs_precedes = cs_precedes(p_currency_format),
@@ -191,4 +198,5 @@ locales_to_include <- intersect(locales_latn, locales_grouping)
 
 locales <- locales |>
   filter(locale %in% locales_to_include)
+
 usethis::use_data(locales, overwrite = TRUE)
