@@ -29,7 +29,7 @@ label_number_locale <- function(accuracy = NULL, scale = 1, prefix = "",
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)
-  style_negative <- locale[["style_negative"]]
+  style_negative <- locale[["minus_sign"]]
   style_positive <- locale[["style_positive"]]
 
   label_number(
@@ -52,17 +52,17 @@ label_percent_locale <- function(accuracy = NULL, scale = 100, prefix = NULL,
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)
-  style_negative <- locale[["style_negative"]]
+  style_negative <- locale[["minus_sign"]]
   style_positive <- locale[["style_positive"]]
+  percent_sign <- locale[["percent_sign"]]
 
   if (locale[["percent_precedes"]]) {
-    prefix <- prefix %||% paste0("%", rep("\u00a0", locale[["percent_sep_by"]]))
+    prefix <- prefix %||% paste0(percent_sign, rep("\u00a0", locale[["percent_sep_by"]]))
     suffix <- suffix %||% ""
   } else {
     prefix <- prefix %||% ""
-    suffix <- suffix %||% paste0(rep("\u00a0", locale[["percent_sep_by"]]), "%")
+    suffix <- suffix %||% paste0(rep("\u00a0", locale[["percent_sep_by"]]), percent_sign)
   }
-
 
   label_number(
     accuracy = accuracy, scale = scale, prefix = prefix, suffix = suffix,
