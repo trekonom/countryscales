@@ -11,8 +11,17 @@ ct$eval(
 
 locs <- locales$locale
 
+number <- 123456
+percent <- .789
+currency <- 123456
+
 testlocale <- lapply(locs, \(x) {
-  ct$eval(sprintf("var foo = numberFormats('%s');", x))
+  ct$eval(
+    sprintf(
+      "var foo = numberFormats('%s', %f, %f, %f);",
+      x, number, percent, currency
+    )
+  )
   as.data.frame(ct$get(foo))
 }) |>
   dplyr::bind_rows() |>
