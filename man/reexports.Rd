@@ -3,9 +3,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{label_number}
-\alias{label_percent}
-\alias{label_dollar}
 \alias{demo_continuous}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -14,6 +11,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{scales}{\code{\link[scales]{demo_continuous}}, \code{\link[scales]{label_dollar}}, \code{\link[scales]{label_number}}, \code{\link[scales]{label_percent}}}
+  \item{scales}{\code{\link[scales]{demo_continuous}}}
 }}
 
