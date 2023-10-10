@@ -42,19 +42,28 @@ locales <- i18n::numbers |>
       .default = currency_format
     ),
     currency_format = case_when(
-      grepl("^af", locale) ~ "\u00a4\u00a0#,##0.00",
-      grepl("^shi", locale) ~ "#,##0.00\u00a0\u00a4",
-      grepl("^ar", locale) ~ "#,##0.00\u00a0\u00a4",
-      grepl("^ms", locale) ~ "\u00a4\u00a0#,##0.00",
+      grepl("^(af|ms)", locale) ~ "\u00a4\u00a0#,##0.00",
+      grepl("^(ar|shi)", locale) ~ "#,##0.00\u00a0\u00a4",
       grepl("^en\\-(AU)", locale) ~ "\u00a4\u00a0#,##0.00;-\u00a4\u00a0#,##0.00",
-      grepl("^en\\-(FI|DE|BE|AT)", locale) ~ "\u00a4#,##0.00;-\u00a4#,##0.00",
-      grepl("^en\\-(NL)", locale) ~ "\u00a4#,##0.00;-\u00a4#,##0.00",
+      grepl("^en\\-(FI|DE|BE|AT|NL)", locale) ~ "\u00a4#,##0.00;-\u00a4#,##0.00",
       grepl("^en\\-(SI)", locale) ~ "\u00a4#,##0.00",
       grepl("^es\\-(NI|PA|MX|HN|GT|BZ|BR|419)", locale) ~ "\u00a4\u00a0#,##0.00;-\u00a4\u00a0#,##0.00",
       grepl("^es\\-(BO|CR)", locale) ~ "\u00a4\u00a0#,##0.00",
       grepl("^es\\-(VE)", locale) ~ "\u00a4\u00a0#,##0.00;\u00a4-#,##0.00",
       grepl("^es\\-(PY)", locale) ~ "\u00a4\u00a0#,##0.00;\u00a4\u00a0-#,##0.00",
       .default = currency_format
+    ),
+    # Percent format
+    percent_format = case_match(
+      locale,
+      c(
+        "es-MX"
+      ) ~ "#,##0%",
+      .default = percent_format
+    ),
+    percent_format = case_when(
+      grepl("^(ca)", locale) ~ "#,##0\u00a0%",
+      .default = percent_format
     )
   ) |>
   separate_wider_delim(currency_format,
