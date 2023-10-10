@@ -58,23 +58,23 @@ test_that("label_currency_locale works", {
   })
 })
 
-# test_that("label_percent_locale works", {
-#   value <- .789
-#   lapply(locales$locale, \(locale) {
-#     expect_equal(
-#       paste(
-#         locale,
-#         label_percent_locale(locale = locale)(c(value, -value)),
-#         sep = ": "
-#       ),
-#       paste(
-#         locale,
-#         unlist(
-#           dat[dat$locale == locale, c("percent_pos", "percent_neg")],
-#           use.names = FALSE
-#         ),
-#         sep = ": "
-#       )
-#     )
-#   })
-# })
+test_that("label_percent_locale works", {
+  value <- .789
+  lapply(locales$locale, \(locale) {
+    expect_equal(
+      paste(
+        locale,
+        label_percent_locale(locale = locale)(c(value, -value)),
+        sep = ": "
+      ),
+      paste(
+        locale,
+        unlist(
+          dat[dat$locale == locale, c("percent_pos", "percent_neg")],
+          use.names = FALSE
+        ),
+        sep = ": "
+      )
+    )
+  })
+})
