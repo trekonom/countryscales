@@ -125,6 +125,8 @@ in decimal format, as percentages or as currencies.
 }
 }
 \examples{
+require(scales)
+
 demo_continuous(c(-1e6, 1e6),
   labels = label_number_us()
 )

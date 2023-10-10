@@ -2,6 +2,6 @@
 "_PACKAGE"
 
 #' @importFrom ggplot2 waiver sec_axis ScaleContinuousPosition ScaleContinuous continuous_scale
-#' @importFrom scales censor demo_continuous
+#' @importFrom scales censor
 #' @importFrom utils modifyList
 NULL
