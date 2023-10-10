@@ -1,4 +1,4 @@
-function numberFormats(locale) {
+function numberFormats(locale, vn = 123456, vp = .789, vc = 123456) {
     const numberFormatter = new Intl.NumberFormat(locale);
     const percentFormatter = new Intl.NumberFormat(locale, {
         style: 'percent'
@@ -9,12 +9,12 @@ function numberFormats(locale) {
         minimumFractionDigits: 0
     });
 
-    const number_pos = numberFormatter.format(123456);
-    const number_neg = numberFormatter.format(-123456);
-    const percent_pos = percentFormatter.format(.789);
-    const percent_neg = percentFormatter.format(-.789);
-    const currency_pos = currencyFormatter.format(123456);
-    const currency_neg = currencyFormatter.format(-123456);
+    const number_pos = numberFormatter.format(vn);
+    const number_neg = numberFormatter.format(-vn);
+    const percent_pos = percentFormatter.format(vp);
+    const percent_neg = percentFormatter.format(-vp);
+    const currency_pos = currencyFormatter.format(vc);
+    const currency_neg = currencyFormatter.format(-vc);
 
     return {
       "locale": locale,
