@@ -11,11 +11,13 @@ locales <- i18n::numbers |>
     group = case_match(
       locale,
       "en-ZA" ~ ",",
+      c("ar-MR", "ar-LB") ~ ",",
       .default = group
     ),
     decimal = case_match(
       locale,
       "en-ZA" ~ ".",
+      c("ar-MR", "ar-LB") ~ ".",
       .default = decimal
     ),
     # Currency format
@@ -51,19 +53,32 @@ locales <- i18n::numbers |>
       grepl("^es\\-(BO|CR)", locale) ~ "\u00a4\u00a0#,##0.00",
       grepl("^es\\-(VE)", locale) ~ "\u00a4\u00a0#,##0.00;\u00a4-#,##0.00",
       grepl("^es\\-(PY)", locale) ~ "\u00a4\u00a0#,##0.00;\u00a4\u00a0-#,##0.00",
+      grepl("^(sd|ckb)", locale) &
+        default_numbering_system == "arab" ~ "#,##0.00\u00a0\u00a4",
       .default = currency_format
     ),
     # Percent format
     percent_format = case_match(
       locale,
-      c(
-        "es-MX"
-      ) ~ "#,##0%",
+      c("es-MX") ~ "#,##0%",
       .default = percent_format
     ),
     percent_format = case_when(
       grepl("^(ca)", locale) ~ "#,##0\u00a0%",
+      # grepl("^(sd-Arab)", locale) ~ "%#,##0",
+      grepl("^(ckb)", locale) ~ "#,##0\u00a0%",
       .default = percent_format
+    ),
+    # Minus Sign
+    minus_sign = case_when(
+      grepl("^(sd|ar)", locale) & default_numbering_system == "arab"
+      ~ "\u061c-",
+      .default = minus_sign
+    ),
+    percent_sign = case_when(
+      grepl("^(sd|ar)", locale) & default_numbering_system == "arab"
+      ~ "%\u061c",
+      .default = percent_sign
     )
   ) |>
   separate_wider_delim(currency_format,
@@ -156,7 +171,7 @@ locales <- locales |>
 
 # Only latin numbering systems
 locales_latn <- locales[
-  locales$default_numbering_system == "latn",
+  locales$default_numbering_system %in% c("latn", "arab"),
   "locale",
   drop = TRUE
 ]
