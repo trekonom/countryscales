@@ -44,18 +44,37 @@ library(dplyr, warn.conflicts = FALSE)
 
 base <- gapminder15 |>
   count(region, wt = pop) |>
-  ggplot(aes(n, reorder(region, n), fill = region)) +
+  ggplot(
+    aes(n, reorder(region, n),
+      fill = region
+    )
+  ) +
   scale_fill_brewer(palette = "Dark2") +
   geom_col(width = .6) +
   theme_minimal() +
-  labs(x = NULL, y = NULL, title = "Population by World Regions in 2015") +
+  labs(
+    x = NULL, y = NULL,
+    title = "Population by World Regions in 2015"
+  ) +
   guides(fill = "none")
 
 base +
-  geom_label(aes(label = label_number_locale(locale = "de-DE", accuracy = 1000)(n)),
-    hjust = 1, fill = NA, label.size = NA, color = "white"
+  geom_label(
+    aes(
+      label = label_number_locale(
+        locale = "de-DE",
+        accuracy = 1000
+      )(n)
+    ),
+    hjust = 1,
+    fill = NA,
+    label.size = NA,
+    color = "white"
   ) +
-  scale_x_number_locale(locale = "de-DE", expand = expansion(mult = c(0, .05))) +
+  scale_x_number_locale(
+    locale = "de-DE",
+    expand = expansion(mult = c(0, .05))
+  ) +
   labs(subtitle = "... using German style conventions.")
 ```
 
@@ -68,10 +87,18 @@ using Swiss style conventions you could achieve the same result using
 
 ``` r
 base +
-  geom_label(aes(label = label_number_ch(accuracy = 1000)(n)),
-    hjust = 1, fill = NA, label.size = NA, color = "white"
+  geom_label(
+    aes(
+      label = label_number_ch(accuracy = 1000)(n)
+    ),
+    hjust = 1,
+    fill = NA,
+    label.size = NA,
+    color = "white"
   ) +
-  scale_x_number_ch(expand = expansion(mult = c(0, .05))) +
+  scale_x_number_ch(
+    expand = expansion(mult = c(0, .05))
+  ) +
   labs(subtitle = "... using Swiss style conventions.")
 ```
 

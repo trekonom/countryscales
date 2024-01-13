@@ -101,7 +101,6 @@ test_that("label_percent_locale works", {
       drop = TRUE
     ]
     if (default_numbering_system == "arab") {
-      #paste0(x, "\u061c")
       x <- as_arab(x)
     }
 
