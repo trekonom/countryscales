@@ -32,6 +32,13 @@ You can install the development version of `countryscales` from GitHub using:
 remotes::install_github("trekonom/countryscales")
 ```
 
+
+## Note on supported locales
+
+`countryscales` uses data on locale-specific numbering formats from the Common Locale Data Repository ([CLDA](https://en.wikipedia.org/wiki/Common_Locale_Data_Repository)) provided for easy use in R by the [`i18n`](https://rich-iannone.github.io/i18n/) package. Currently `countryscales` supports 552 of the 574 locales listed in `i18n`.  Not supported are locales which deviate from the international norm to group digits by threes, i.e. locales using the [Indian numbering system](https://en.wikipedia.org/wiki/Indian_numbering_system) which
+
+> groups the rightmost three digits together (until the hundreds place), and thereafter groups by sets of two digits.
+
 ## Usage
 
 The most common use case for countryscales is to customise the appearance of 
