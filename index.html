@@ -74,6 +74,14 @@
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"trekonom/countryscales"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="note-on-supported-locales">Note on supported locales<a class="anchor" aria-label="anchor" href="#note-on-supported-locales"></a>
+</h2>
+<p><code>countryscales</code> uses data on locale-specific numbering formats from the Common Locale Data Repository (<a href="https://en.wikipedia.org/wiki/Common_Locale_Data_Repository" class="external-link">CLDA</a>) provided for easy use in R by the <a href="https://rich-iannone.github.io/i18n/" class="external-link"><code>i18n</code></a> package. Currently <code>countryscales</code> supports 552 of the 574 locales listed in <code>i18n</code>. Not supported are locales which deviate from the international norm to group digits by threes, i.e. locales using the <a href="https://en.wikipedia.org/wiki/Indian_numbering_system" class="external-link">Indian numbering system</a> which</p>
+<blockquote>
+<p>groups the rightmost three digits together (until the hundreds place), and thereafter groups by sets of two digits.</p>
+</blockquote>
+</div>
+<div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>The most common use case for countryscales is to customise the appearance of axis and legend labels or format numbers added as labels to a plot using country-specific style conventions.</p>
