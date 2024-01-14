@@ -46,14 +46,16 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   }
 
   style_positive <- arg_match(style_positive)
-  #style_negative <- arg_match(style_negative)
+  if (!nchar(style_negative[1]) <= 2) {
+    style_negative <- arg_match(style_negative)
+  }
 
   if (!is.null(scale_cut)) {
     cut <- scale_cut(x,
-                     breaks = scale_cut,
-                     scale = scale,
-                     accuracy = accuracy,
-                     suffix = suffix
+      breaks = scale_cut,
+      scale = scale,
+      accuracy = accuracy,
+      suffix = suffix
     )
 
     scale <- cut$scale
