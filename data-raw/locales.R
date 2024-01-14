@@ -1,4 +1,3 @@
-## code to prepare `locales2` dataset goes here
 library(i18n)
 library(tidyverse)
 
@@ -65,7 +64,7 @@ locales <- i18n::numbers |>
     ),
     percent_format = case_when(
       grepl("^(ca)", locale) ~ "#,##0\u00a0%",
-      # grepl("^(sd-Arab)", locale) ~ "%#,##0",
+      grepl("^(sd-Arab)", locale) ~ "%#,##0",
       grepl("^(ckb)", locale) ~ "#,##0\u00a0%",
       .default = percent_format
     ),
@@ -73,11 +72,15 @@ locales <- i18n::numbers |>
     minus_sign = case_when(
       grepl("^(sd|ar)", locale) & default_numbering_system == "arab"
       ~ "\u061c-",
+      grepl("^uz\\-Arab", locale) & default_numbering_system == "arabext"
+      ~ "-",
       .default = minus_sign
     ),
     percent_sign = case_when(
       grepl("^(sd|ar)", locale) & default_numbering_system == "arab"
       ~ "%\u061c",
+      grepl("^ur\\-IN", locale)
+      ~ "%",
       .default = percent_sign
     )
   ) |>
@@ -141,6 +144,11 @@ locales <- locales |>
     mon_decimal_point = case_when(
       grepl("^en\\-(SI|NL|DE|FI|BE|AT)", locale) ~ ".",
       .default = mon_decimal_point
+    ),
+    percent_precedes = case_when(
+      grepl("^(sd|ar)", locale) & default_numbering_system == "arab"
+      ~ FALSE,
+      .default = percent_precedes
     )
   )
 
@@ -169,19 +177,13 @@ locales <- locales |>
   mutate(locale_name = coalesce(locale_name, locale)) |>
   arrange(locale)
 
-# Only latin numbering systems
-locales_latn <- locales[
-  locales$default_numbering_system %in% c("latn", "arab"),
-  "locale",
-  drop = TRUE
-]
 # No special groupings
 locales_grouping <- locales[
   !grepl("#,##,#", locales$decimal_format, fixed = TRUE),
   "locale",
   drop = TRUE
 ]
-locales_to_include <- intersect(locales_latn, locales_grouping)
+locales_to_include <- intersect(locales$locale, locales_grouping)
 
 locales <- locales |>
   filter(locale %in% locales_to_include)

@@ -1,4 +1,5 @@
 library(bubble)
+library(dplyr)
 
 ct <- NodeSession$new()
 
@@ -7,6 +8,11 @@ ct$eval(
     readLines("data-raw/numberFormats.js"),
     collapse = "\n"
   )
+)
+
+locs <- union(
+  locales$locale,
+  i18n::all_locales
 )
 
 locs <- locales$locale
@@ -24,7 +30,7 @@ testlocale <- lapply(locs, \(x) {
   )
   as.data.frame(ct$get(foo))
 }) |>
-  dplyr::bind_rows() |>
+  bind_rows() |>
   mutate(
     across(
       c(
