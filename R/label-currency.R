@@ -1,6 +1,10 @@
-label_currency <- function(accuracy = NULL, scale = 1, currency = NULL,
+label_currency <- function(currency = NULL,
+                           accuracy = NULL,
+                           scale = 1,
                            prefix = "",
-                           suffix = "", big.mark = " ", decimal.mark = ".",
+                           suffix = "",
+                           big.mark = " ",
+                           decimal.mark = ".",
                            p_sign = NULL,
                            n_sign = NULL,
                            p_sep_by = c("0", "1", "2"),
@@ -30,9 +34,12 @@ label_currency <- function(accuracy = NULL, scale = 1, currency = NULL,
 
 #' @importFrom rlang arg_match
 #' @importFrom plyr round_any
-currency <- function(x, accuracy = NULL, scale = 1,
+currency <- function(x,
                      currency = NULL,
-                     big.mark = " ", decimal.mark = ".",
+                     accuracy = NULL,
+                     scale = 1,
+                     big.mark = " ",
+                     decimal.mark = ".",
                      p_cs_precedes = TRUE,
                      n_cs_precedes = p_cs_precedes,
                      p_sign = "",
@@ -82,87 +89,73 @@ currency <- function(x, accuracy = NULL, scale = 1,
   prefix <- suffix <- x
   prefix[] <- suffix[] <- ""
 
-  # CS symbol
-  if (p_cs_precedes) {
-    prefix[!sign < 0] <- currency
-  } else {
-    suffix[!sign < 0] <- currency
-  }
-
-  if (n_cs_precedes) {
-    prefix[sign < 0] <- currency
-  } else {
-    suffix[sign < 0] <- currency
-  }
+  sign_neg <- sign < 0
+  sign_pos <- !sign_neg
 
   # Sign
   p_sep <- if (p_sep_by == "2") "\u00a0" else ""
   n_sep <- if (n_sep_by == "2") "\u00a0" else ""
 
   if (p_cs_precedes) {
+    prefix[sign_pos] <- currency
     if (p_sign_posn == 3) {
-      prefix[!sign < 0] <- paste0(p_sign, p_sep, prefix[!sign < 0])
+      prefix[sign_pos] <- paste0(p_sign, p_sep, prefix[sign_pos])
     }
     if (p_sign_posn == 4) {
-      prefix[!sign < 0] <- paste0(prefix[!sign < 0], p_sep, p_sign)
+      prefix[sign_pos] <- paste0(prefix[sign_pos], p_sep, p_sign)
+    }
+    if (p_sep_by == "1") {
+      prefix[sign_pos] <- paste0(prefix[sign_pos], "\u00a0")
     }
   } else {
+    suffix[sign_pos] <- currency
     if (p_sign_posn == 3) {
-      suffix[!sign < 0] <- paste0(p_sign, p_sep, suffix[!sign < 0])
+      suffix[sign_pos] <- paste0(p_sign, p_sep, suffix[sign_pos])
     }
     if (p_sign_posn == 4) {
-      suffix[!sign < 0] <- paste0(suffix[!sign < 0], p_sep, p_sign)
+      suffix[sign_pos] <- paste0(suffix[sign_pos], p_sep, p_sign)
+    }
+    if (p_sep_by == "1") {
+      suffix[sign_pos] <- paste0("\u00a0", suffix[sign_pos])
     }
   }
 
   if (n_cs_precedes) {
+    prefix[sign_neg] <- currency
     if (n_sign_posn == 3) {
-      prefix[sign < 0] <- paste0(n_sign, n_sep, prefix[sign < 0])
+      prefix[sign_neg] <- paste0(n_sign, n_sep, prefix[sign_neg])
     }
     if (n_sign_posn == 4) {
-      prefix[sign < 0] <- paste0(prefix[sign < 0], n_sep, n_sign)
+      prefix[sign_neg] <- paste0(prefix[sign_neg], n_sep, n_sign)
+    }
+    if (n_sep_by == "1") {
+      prefix[sign_neg] <- paste0(prefix[sign_neg], "\u00a0")
     }
   } else {
+    suffix[sign_neg] <- currency
     if (n_sign_posn == 3) {
-      suffix[sign < 0] <- paste0(n_sign, n_sep, suffix[sign < 0])
+      suffix[sign_neg] <- paste0(n_sign, n_sep, suffix[sign_neg])
     }
     if (n_sign_posn == 4) {
-      suffix[sign < 0] <- paste0(suffix[sign < 0], n_sep, n_sign)
+      suffix[sign_neg] <- paste0(suffix[sign_neg], n_sep, n_sign)
     }
-  }
-
-  if (p_cs_precedes) {
-    if (p_sep_by == "1") {
-      prefix[!sign < 0] <- paste0(prefix[!sign < 0], "\u00a0")
-    }
-  } else {
-    if (p_sep_by == "1") {
-      suffix[!sign < 0] <- paste0("\u00a0", suffix[!sign < 0])
-    }
-  }
-
-  if (n_cs_precedes) {
     if (n_sep_by == "1") {
-      prefix[sign < 0] <- paste0(prefix[sign < 0], "\u00a0")
-    }
-  } else {
-    if (n_sep_by == "1") {
-      suffix[sign < 0] <- paste0("\u00a0", suffix[sign < 0])
+      suffix[sign_neg] <- paste0("\u00a0", suffix[sign_neg])
     }
   }
 
   if (p_sign_posn == 1) {
-    prefix[!sign < 0] <- paste0(p_sign, prefix[!sign < 0])
+    prefix[sign_pos] <- paste0(p_sign, prefix[sign_pos])
   }
   if (p_sign_posn == 2) {
-    suffix[!sign < 0] <- paste0(suffix[!sign < 0], p_sign)
+    suffix[sign_pos] <- paste0(suffix[sign_pos], p_sign)
   }
 
   if (n_sign_posn == 1) {
-    prefix[sign < 0] <- paste0(n_sign, prefix[sign < 0])
+    prefix[sign_neg] <- paste0(n_sign, prefix[sign_neg])
   }
   if (n_sign_posn == 2) {
-    suffix[sign < 0] <- paste0(suffix[sign < 0], n_sign)
+    suffix[sign_neg] <- paste0(suffix[sign_neg], n_sign)
   }
 
   ret <- paste0(prefix, ret, suffix)
