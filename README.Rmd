@@ -55,7 +55,7 @@ country-specific style conventions.
 Here is first example showing how 1 million USD are formatted according to style 
 conventions in the G7 countries:
 
-```{r}
+```{r locale-g7}
 library(countryscales)
 library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
@@ -76,7 +76,7 @@ ggplot(g7, aes(x = factor(1), y = country)) +
   labs(title = "In the G7 countries, 1 million USD is written as")
 ```
 
-```{r}
+```{r base}
 base <- gapminder15 |>
   count(region, wt = pop) |>
   ggplot(
@@ -101,7 +101,7 @@ where a dot (`.`) is used as the big mark.
 Using `countryscales` this could be achieved using the `scale_x/y_xx_locale` 
 and  `label_xxx_locale` family of functions like so:
 
-```{r}
+```{r locale-de}
 base +
   geom_label(
     aes(
@@ -128,7 +128,7 @@ Swiss style conventions where a right single quote (`r knitr::asis_output("\u201
 \\u2019) is used as the big mark, you could achieve the same result using `label_number_ch` 
 and `scale_x_number_ch` like so:
 
-```{r}
+```{r locale-ch}
 base +
   geom_label(
     aes(
