@@ -51,11 +51,17 @@ library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 
 g7 <- data.frame(
-  country = c("Canada", "France", "Germany", "Italy", "Japan", "the United Kingdom", "the United States"),
+  country = c(
+    "Canada", "France*",
+    "Germany", "Italy", "Japan", "the United Kingdom", "the United States"
+  ),
   locale = c("en-CA", "fr-FR", "de-DE", "it-IT", "ja-JP", "en-GB", "en-US")
 ) |>
   mutate(
-    value = purrr::map_chr(locale, ~ label_currency_locale(locale = .x, currency = "USD")(1e6))
+    value = purrr::map_chr(
+      locale,
+      ~ label_currency_locale(locale = .x, currency = "USD")(1e6)
+    )
   )
 
 ggplot(g7, aes(x = factor(1), y = country)) +
@@ -63,7 +69,10 @@ ggplot(g7, aes(x = factor(1), y = country)) +
     aes(label = paste(value, "in", country)),
     fontface = "bold"
   ) +
-  labs(title = "In the G7 countries, 1 million USD is written as")
+  labs(
+    title = "In the G7 countries, 1 million USD is written as",
+    caption = "*Oops! The space (=\\u202f) used as big mark in France is not supported by the font."
+  )
 ```
 
 <img src="man/figures/README-locale-g7-1.png" width="100%" />
