@@ -1,3 +1,15 @@
+#  https://github.com/r-lib/scales/blob/main/R/label-number.R
+#  https://github.com/r-lib/scales/blob/main/LICENSE.md
+
+#' Label currencies ($100, €2.50, etc)
+#'
+#' @inheritParams scales::label_number
+#' @param p_sign positive sign
+#' @param n_sign negative sign
+#' @param p_sep_by positive sign separator
+#' @param n_sep_by negative sign separator
+#'
+#' @noRd
 label_currency <- function(currency = NULL,
                            accuracy = NULL,
                            scale = 1,

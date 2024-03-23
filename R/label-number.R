@@ -1,3 +1,11 @@
+#  https://github.com/r-lib/scales/blob/main/R/label-number.R
+#  https://github.com/r-lib/scales/blob/main/LICENSE.md
+
+#' Label numbers in decimal format (e.g. 0.12, 1,234)
+#'
+#' @inheritParams scales::label_number
+#'
+#' @noRd
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
                          suffix = "", big.mark = " ", decimal.mark = ".",
                          style_positive = c("none", "plus"),
