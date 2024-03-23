@@ -20,5 +20,15 @@ Useful links:
 \author{
 \strong{Maintainer}: Stefan Moog \email{moogs@gmx.de}
 
+Authors:
+\itemize{
+  \item  scales authors (Authors of included code from the scales package)
+}
+
+Other contributors:
+\itemize{
+  \item Posit, PBC (Copyright holder of included code from the scales package) [copyright holder]
+}
+
 }
 \keyword{internal}
