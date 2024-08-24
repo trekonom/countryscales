@@ -11,7 +11,9 @@ is.formula <- function(x) {
 set_sec_axis <- function(sec.axis, scale) {
   if (!is.waive(sec.axis)) {
     if (is.formula(sec.axis)) sec.axis <- sec_axis(sec.axis)
-    if (!is.sec_axis(sec.axis)) stop("Secondary axes must be specified using 'sec_axis()'")
+    if (!is.sec_axis(sec.axis)) {
+      stop("Secondary axes must be specified using 'sec_axis()'")
+    }
     scale$secondary.axis <- sec.axis
   }
   return(scale)

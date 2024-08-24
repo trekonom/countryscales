@@ -1,6 +1,7 @@
 #' Locales
 #'
-#' A convenience function which returns a dataframe of available locales and countries.
+#' A convenience function which returns a dataframe of available locales and
+#' countries.
 #'
 #' @return a dataframe
 #'

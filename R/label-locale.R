@@ -22,8 +22,9 @@ NULL
 
 #' @rdname label-locale
 #' @export
-label_number_locale <- function(accuracy = NULL, scale = 1, prefix = "",
-                                suffix = "", big.mark = NULL, decimal.mark = NULL,
+label_number_locale <- function(accuracy = NULL, scale = 1,
+                                prefix = "", suffix = "",
+                                big.mark = NULL, decimal.mark = NULL,
                                 locale = "en-US",
                                 trim = TRUE, ...) {
   locale <- check_locale(locale)
@@ -44,11 +45,11 @@ label_number_locale <- function(accuracy = NULL, scale = 1, prefix = "",
 
 #' @rdname label-locale
 #' @export
-label_percent_locale <- function(accuracy = NULL, scale = 100, prefix = NULL,
-                                 suffix = NULL, big.mark = NULL, decimal.mark = NULL,
+label_percent_locale <- function(accuracy = NULL, scale = 100,
+                                 prefix = NULL, suffix = NULL,
+                                 big.mark = NULL, decimal.mark = NULL,
                                  locale = "en-US",
                                  trim = TRUE, ...) {
-
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)
@@ -57,11 +58,16 @@ label_percent_locale <- function(accuracy = NULL, scale = 100, prefix = NULL,
   percent_sign <- locale[["percent_sign"]]
 
   if (locale[["percent_precedes"]]) {
-    prefix <- prefix %||% paste0(percent_sign, rep("\u00a0", locale[["percent_sep_by"]]))
+    prefix <- prefix %||% paste0(
+      percent_sign,
+      rep("\u00a0", locale[["percent_sep_by"]])
+    )
     suffix <- suffix %||% ""
   } else {
     prefix <- prefix %||% ""
-    suffix <- suffix %||% paste0(rep("\u00a0", locale[["percent_sep_by"]]), percent_sign)
+    suffix <- suffix %||% paste0(
+      rep("\u00a0", locale[["percent_sep_by"]]), percent_sign
+    )
   }
 
   label_number(

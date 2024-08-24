@@ -1,7 +1,7 @@
 #' Formatted Scale Constructor
 #'
-#' The scale_xxx_xxx_de family of functions makes it easy to style (numeric) axes
-#'     using standard number formatting used in Germany.
+#' The scale_xxx_xxx_de family of functions makes it easy to style (numeric)
+#' axes using standard number formatting used in Germany.
 #'
 #' @inheritParams ggplot2::continuous_scale
 #' @inheritParams scales::label_number
