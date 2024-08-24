@@ -74,7 +74,7 @@ ggplot(g7, aes(x = factor(1), y = country)) +
   )
 ```
 
-<embed src="man/figures/README-locale-g7-1.pdf" width="100%" type="application/pdf" />
+<img src="man/figures/README-locale-g7-1.png" width="100%" />
 
 ``` r
 base <- gapminder15 |>
@@ -123,7 +123,7 @@ base +
   labs(subtitle = "... using German style conventions.")
 ```
 
-<embed src="man/figures/README-locale-de-1.pdf" width="100%" type="application/pdf" />
+<img src="man/figures/README-locale-de-1.png" width="100%" />
 
 Besides the `_locale` family of functions countryscales provides
 convenience functions for some common locales, e.g. to format the plot
@@ -148,4 +148,4 @@ base +
   labs(subtitle = "... using Swiss style conventions.")
 ```
 
-<embed src="man/figures/README-locale-ch-1.pdf" width="100%" type="application/pdf" />
+<img src="man/figures/README-locale-ch-1.png" width="100%" />
