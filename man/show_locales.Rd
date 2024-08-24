@@ -10,7 +10,8 @@ show_locales()
 a dataframe
 }
 \description{
-A convenience function which returns a dataframe of available locales and countries.
+A convenience function which returns a dataframe of available locales and
+countries.
 }
 \examples{
 show_locales()
