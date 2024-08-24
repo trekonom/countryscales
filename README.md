@@ -69,12 +69,14 @@ ggplot(g7, aes(x = factor(1), y = country)) +
     aes(label = paste(value, "in", country)),
     fontface = "bold"
   ) +
+  theme_void() +
   labs(
+    x = NULL, y = NULL,
     title = "In the G7 countries, 1 million USD is written as"
   )
 ```
 
-<img src="man/figures/README-locale-g7-1.png" width="100%" />
+<embed src="man/figures/README-locale-g7-1.pdf" width="100%" type="application/pdf" />
 
 ``` r
 base <- gapminder15 |>
@@ -89,8 +91,7 @@ base <- gapminder15 |>
   theme_minimal() +
   labs(
     x = NULL, y = NULL,
-    title = "Population by World Regions in 2015",
-    subtitle = "Default ggplot2"
+    title = "Default"
   ) +
   guides(fill = "none")
 ```
@@ -120,10 +121,10 @@ base +
     locale = "de-DE",
     expand = expansion(mult = c(0, .05))
   ) +
-  labs(subtitle = "... using German style conventions.")
+  labs(title = "German style conventions.")
 ```
 
-<img src="man/figures/README-locale-de-1.png" width="100%" />
+<embed src="man/figures/README-locale-de-1.pdf" width="100%" type="application/pdf" />
 
 Besides the `_locale` family of functions countryscales provides
 convenience functions for some common locales, e.g. to format the plot
@@ -145,7 +146,7 @@ base +
   scale_x_number_ch(
     expand = expansion(mult = c(0, .05))
   ) +
-  labs(subtitle = "... using Swiss style conventions.")
+  labs(title = "Swiss style conventions.")
 ```
 
-<img src="man/figures/README-locale-ch-1.png" width="100%" />
+<embed src="man/figures/README-locale-ch-1.pdf" width="100%" type="application/pdf" />

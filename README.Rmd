@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  dev = c(pdf = "cairo_pdf", html = ragg::agg_png())
 )
 ```
 
@@ -79,7 +80,9 @@ ggplot(g7, aes(x = factor(1), y = country)) +
     aes(label = paste(value, "in", country)),
     fontface = "bold"
   ) +
+  theme_void() +
   labs(
+    x = NULL, y = NULL,
     title = "In the G7 countries, 1 million USD is written as"
   )
 ```
@@ -97,8 +100,7 @@ base <- gapminder15 |>
   theme_minimal() +
   labs(
     x = NULL, y = NULL,
-    title = "Population by World Regions in 2015",
-    subtitle = "Default ggplot2"
+    title = "Default"
   ) +
   guides(fill = "none")
 ```
@@ -127,7 +129,7 @@ base +
     locale = "de-DE",
     expand = expansion(mult = c(0, .05))
   ) +
-  labs(subtitle = "... using German style conventions.")
+  labs(title = "German style conventions.")
 ```
 
 Besides the `_locale` family of functions countryscales provides 
@@ -150,5 +152,5 @@ base +
   scale_x_number_ch(
     expand = expansion(mult = c(0, .05))
   ) +
-  labs(subtitle = "... using Swiss style conventions.")
+  labs(title = "Swiss style conventions.")
 ```
