@@ -4,13 +4,10 @@ library(httr)
 library(readxl)
 library(janitor)
 
-# Verzeichnisse -----------------------------------------------------------
-
 # create directory for storing raw XLs
-raw_csv_dir <- "data-raw/gapminder_raw/"
-dir.create(raw_csv_dir, showWarnings = FALSE)
-
-# Hilfsfunktionen ---------------------------------------------------------
+if (!dir.exists(raw_csv_dir <- "data-raw/gapminder_raw/")) {
+  dir.create(raw_csv_dir)
+}
 
 read_data <- function(url) {
   GET(url, write_disk(tf <- tempfile(fileext = ".xlsx")))
@@ -22,7 +19,7 @@ tidy_data <- function(df, label) {
     rename(country = 1) %>%
     gather(year, !!rlang::sym(label), -country)
 }
-# Daten download ----------------------------------------------------------
+# Get data
 
 ## Geo-Informationen
 url <- "https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/export?format=xlsx"
@@ -31,7 +28,7 @@ GET(url, write_disk(tf <- tempfile(fileext = ".xlsx")))
 excel_sheets(tf)
 geo_raw <- read_excel(tf, 2L)
 
-## Indikatoren
+## Indicators ----
 urls <- list(
   life_exp = "https://docs.google.com/spreadsheet/pub?key=phAwcNAVuyj2tPLxKvvnNPA&output=xlsx",
   gdp_per_cap = "https://docs.google.com/spreadsheet/pub?key=phAwcNAVuyj1jiMAkmq1iMg&output=xlsx",
@@ -40,16 +37,17 @@ urls <- list(
 
 gapminder_raw <- map(urls, read_data)
 
+# Raw data ----
 
-# Save raw data -----------------------------------------------------------
-
-write.csv(geo_raw, here::here(raw_csv_dir, "geo.csv"), row.names = FALSE, quote = FALSE)
+write.csv(geo_raw, here::here(raw_csv_dir, "geo.csv"),
+  row.names = FALSE, quote = FALSE
+)
 iwalk(gapminder_raw, ~ write.csv(.x,
   here::here(raw_csv_dir, paste0(.y, ".csv")),
   row.names = FALSE, quote = FALSE
 ))
 
-# Daten aufbereiten -------------------------------------------------------
+# Tidy data  ----
 
 geo <- geo_raw %>%
   clean_names(., case = "snake") %>%
@@ -62,11 +60,9 @@ gapminder_proc <- gapminder_raw %>%
   filter(!is.na(country)) %>%
   mutate(year = as.integer(year))
 
-# Vollständige Beobachtungen
 gapminder_clean <- gapminder_proc %>%
   drop_na()
 
-# Vollständige Beobachtungen für alle Jahre
 countries_data_all <- gapminder_clean %>%
   select(country, year) %>%
   mutate(is_df = TRUE) %>%
@@ -74,20 +70,27 @@ countries_data_all <- gapminder_clean %>%
   drop_na() %>%
   select(country)
 
-# Finaler Datensatz: Länder mit Beobachtungen für alle Jahre und Variablen
+# Final data: countries with ob for all years and variables ----
+
 gapminder <- gapminder_clean %>%
   semi_join(countries_data_all) %>%
   inner_join(geo) %>%
   select(country, code, region, everything())
 
-# Datensatz 2015
+# Data for 2015 ----
 gapminder15 <- gapminder %>%
   filter(year == 2015)
 
-# Datensatz speichern -----------------------------------------------------
+# Save data ----
 
-write.csv(gapminder, "data-raw/csv/gapminder.csv", row.names = FALSE, quote = TRUE)
-write.csv(gapminder15, "data-raw/csv/gapminder15.csv", row.names = FALSE, quote = TRUE)
+write.csv(
+  gapminder, "data-raw/csv/gapminder.csv",
+  row.names = FALSE, quote = TRUE
+)
+write.csv(
+  gapminder15, "data-raw/csv/gapminder15.csv",
+  row.names = FALSE, quote = TRUE
+)
 
 usethis::use_data(gapminder, overwrite = TRUE)
 usethis::use_data(gapminder15, overwrite = TRUE)

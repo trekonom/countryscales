@@ -7,7 +7,10 @@ countries <- data.frame(
 
 countries <- locales[c("locale", "cntry")]
 countries$cntry <- gsub(", .*$", "", countries$cntry)
-countries$url <- paste0("https://en.wikipedia.org/wiki/", gsub(" ", "_", countries$cntry))
+countries$url <- paste0(
+  "https://en.wikipedia.org/wiki/",
+  gsub(" ", "_", countries$cntry)
+)
 
 countries$demonym <- map_chr(
   countries$url,

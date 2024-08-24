@@ -45,13 +45,17 @@ locales <- i18n::numbers |>
     currency_format = case_when(
       grepl("^(af|ms)", locale) ~ "\u00a4\u00a0#,##0.00",
       grepl("^(ar|shi)", locale) ~ "#,##0.00\u00a0\u00a4",
-      grepl("^en\\-(AU)", locale) ~ "\u00a4\u00a0#,##0.00;-\u00a4\u00a0#,##0.00",
-      grepl("^en\\-(FI|DE|BE|AT|NL)", locale) ~ "\u00a4#,##0.00;-\u00a4#,##0.00",
+      grepl("^en\\-(AU)", locale) ~
+        "\u00a4\u00a0#,##0.00;-\u00a4\u00a0#,##0.00",
+      grepl("^en\\-(FI|DE|BE|AT|NL)", locale) ~
+        "\u00a4#,##0.00;-\u00a4#,##0.00",
       grepl("^en\\-(SI)", locale) ~ "\u00a4#,##0.00",
-      grepl("^es\\-(NI|PA|MX|HN|GT|BZ|BR|419)", locale) ~ "\u00a4\u00a0#,##0.00;-\u00a4\u00a0#,##0.00",
+      grepl("^es\\-(NI|PA|MX|HN|GT|BZ|BR|419)", locale) ~
+        "\u00a4\u00a0#,##0.00;-\u00a4\u00a0#,##0.00",
       grepl("^es\\-(BO|CR)", locale) ~ "\u00a4\u00a0#,##0.00",
       grepl("^es\\-(VE)", locale) ~ "\u00a4\u00a0#,##0.00;\u00a4-#,##0.00",
-      grepl("^es\\-(PY)", locale) ~ "\u00a4\u00a0#,##0.00;\u00a4\u00a0-#,##0.00",
+      grepl("^es\\-(PY)", locale) ~
+        "\u00a4\u00a0#,##0.00;\u00a4\u00a0-#,##0.00",
       grepl("^(sd|ckb)", locale) &
         default_numbering_system == "arab" ~ "#,##0.00\u00a0\u00a4",
       .default = currency_format
