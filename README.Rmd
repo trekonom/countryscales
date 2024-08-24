@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  dev = "cairo_pdf"
 )
 ```
 
@@ -62,7 +63,7 @@ library(dplyr, warn.conflicts = FALSE)
 
 g7 <- data.frame(
   country = c(
-    "Canada", "France*",
+    "Canada", "France",
     "Germany", "Italy", "Japan", "the United Kingdom", "the United States"
   ),
   locale = c("en-CA", "fr-FR", "de-DE", "it-IT", "ja-JP", "en-GB", "en-US")
@@ -80,8 +81,7 @@ ggplot(g7, aes(x = factor(1), y = country)) +
     fontface = "bold"
   ) +
   labs(
-    title = "In the G7 countries, 1 million USD is written as",
-    caption = "*Oops! The space (=\\u202f) used as big mark in France is not supported by the font."
+    title = "In the G7 countries, 1 million USD is written as"
   )
 ```
 

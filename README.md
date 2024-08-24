@@ -52,7 +52,7 @@ library(dplyr, warn.conflicts = FALSE)
 
 g7 <- data.frame(
   country = c(
-    "Canada", "France*",
+    "Canada", "France",
     "Germany", "Italy", "Japan", "the United Kingdom", "the United States"
   ),
   locale = c("en-CA", "fr-FR", "de-DE", "it-IT", "ja-JP", "en-GB", "en-US")
@@ -70,12 +70,11 @@ ggplot(g7, aes(x = factor(1), y = country)) +
     fontface = "bold"
   ) +
   labs(
-    title = "In the G7 countries, 1 million USD is written as",
-    caption = "*Oops! The space (=\\u202f) used as big mark in France is not supported by the font."
+    title = "In the G7 countries, 1 million USD is written as"
   )
 ```
 
-<img src="man/figures/README-locale-g7-1.png" width="100%" />
+<embed src="man/figures/README-locale-g7-1.pdf" width="100%" type="application/pdf" />
 
 ``` r
 base <- gapminder15 |>
@@ -124,7 +123,7 @@ base +
   labs(subtitle = "... using German style conventions.")
 ```
 
-<img src="man/figures/README-locale-de-1.png" width="100%" />
+<embed src="man/figures/README-locale-de-1.pdf" width="100%" type="application/pdf" />
 
 Besides the `_locale` family of functions countryscales provides
 convenience functions for some common locales, e.g. to format the plot
@@ -149,4 +148,4 @@ base +
   labs(subtitle = "... using Swiss style conventions.")
 ```
 
-<img src="man/figures/README-locale-ch-1.png" width="100%" />
+<embed src="man/figures/README-locale-ch-1.pdf" width="100%" type="application/pdf" />
