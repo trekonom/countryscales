@@ -99,7 +99,8 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"In the G7 countries, 1 million USD is written as"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<embed src="man/figures/README-locale-g7-1.pdf" width="100%" type="application/pdf"></embed><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-locale-g7-1.png" width="100%"></p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="va">gapminder15</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">region</span>, wt <span class="op">=</span> <span class="va">pop</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
@@ -137,7 +138,8 @@
 <span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.05</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"... using German style conventions."</span><span class="op">)</span></span></code></pre></div>
-<embed src="man/figures/README-locale-de-1.pdf" width="100%" type="application/pdf"></embed><p>Besides the <code>_locale</code> family of functions countryscales provides convenience functions for some common locales, e.g. to format the plot using Swiss style conventions where a right single quote (’) = 019) is used as the big mark, you could achieve the same result using <code>label_number_ch</code> and <code>scale_x_number_ch</code> like so:</p>
+<p><img src="reference/figures/README-locale-de-1.png" width="100%"></p>
+<p>Besides the <code>_locale</code> family of functions countryscales provides convenience functions for some common locales, e.g. to format the plot using Swiss style conventions where a right single quote (’) = 019) is used as the big mark, you could achieve the same result using <code>label_number_ch</code> and <code>scale_x_number_ch</code> like so:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span></span>
@@ -153,7 +155,7 @@
 <span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.05</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"... using Swiss style conventions."</span><span class="op">)</span></span></code></pre></div>
-<embed src="man/figures/README-locale-ch-1.pdf" width="100%" type="application/pdf"></embed>
+<p><img src="reference/figures/README-locale-ch-1.png" width="100%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
