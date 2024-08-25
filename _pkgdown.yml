@@ -27,4 +27,6 @@ reference:
   - gapminder15
   - locales
   - currencies
+  - countries
+  - g20
 
