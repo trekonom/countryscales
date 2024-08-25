@@ -155,21 +155,10 @@ that `label_currency_locale` correctly formats numbers as currencies in
 the German locale, the output is checked against the output of the JS
 code
 
-``` js
-const number = 123456;
+    const number = 123456;
 
-console.log(
-  new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(
-    number,
-  ),
-);
-```
-
-<script>
-const number = 123456;
-&#10;console.log(
-  new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(
-    number,
-  ),
-);
-</script>
+    console.log(
+      new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(
+        number,
+      ),
+    );
