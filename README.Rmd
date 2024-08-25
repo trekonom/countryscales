@@ -14,6 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+<div align="center">
+
+<a href='https://trekonom.github.io/countryscales/'><img src="man/figures/logo.png" height="350px"/></a>
+
+</div>
+
 # countryscales
 
 <!-- badges: start -->

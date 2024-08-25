@@ -1,6 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<div align="center">
+
+<a href='https://trekonom.github.io/countryscales/'><img src="man/figures/logo.png" height="350px"/></a>
+
+</div>
+
 # countryscales
 
 <!-- badges: start -->
