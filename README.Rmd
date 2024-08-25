@@ -143,3 +143,18 @@ by threes. This includes locales using the
 which
 
 > groups the rightmost three digits together (until the hundreds place), and thereafter groups by sets of two digits.
+
+## Note on tests
+
+The `label_xxx_locale` family of functions are tested against the output of  [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) to ensure correctness for each supported locale. For example, to test that `label_currency_locale` correctly formats numbers as currencies in the German locale, the output is checked against the output of the JS code
+
+```{js}
+const number = 123456;
+
+console.log(
+  new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(
+    number,
+  ),
+);
+```
+
