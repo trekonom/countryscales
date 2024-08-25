@@ -35,3 +35,8 @@
 #'
 #' @source \url{https://rich-iannone.github.io/i18n/}
 "currencies"
+
+#' G20 countries
+#'
+#' A data.frame of names, codes and locales for G20 countries
+"g20"
