@@ -101,6 +101,7 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-locale-g20-1.png" width="100%"></p>
+<p>As another example, let’s look at formatting a chart according to German style conventions, where a dot (<code>.</code>) is used as the big mark.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="va">gapminder15</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">region</span>, wt <span class="op">=</span> <span class="va">pop</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -117,8 +118,7 @@
 <span>    title <span class="op">=</span> <span class="st">"Default"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
-<p>As another example, let’s look at formatting a chart according to German style conventions, where a dot (<code>.</code>) is used as the big mark.</p>
-<p>You can use the <code>countryscales</code> package to get this result with the <code>scale_x/y_xxx_locale</code> and <code>label_xxx_locale</code> functions like so:</p>
+<p>With the <code>countryscales</code> package we can use the <code>scale_x/y_xxx_locale</code> and <code>label_xxx_locale</code> functions to add labels and format the axis of the base plot according to German style conventions like this:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span></span>
