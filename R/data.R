@@ -40,3 +40,8 @@
 #'
 #' A data.frame of names, codes and locales for G20 countries
 "g20"
+
+#' Countries
+#'
+#' A data.frame of country names, language codes, country codes and locales
+"countries"
