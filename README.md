@@ -70,6 +70,9 @@ ggplot(g20, aes(x = x, y = y)) +
 
 <img src="man/figures/README-locale-g20-1.png" width="100%" />
 
+As another example, let’s look at formatting a chart according to German
+style conventions, where a dot (`.`) is used as the big mark.
+
 ``` r
 base <- gapminder15 |>
   count(region, wt = pop) |>
@@ -88,11 +91,9 @@ base <- gapminder15 |>
   guides(fill = "none")
 ```
 
-As another example, let’s look at formatting a chart according to German
-style conventions, where a dot (`.`) is used as the big mark.
-
-You can use the `countryscales` package to get this result with the
-`scale_x/y_xxx_locale` and `label_xxx_locale` functions like so:
+With the `countryscales` package we can use the `scale_x/y_xxx_locale`
+and `label_xxx_locale` functions to add labels and format the axis of
+the base plot according to German style conventions like this:
 
 ``` r
 base +
