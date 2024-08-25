@@ -33,20 +33,6 @@ You can install the development version of `countryscales` from GitHub using:
 remotes::install_github("trekonom/countryscales")
 ```
 
-
-## Note on supported locales
-
-`countryscales` uses data on locale-specific numbering formats from the Common Locale 
-Data Repository ([CLDA](https://en.wikipedia.org/wiki/Common_Locale_Data_Repository)) 
-provided for easy use in R by the [`i18n`](https://rich-iannone.github.io/i18n/) package. 
-Right now `countryscales` supports 552 of the 574 locales listed in `i18n`.  Not 
-supported are locales which deviate from the international norm for grouping digits 
-by threes. This includes locales using the 
-[Indian numbering system](https://en.wikipedia.org/wiki/Indian_numbering_system) 
-which
-
-> groups the rightmost three digits together (until the hundreds place), and thereafter groups by sets of two digits.
-
 ## Usage
 
 The most common use case for countryscales is to customize the appearance of 
@@ -83,7 +69,7 @@ ggplot(g20, aes(x = x, y = y)) +
   ) +
   theme_void() +
   labs(
-    title = "One million dollars are formatted as"
+    title = "1 million USD are formatted as"
   ) +
   guides(fill = "none")
 ```
@@ -108,7 +94,7 @@ base <- gapminder15 |>
 
 As another example, let's look at formatting a chart according to German style conventions, where a dot (`.`) is used as the big mark.
 
-You can use the `countryscales` package to get this result with the `scale_x/y_xx_locale` and `label_xxx_locale` functions like so:
+You can use the `countryscales` package to get this result with the `scale_x/y_xxx_locale` and `label_xxx_locale` functions like so:
 
 ```{r locale-de}
 base +
@@ -128,7 +114,7 @@ base +
   labs(title = "German style conventions.")
 ```
 
-countryscales also has some handy functions for common locales. For instance, you can use the `label_number_ch` and `scale_x_number_ch` to format the plot using Swiss style conventions:
+`countryscales` also has some handy functions for common locales. For instance, you can use `label_number_ch` and `scale_x_number_ch` to format the plot using Swiss style conventions:
 
 ```{r locale-ch}
 base +
@@ -144,3 +130,16 @@ base +
   ) +
   labs(title = "Swiss style conventions.")
 ```
+
+## Note on supported locales
+
+`countryscales` uses data on locale-specific numbering formats from the Common Locale 
+Data Repository ([CLDA](https://en.wikipedia.org/wiki/Common_Locale_Data_Repository)) 
+provided for easy use in R by the [`i18n`](https://rich-iannone.github.io/i18n/) package. 
+Right now `countryscales` supports 552 of the 574 locales listed in `i18n`.  Not 
+supported are locales which deviate from the international norm for grouping digits 
+by threes. This includes locales using the 
+[Indian numbering system](https://en.wikipedia.org/wiki/Indian_numbering_system) 
+which
+
+> groups the rightmost three digits together (until the hundreds place), and thereafter groups by sets of two digits.

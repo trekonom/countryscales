@@ -21,22 +21,6 @@ using:
 remotes::install_github("trekonom/countryscales")
 ```
 
-## Note on supported locales
-
-`countryscales` uses data on locale-specific numbering formats from the
-Common Locale Data Repository
-([CLDA](https://en.wikipedia.org/wiki/Common_Locale_Data_Repository))
-provided for easy use in R by the
-[`i18n`](https://rich-iannone.github.io/i18n/) package. Right now
-`countryscales` supports 552 of the 574 locales listed in `i18n`. Not
-supported are locales which deviate from the international norm for
-grouping digits by threes. This includes locales using the [Indian
-numbering system](https://en.wikipedia.org/wiki/Indian_numbering_system)
-which
-
-> groups the rightmost three digits together (until the hundreds place),
-> and thereafter groups by sets of two digits.
-
 ## Usage
 
 The most common use case for countryscales is to customize the
@@ -73,7 +57,7 @@ ggplot(g20, aes(x = x, y = y)) +
   ) +
   theme_void() +
   labs(
-    title = "One million dollars are formatted as"
+    title = "1 million USD are formatted as"
   ) +
   guides(fill = "none")
 ```
@@ -102,7 +86,7 @@ As another example, let’s look at formatting a chart according to German
 style conventions, where a dot (`.`) is used as the big mark.
 
 You can use the `countryscales` package to get this result with the
-`scale_x/y_xx_locale` and `label_xxx_locale` functions like so:
+`scale_x/y_xxx_locale` and `label_xxx_locale` functions like so:
 
 ``` r
 base +
@@ -124,8 +108,8 @@ base +
 
 <img src="man/figures/README-locale-de-1.png" width="100%" />
 
-countryscales also has some handy functions for common locales. For
-instance, you can use the `label_number_ch` and `scale_x_number_ch` to
+`countryscales` also has some handy functions for common locales. For
+instance, you can use `label_number_ch` and `scale_x_number_ch` to
 format the plot using Swiss style conventions:
 
 ``` r
@@ -144,3 +128,19 @@ base +
 ```
 
 <img src="man/figures/README-locale-ch-1.png" width="100%" />
+
+## Note on supported locales
+
+`countryscales` uses data on locale-specific numbering formats from the
+Common Locale Data Repository
+([CLDA](https://en.wikipedia.org/wiki/Common_Locale_Data_Repository))
+provided for easy use in R by the
+[`i18n`](https://rich-iannone.github.io/i18n/) package. Right now
+`countryscales` supports 552 of the 574 locales listed in `i18n`. Not
+supported are locales which deviate from the international norm for
+grouping digits by threes. This includes locales using the [Indian
+numbering system](https://en.wikipedia.org/wiki/Indian_numbering_system)
+which
+
+> groups the rightmost three digits together (until the hundreds place),
+> and thereafter groups by sets of two digits.
