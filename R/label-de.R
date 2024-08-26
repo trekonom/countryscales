@@ -52,6 +52,7 @@ number_de <- function(x, accuracy = 1, scale = 1,
                       trim = TRUE, ...) {
   label_number_de(
     accuracy = accuracy, scale = scale,
+    prefix = prefix, suffix = suffix,
     big.mark = big.mark, decimal.mark = decimal.mark,
     trim = trim,
     ...
