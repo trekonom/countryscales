@@ -39,3 +39,11 @@ test_that("uses a ’ as big.mark and a . as decimal mark", {
   expect_equal(label_percent_us()(.243), "24%")
   expect_equal(label_percent_us(accuracy = .1)(.243), "24.3%")
 })
+
+test_that("number_us adds a suffix and a prefix", {
+  value <- 100
+  expect_equal(
+    number_us(value, scale = 1, suffix = "%", prefix = "%"),
+    c("%100%")
+  )
+})

@@ -39,3 +39,11 @@ test_that("uses a . as big.mark and a , as decimal mark", {
   expect_equal(label_percent_de()(.243), "24\u00a0%")
   expect_equal(label_percent_de(accuracy = .1)(.243), "24,3\u00a0%")
 })
+
+test_that("number_de adds a suffix and a prefix", {
+  value <- 100
+  expect_equal(
+    number_de(value, scale = 1, suffix = "%", prefix = "%"),
+    c("%100%")
+  )
+})
