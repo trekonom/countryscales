@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.1.0
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-09-01T15:12Z
+last_built: 2024-09-01T15:35Z
 urls:
   reference: https://trekonom.github.io/countryscales/reference
   article: https://trekonom.github.io/countryscales/articles
