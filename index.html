@@ -155,7 +155,7 @@
 <div class="section level2">
 <h2 id="note-on-supported-locales">Note on supported locales<a class="anchor" aria-label="anchor" href="#note-on-supported-locales"></a>
 </h2>
-<p><code>countryscales</code> uses data on locale-specific numbering formats from the Common Locale Data Repository (<a href="https://en.wikipedia.org/wiki/Common_Locale_Data_Repository" class="external-link">CLDA</a>) provided for easy use in R by the <a href="https://rich-iannone.github.io/i18n/" class="external-link"><code>i18n</code></a> package. Right now <code>countryscales</code> supports 552 of the 574 locales listed in <code>i18n</code>. Not supported are locales which deviate from the international norm for grouping digits by threes. This includes locales using the <a href="https://en.wikipedia.org/wiki/Indian_numbering_system" class="external-link">Indian numbering system</a> which</p>
+<p><code>countryscales</code> uses data on locale-specific numbering formats from the Common Locale Data Repository (<a href="https://en.wikipedia.org/wiki/Common_Locale_Data_Repository" class="external-link">CLDR</a>) provided for easy use in R by the <a href="https://rich-iannone.github.io/i18n/" class="external-link"><code>i18n</code></a> package. Right now <code>countryscales</code> supports 552 of the 574 locales listed in <code>i18n</code>. Not supported are locales which deviate from the international norm for grouping digits by threes. This includes locales using the <a href="https://en.wikipedia.org/wiki/Indian_numbering_system" class="external-link">Indian numbering system</a> which</p>
 <blockquote>
 <p>groups the rightmost three digits together (until the hundreds place), and thereafter groups by sets of two digits.</p>
 </blockquote>
@@ -171,6 +171,23 @@
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>    number,</span>
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  ),</span>
 <span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>);</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="credits">Credits<a class="anchor" aria-label="anchor" href="#credits"></a>
+</h2>
+<p><code>countryscales</code> would not be possible without the work by other people:</p>
+<ul>
+<li><p>Thanks to the people who contributed to the <a href="https://cldr.unicode.org" class="external-link">Common Locale Data Repository</a> which provide all the data to support the world’s languages in software.</p></li>
+<li><p>Thanks to <a href="https://github.com/rich-iannone" class="external-link">Rich Ianonne</a> for providing the CLDR data for easy use in R via the <a href="https://rich-iannone.github.io/i18n/" class="external-link"><code>i18n</code></a> package. Additionally, the design of hex logo for the <code>countryscales</code> package was heavily inspired by the <code>i18n</code> hex logo.</p></li>
+<li><p>Thanks to <a href="https://rud.is" class="external-link">Bob Rudis</a>, who similar in spirit to where I started provides convenience functions <code>scale_x/y_percent/number/dollar</code> for <code>ggplo2</code> via <a href="https://github.com/hrbrmstr/hrbrthemes" class="external-link">hrbrthemes</a> package, which served as blueprints for the <code>scale_x/y_percent/number/currency_locale</code> family of functions.</p></li>
+<li>
+<p>Last but not least thanks to the authors of the <a href="https://scales.r-lib.org" class="external-link"><code>scales</code></a> package and the people at <a href="https://posit.co" class="external-link">Posit</a>. When I started with <code>countryscales</code> I thought that I simply have to provide some wrappers around function already provided by <a href="https://scales.r-lib.org" class="external-link"><code>scales</code></a>. But I quickly realised that localization is a complex world on its own.</p>
+<ul>
+<li><p>First, when it comes to formatting currencies, e.g. the correct positioning of the currency symbol and the minus sign, I realised that there are some cases which can’t be dealt with using <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> or <code><a href="https://scales.r-lib.org/reference/label_currency.html" class="external-link">scales::label_currency</a></code>. Hence, under the hood <code>countryscales</code> uses a modified version of <code>label_number</code> to format numbers as currencies.</p></li>
+<li><p>Second, I learend that minus signs, percent signs, … include <a href="https://en.wikipedia.org/wiki/Unicode_control_characters" class="external-link">Unicode control characters</a> in several locales for bidirectional text control. Unfortunatly, <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> does not allow to pass custom symbols for minus or plus symbols. Hence, under the hood <code>countryscales</code> uses a modified version of <code>label_number</code> to (mainly) account for Unicode control characters.</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
