@@ -146,7 +146,9 @@ test_that("label_currency_locale works", {
     # Group separator differs
     "ks", "ks-Arab", "ks-Arab-IN",
     # Spacing between currency symbol and digits differs
-    "fa", "fa-IR"
+    "fa", "fa-IR",
+    # Currency symbol differs
+    "xh", "xh-ZA", "und", "nds", "nds-NL", "nds-DE", "lag", "lag-TZ"
   )
 
   locs <- setdiff(locales$locale, exclude)

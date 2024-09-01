@@ -3,7 +3,7 @@
 \docType{data}
 \name{currencies}
 \alias{currencies}
-\title{COPY AND PASTE from the i18n package}
+\title{A table with localized currency attributes and descriptors}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 175070 rows and 7 columns.
 }
@@ -14,6 +14,6 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 currencies
 }
 \description{
-A table with localized currency attributes and descriptors
+Re-Imported from i18n to silent R CMD check errors.
 }
 \keyword{datasets}
