@@ -39,8 +39,7 @@ The most common use case for countryscales is to customize the appearance of
 axis and legend labels or format numbers added as labels to a plot using 
 country-specific style conventions.
 
-Here's an example showing how 1 million USD are formatted according to 
-style conventions in the G20 countries:
+Here's an example showing how 1 million USD are formatted in the G20 countries:
 
 ```{r locale-g20}
 library(countryscales)
