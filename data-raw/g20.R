@@ -4,7 +4,7 @@ library(rvest)
 library(tidyverse)
 library(countrycode)
 
-url <- "https://en.wikipedia.org/wiki/G20#:~:text=As%20of%202023%2C%20there%20are,Union%20and%20the%20African%20Union."
+url <- "https://en.wikipedia.org/wiki/G20"
 
 country <- rvest::read_html(url) |>
   rvest::html_table() |>

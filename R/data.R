@@ -29,9 +29,9 @@
 #' @source \url{https://rich-iannone.github.io/i18n/}
 "locales"
 
-#' COPY AND PASTE from the i18n package
-#'
 #' A table with localized currency attributes and descriptors
+#'
+#' Re-Imported from i18n to silent R CMD check errors.
 #'
 #' @source \url{https://rich-iannone.github.io/i18n/}
 "currencies"
@@ -39,9 +39,13 @@
 #' G20 countries
 #'
 #' A data.frame of names, codes and locales for G20 countries
+#'
+#' @source \url{https://en.wikipedia.org/wiki/G20}, \url{https://cdn.simplelocalize.io/public/v1/locales}
 "g20"
 
 #' Countries
 #'
 #' A data.frame of country names, language codes, country codes and locales
+#'
+#' @source \url{https://cdn.simplelocalize.io/public/v1/locales}
 "countries"

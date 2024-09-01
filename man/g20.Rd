@@ -7,6 +7,9 @@
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 19 rows and 5 columns.
 }
+\source{
+\url{https://en.wikipedia.org/wiki/G20}, \url{https://cdn.simplelocalize.io/public/v1/locales}
+}
 \usage{
 g20
 }

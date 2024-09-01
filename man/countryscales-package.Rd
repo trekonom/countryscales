@@ -6,6 +6,8 @@
 \alias{countryscales-package}
 \title{countryscales: Country Scales}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Make it easy to display numbers using country style conventions.
 }
 \seealso{
