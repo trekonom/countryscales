@@ -20,8 +20,6 @@ knitr::opts_chunk$set(
 
 </div>
 
-# countryscales
-
 <!-- badges: start -->
 <!-- badges: end -->
 
@@ -172,7 +170,7 @@ console.log(
 
 * Thanks to [Rich Ianonne](https://github.com/rich-iannone) for providing the CLDR data for easy use in R via the [`i18n`](https://rich-iannone.github.io/i18n/) package. Additionally, the design of hex logo for the `countryscales` package was heavily inspired by the `i18n` hex logo.
 
-* Thanks to [Bob Rudis](https://rud.is), who similar in spirit to where I started provides convenience functions `scale_x/y_percent/number/dollar` for `ggplo2` via [hrbrthemes](https://github.com/hrbrmstr/hrbrthemes) package, which served as blueprints for the `scale_x/y_percent/number/currency_locale` family of functions.
+* Thanks to [Bob Rudis](https://rud.is), who similar in spirit to what `countryscales` has in mind provides convenience functions `scale_x/y_percent/number/dollar` for [`ggplot2`](https://ggplot2.tidyverse.org) in the [hrbrthemes](https://github.com/hrbrmstr/hrbrthemes) package, which served as blueprints for the `scale_x/y_percent/number/currency_locale` family of functions.
 
 * Last but not least thanks to the authors of the [`scales`](https://scales.r-lib.org) package and the people at [Posit](https://posit.co). When I started with `countryscales` I thought that I simply have to provide some wrappers around function already provided by [`scales`](https://scales.r-lib.org). But I quickly realised that localization is a complex world on its own.
 

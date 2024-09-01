@@ -7,8 +7,6 @@
 
 </div>
 
-# countryscales
-
 <!-- badges: start -->
 <!-- badges: end -->
 
@@ -184,9 +182,10 @@ code
   the design of hex logo for the `countryscales` package was heavily
   inspired by the `i18n` hex logo.
 
-- Thanks to [Bob Rudis](https://rud.is), who similar in spirit to where
-  I started provides convenience functions
-  `scale_x/y_percent/number/dollar` for `ggplo2` via
+- Thanks to [Bob Rudis](https://rud.is), who similar in spirit to what
+  `countryscales` has in mind provides convenience functions
+  `scale_x/y_percent/number/dollar` for
+  [`ggplot2`](https://ggplot2.tidyverse.org) in the
   [hrbrthemes](https://github.com/hrbrmstr/hrbrthemes) package, which
   served as blueprints for the
   `scale_x/y_percent/number/currency_locale` family of functions.
