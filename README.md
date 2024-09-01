@@ -140,7 +140,7 @@ base +
 
 `countryscales` uses data on locale-specific numbering formats from the
 Common Locale Data Repository
-([CLDA](https://en.wikipedia.org/wiki/Common_Locale_Data_Repository))
+([CLDR](https://en.wikipedia.org/wiki/Common_Locale_Data_Repository))
 provided for easy use in R by the
 [`i18n`](https://rich-iannone.github.io/i18n/) package. Right now
 `countryscales` supports 552 of the 574 locales listed in `i18n`. Not
@@ -169,3 +169,47 @@ code
         number,
       ),
     );
+
+## Credits
+
+`countryscales` would not be possible without the work by other people:
+
+- Thanks to the people who contributed to the [Common Locale Data
+  Repository](https://cldr.unicode.org) which provide all the data to
+  support the world’s languages in software.
+
+- Thanks to [Rich Ianonne](https://github.com/rich-iannone) for
+  providing the CLDR data for easy use in R via the
+  [`i18n`](https://rich-iannone.github.io/i18n/) package. Additionally,
+  the design of hex logo for the `countryscales` package was heavily
+  inspired by the `i18n` hex logo.
+
+- Thanks to [Bob Rudis](https://rud.is), who similar in spirit to where
+  I started provides convenience functions
+  `scale_x/y_percent/number/dollar` for `ggplo2` via
+  [hrbrthemes](https://github.com/hrbrmstr/hrbrthemes) package, which
+  served as blueprints for the
+  `scale_x/y_percent/number/currency_locale` family of functions.
+
+- Last but not least thanks to the authors of the
+  [`scales`](https://scales.r-lib.org) package and the people at
+  [Posit](https://posit.co). When I started with `countryscales` I
+  thought that I simply have to provide some wrappers around function
+  already provided by [`scales`](https://scales.r-lib.org). But I
+  quickly realised that localization is a complex world on its own.
+
+  - First, when it comes to formatting currencies, e.g. the correct
+    positioning of the currency symbol and the minus sign, I realised
+    that there are some cases which can’t be dealt with using
+    `scales::label_number` or `scales::label_currency`. Hence, under the
+    hood `countryscales` uses a modified version of `label_number` to
+    format numbers as currencies.
+
+  - Second, I learend that minus signs, percent signs, … include
+    [Unicode control
+    characters](https://en.wikipedia.org/wiki/Unicode_control_characters)
+    in several locales for bidirectional text control. Unfortunatly,
+    `scales::label_number` does not allow to pass custom symbols for
+    minus or plus symbols. Hence, under the hood `countryscales` uses a
+    modified version of `label_number` to (mainly) account for Unicode
+    control characters.
