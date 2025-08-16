@@ -48,7 +48,8 @@ label_number_locale <- function(accuracy = NULL, scale = 1,
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)
-  style_negative <- locale[["minus_sign"]]
+  style_negative <- "custom"
+  custom_negative <-  locale[["minus_sign"]]
   style_positive <- locale[["style_positive"]]
 
   label_number(
@@ -57,6 +58,7 @@ label_number_locale <- function(accuracy = NULL, scale = 1,
     big.mark = big.mark, decimal.mark = decimal.mark,
     style_negative = style_negative,
     style_positive = style_positive,
+    custom_negative = custom_negative,
     trim = trim, ...
   )
 }
@@ -71,7 +73,8 @@ label_percent_locale <- function(accuracy = NULL, scale = 100,
   locale <- check_locale(locale)
   big.mark <- check_big(big.mark, locale)
   decimal.mark <- check_decimal(decimal.mark, locale)
-  style_negative <- locale[["minus_sign"]]
+  style_negative <- "custom"
+  custom_negative <-  locale[["minus_sign"]]
   style_positive <- locale[["style_positive"]]
   percent_sign <- locale[["percent_sign"]]
 
@@ -93,6 +96,7 @@ label_percent_locale <- function(accuracy = NULL, scale = 100,
     big.mark = big.mark, decimal.mark = decimal.mark, trim = trim,
     style_negative = style_negative,
     style_positive = style_positive,
+    custom_negative = custom_negative,
     ...
   )
 }
