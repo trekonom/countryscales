@@ -10,9 +10,9 @@
 #' @inheritParams scales::label_number
 #' @param locale locale string. Defaults to "en-US"
 #' @param p_sep_by separator between currency symbol and positive
-#'     monteary value
+#'     monetary value
 #' @param n_sep_by separator between currency symbol and negative
-#'     monteary value
+#'     monetary value
 #' @param currency currency symbol
 #'
 #' @name label-locale
