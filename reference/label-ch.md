@@ -17,18 +17,6 @@ label_number_ch(
   ...
 )
 
-number_ch(
-  x,
-  accuracy = 1,
-  scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
 label_percent_ch(
   accuracy = 1,
   scale = 100,
@@ -40,32 +28,7 @@ label_percent_ch(
   ...
 )
 
-percent_ch(
-  x,
-  accuracy = 1,
-  scale = 100,
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
 label_currency_ch(
-  accuracy = 1,
-  scale = 1,
-  currency = "CHF",
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-currency_ch(
-  x,
   accuracy = 1,
   scale = 1,
   currency = "CHF",
@@ -125,10 +88,6 @@ currency_ch(
 
   Other arguments passed on to
   [`base::format()`](https://rdrr.io/r/base/format.html).
-
-- x:
-
-  a numeric
 
 - currency:
 

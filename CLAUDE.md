@@ -57,10 +57,9 @@ wrappers just pin the `locale` argument:
 - **Country-specific wrappers** (`R/label-de.R`, `R/label-ch.R`,
   `R/label-us.R`) —
   e.g. [`label_number_de()`](https://trekonom.github.io/countryscales/reference/label-de.md),
-  [`number_de()`](https://trekonom.github.io/countryscales/reference/label-de.md)
-  — just call the `_locale` version with a fixed `locale`. The
-  `xxx_de()` (no `label_` prefix) variants are the same thing applied
-  directly to a vector `x`, i.e. `label_xxx_de(...)(x)`.
+  `number_de()` — just call the `_locale` version with a fixed `locale`.
+  The `xxx_de()` (no `label_` prefix) variants are the same thing
+  applied directly to a vector `x`, i.e. `label_xxx_de(...)(x)`.
 - **`scale_x/y_number_locale()` / `..._percent_locale()` /
   `..._currency_locale()`** (`R/scale-locale.R`) and their
   `_de`/`_ch`/`_us` counterparts (`R/scale-de.R`, `R/scale-ch.R`,

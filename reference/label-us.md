@@ -17,18 +17,6 @@ label_number_us(
   ...
 )
 
-number_us(
-  x,
-  accuracy = 1,
-  scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
 label_percent_us(
   accuracy = 1,
   scale = 100,
@@ -40,32 +28,7 @@ label_percent_us(
   ...
 )
 
-percent_us(
-  x,
-  accuracy = 1,
-  scale = 100,
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
 label_currency_us(
-  accuracy = 1,
-  scale = 1,
-  currency = "USD",
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-currency_us(
-  x,
   accuracy = 1,
   scale = 1,
   currency = "USD",
@@ -125,10 +88,6 @@ currency_us(
 
   Other arguments passed on to
   [`base::format()`](https://rdrr.io/r/base/format.html).
-
-- x:
-
-  a numeric
 
 - currency:
 

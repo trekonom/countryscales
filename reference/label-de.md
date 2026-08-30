@@ -17,18 +17,6 @@ label_number_de(
   ...
 )
 
-number_de(
-  x,
-  accuracy = 1,
-  scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
 label_percent_de(
   accuracy = 1,
   scale = 100,
@@ -40,32 +28,7 @@ label_percent_de(
   ...
 )
 
-percent_de(
-  x,
-  accuracy = 1,
-  scale = 100,
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
 label_currency_de(
-  accuracy = 1,
-  scale = 1,
-  currency = "EUR",
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-currency_de(
-  x,
   accuracy = 1,
   scale = 1,
   currency = "EUR",
@@ -125,10 +88,6 @@ currency_de(
 
   Other arguments passed on to
   [`base::format()`](https://rdrr.io/r/base/format.html).
-
-- x:
-
-  a numeric
 
 - currency:
 

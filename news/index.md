@@ -16,9 +16,9 @@ Initial CRAN release.
   system (grouping by threes then twos) are not supported, as they
   deviate from the standard grouping this package implements.
 - Dedicated `_de()`, `_ch()`, and `_us()` wrapper families (e.g.
-  [`label_number_de()`](https://trekonom.github.io/countryscales/reference/label-de.md)/[`number_de()`](https://trekonom.github.io/countryscales/reference/label-de.md),
-  [`label_percent_ch()`](https://trekonom.github.io/countryscales/reference/label-ch.md)/[`percent_ch()`](https://trekonom.github.io/countryscales/reference/label-ch.md),
-  [`label_currency_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)/[`currency_us()`](https://trekonom.github.io/countryscales/reference/label-us.md))
+  [`label_number_de()`](https://trekonom.github.io/countryscales/reference/label-de.md)/`number_de()`,
+  [`label_percent_ch()`](https://trekonom.github.io/countryscales/reference/label-ch.md)/`percent_ch()`,
+  [`label_currency_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)/`currency_us()`)
   provide ready-to-use formatters for Germany, Switzerland, and the
   United States.
 - `label_number_xx()`/`label_percent_xx()`/`label_currency_xx()` and
