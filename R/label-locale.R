@@ -113,8 +113,9 @@ label_currency_locale <- function(accuracy = NULL, scale = 1,
                                   currency = "USD",
                                   locale = "en-US",
                                   trim = TRUE, ...) {
+  checked_locale <- check_locale(locale)
   currency <- currency_symbol(locale, currency)
-  locale <- check_locale(locale)
+  locale <- checked_locale
   big.mark <- check_big_currency(big.mark, locale)
   decimal.mark <- check_decimal_currency(decimal.mark, locale)
 
