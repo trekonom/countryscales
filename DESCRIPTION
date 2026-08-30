@@ -13,7 +13,13 @@ Authors@R: c(
     role = "cph", 
     comment = "Copyright holder of included code from the scales package")
   )
-Description: Make it easy to display numbers using country style conventions.
+Description: Format numbers, percentages and currencies, and label 'ggplot2'
+    axes, using country- or locale-specific conventions such as the
+    thousands separator, decimal mark, currency symbol placement, and sign
+    placement. Locale data is sourced from the Unicode Common Locale Data
+    Repository (CLDR) via the 'i18n' package, covering several hundred
+    locales in addition to dedicated helpers for Germany, Switzerland and
+    the United States.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -30,8 +36,9 @@ LazyData: true
 URL: https://github.com/trekonom/countryscales,
     https://trekonom.github.io/countryscales/
 BugReports: https://github.com/trekonom/countryscales/issues
-Suggests: 
+Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
+VignetteBuilder: knitr
 Config/testthat/edition: 3
