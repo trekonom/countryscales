@@ -47,3 +47,19 @@ test_that("number_de adds a suffix and a prefix", {
     c("%100%")
   )
 })
+
+test_that("percent_de matches label_percent_de", {
+  value <- .243
+  expect_equal(
+    percent_de(value),
+    label_percent_de()(value)
+  )
+})
+
+test_that("currency_de matches label_currency_de", {
+  value <- 1200.243
+  expect_equal(
+    currency_de(value),
+    label_currency_de()(value)
+  )
+})

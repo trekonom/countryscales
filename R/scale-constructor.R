@@ -41,7 +41,6 @@ number_scale <- function(aesthetics, scale_name, palette,
 
   continuous_scale(
     aesthetics = aesthetics,
-    scale_name = scale_name,
     palette = palette,
     name = name,
     breaks = breaks,
@@ -52,7 +51,7 @@ number_scale <- function(aesthetics, scale_name, palette,
     expand = expand,
     oob = oob,
     na.value = na.value,
-    trans = trans,
+    transform = trans,
     guide = guide,
     position = position,
     super = super
