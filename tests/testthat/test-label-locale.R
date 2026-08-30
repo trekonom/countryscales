@@ -48,31 +48,34 @@ beng <- c(
   "%", ".", ","
 )
 
-latn <- paste(latn, collapse = "")
-arab <- paste(arab, collapse = "")
-arabext <- paste(arabext, collapse = "")
-adlm <- paste(adlm, collapse = "")
-olck <- paste(olck, collapse = "")
-mymr <- paste(mymr, collapse = "")
-beng <- paste(beng, collapse = "")
+# chartr() mistranslates supplementary-plane replacement characters (e.g. Adlam
+# digits, U+1E950-1E959) on Windows, silently dropping them. gsub(fixed = TRUE)
+# does plain substring replacement instead of chartr's per-character translation
+# table, so it isn't affected.
+translate_digits <- function(x, to) {
+  for (i in seq_along(latn)) {
+    x <- gsub(latn[i], to[i], x, fixed = TRUE)
+  }
+  x
+}
 
 as_arab <- function(x) {
-  chartr(latn, arab, x)
+  translate_digits(x, arab)
 }
 as_arabext <- function(x) {
-  chartr(latn, arabext, x)
+  translate_digits(x, arabext)
 }
 as_adlm <- function(x) {
-  chartr(latn, adlm, x)
+  translate_digits(x, adlm)
 }
 as_olck <- function(x) {
-  chartr(latn, olck, x)
+  translate_digits(x, olck)
 }
 as_mymr <- function(x) {
-  chartr(latn, mymr, x)
+  translate_digits(x, mymr)
 }
 as_beng <- function(x) {
-  chartr(latn, beng, x)
+  translate_digits(x, beng)
 }
 
 test_that("label_number_locale works", {
