@@ -32,7 +32,7 @@ number_ch(
 label_percent_ch(
   accuracy = 1,
   scale = 100,
-  prefix = "",
+  prefix = NULL,
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,
@@ -44,7 +44,7 @@ percent_ch(
   x,
   accuracy = 1,
   scale = 100,
-  prefix = "",
+  prefix = NULL,
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,

@@ -32,7 +32,7 @@ number_us(
 label_percent_us(
   accuracy = 1,
   scale = 100,
-  prefix = "",
+  prefix = NULL,
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,
@@ -44,7 +44,7 @@ percent_us(
   x,
   accuracy = 1,
   scale = 100,
-  prefix = "",
+  prefix = NULL,
   suffix = NULL,
   big.mark = NULL,
   decimal.mark = NULL,
