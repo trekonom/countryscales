@@ -2,7 +2,7 @@
 % Please edit documentation in R/demo-ggplot.R
 \name{demo_number}
 \alias{demo_number}
-\title{ggplo2 demo}
+\title{ggplot2 demo}
 \usage{
 demo_number(x, scale_name, ...)
 }
@@ -14,7 +14,7 @@ demo_number(x, scale_name, ...)
 \item{...}{further arguments to be passed to the scale}
 }
 \description{
-ggplo2 demo
+ggplot2 demo
 }
 \examples{
 demo_number(c(32, 212), scale_name = "number_locale")

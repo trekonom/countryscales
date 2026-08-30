@@ -20,7 +20,7 @@ A data frame with 14,823 rows and 7 variables:
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 183 rows and 7 columns.
 }
 \source{
-\url{http://www.gapminder.org/}
+\url{https://www.gapminder.org/}
 }
 \usage{
 gapminder

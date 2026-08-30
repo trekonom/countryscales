@@ -1,4 +1,4 @@
-#' ggplo2 demo
+#' ggplot2 demo
 #'
 #' @param x a numeric
 #' @param scale_name scale name

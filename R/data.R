@@ -13,7 +13,7 @@
 #'   \item{gdp_per_cap}{GDP per capita, in dollars PPP}
 #'   \item{pop}{population size, in persons}
 #' }
-#' @source \url{http://www.gapminder.org/}
+#' @source \url{https://www.gapminder.org/}
 "gapminder"
 
 #' @rdname gapminder

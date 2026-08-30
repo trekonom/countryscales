@@ -63,7 +63,7 @@ format numbers using country-specific style conventions.
 As a first example consider formatting a number `r x <- 12345689.987654321`
 according to style conventions used in Germany and several other European
 countries where a dot (`.`) is used as the big mark or grouping mark or
-thousands seperator and a comma (`,`) as the decimal mark.
+thousands separator and a comma (`,`) as the decimal mark.
 
 Using `scales::label_number` this requires to switch the default decimal and big
 marks:

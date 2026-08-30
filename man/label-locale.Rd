@@ -80,10 +80,10 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
 \item{p_sep_by}{separator between currency symbol and positive
-monteary value}
+monetary value}
 
 \item{n_sep_by}{separator between currency symbol and negative
-monteary value}
+monetary value}
 
 \item{currency}{currency symbol}
 }
