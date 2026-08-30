@@ -3,26 +3,11 @@
 \name{label-ch}
 \alias{label-ch}
 \alias{label_number_ch}
-\alias{number_ch}
 \alias{label_percent_ch}
-\alias{percent_ch}
 \alias{label_currency_ch}
-\alias{currency_ch}
 \title{Swiss Style Formatting of Numbers}
 \usage{
 label_number_ch(
-  accuracy = 1,
-  scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-number_ch(
-  x,
   accuracy = 1,
   scale = 1,
   prefix = "",
@@ -44,32 +29,7 @@ label_percent_ch(
   ...
 )
 
-percent_ch(
-  x,
-  accuracy = 1,
-  scale = 100,
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
 label_currency_ch(
-  accuracy = 1,
-  scale = 1,
-  currency = "CHF",
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-currency_ch(
-  x,
   accuracy = 1,
   scale = 1,
   currency = "CHF",
@@ -111,8 +71,6 @@ decimal point.  The default (\code{NULL}) retrieves the setting from the
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
-
-\item{x}{a numeric}
 
 \item{currency}{currency symbol}
 }

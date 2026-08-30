@@ -39,27 +39,3 @@ test_that("uses a ’ as big.mark and a . as decimal mark", {
   expect_equal(label_percent_ch()(.243), "24%")
   expect_equal(label_percent_ch(accuracy = .1)(.243), "24.3%")
 })
-
-test_that("number_ch adds a suffix and a prefix", {
-  value <- 100
-  expect_equal(
-    number_ch(value, scale = 1, suffix = "%", prefix = "%"),
-    c("%100%")
-  )
-})
-
-test_that("percent_ch matches label_percent_ch", {
-  value <- .243
-  expect_equal(
-    percent_ch(value),
-    label_percent_ch()(value)
-  )
-})
-
-test_that("currency_ch matches label_currency_ch", {
-  value <- 1200.243
-  expect_equal(
-    currency_ch(value),
-    label_currency_ch()(value)
-  )
-})

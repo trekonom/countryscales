@@ -7,7 +7,6 @@
 #' * `label_percent_de` formats numbers as percentages.
 #' * `label_currency_de` formats numbers as currencies.
 #'
-#' @param x a numeric
 #' @inheritParams label_number_locale
 #'
 #' @name label-de
@@ -31,21 +30,6 @@ label_number_de <- function(accuracy = 1, scale = 1,
 
 #' @rdname label-de
 #' @export
-number_de <- function(x, accuracy = 1, scale = 1,
-                      prefix = "", suffix = "",
-                      big.mark = NULL, decimal.mark = NULL,
-                      trim = TRUE, ...) {
-  label_number_de(
-    accuracy = accuracy, scale = scale,
-    prefix = prefix, suffix = suffix,
-    big.mark = big.mark, decimal.mark = decimal.mark,
-    trim = trim,
-    ...
-  )(x)
-}
-
-#' @rdname label-de
-#' @export
 label_percent_de <- function(accuracy = 1, scale = 100,
                              prefix = NULL, suffix = NULL,
                              big.mark = NULL, decimal.mark = NULL,
@@ -62,21 +46,6 @@ label_percent_de <- function(accuracy = 1, scale = 100,
 
 #' @rdname label-de
 #' @export
-percent_de <- function(x, accuracy = 1, scale = 100,
-                       prefix = NULL, suffix = NULL,
-                       big.mark = NULL, decimal.mark = NULL,
-                       trim = TRUE, ...) {
-  label_percent_de(
-    accuracy = accuracy, scale = scale,
-    prefix = prefix, suffix = suffix,
-    big.mark = big.mark, decimal.mark = decimal.mark,
-    trim = trim,
-    ...
-  )(x)
-}
-
-#' @rdname label-de
-#' @export
 label_currency_de <- function(accuracy = 1, scale = 1, currency = "EUR",
                               prefix = NULL, suffix = NULL,
                               big.mark = NULL, decimal.mark = NULL,
@@ -89,19 +58,4 @@ label_currency_de <- function(accuracy = 1, scale = 1, currency = "EUR",
     trim = trim,
     ...
   )
-}
-
-#' @rdname label-de
-#' @export
-currency_de <- function(x, accuracy = 1, scale = 1, currency = "EUR",
-                        prefix = NULL, suffix = NULL,
-                        big.mark = NULL, decimal.mark = NULL,
-                        trim = TRUE, ...) {
-  label_currency_de(
-    accuracy = accuracy, scale = scale, currency = currency,
-    prefix = prefix, suffix = suffix,
-    big.mark = big.mark, decimal.mark = decimal.mark,
-    trim = trim,
-    ...
-  )(x)
 }

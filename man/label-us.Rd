@@ -3,26 +3,11 @@
 \name{label-us}
 \alias{label-us}
 \alias{label_number_us}
-\alias{number_us}
 \alias{label_percent_us}
-\alias{percent_us}
 \alias{label_currency_us}
-\alias{currency_us}
 \title{US Style Formatting of Numbers}
 \usage{
 label_number_us(
-  accuracy = 1,
-  scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-number_us(
-  x,
   accuracy = 1,
   scale = 1,
   prefix = "",
@@ -44,32 +29,7 @@ label_percent_us(
   ...
 )
 
-percent_us(
-  x,
-  accuracy = 1,
-  scale = 100,
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
 label_currency_us(
-  accuracy = 1,
-  scale = 1,
-  currency = "USD",
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-currency_us(
-  x,
   accuracy = 1,
   scale = 1,
   currency = "USD",
@@ -111,8 +71,6 @@ decimal point.  The default (\code{NULL}) retrieves the setting from the
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
-
-\item{x}{a numeric}
 
 \item{currency}{currency symbol}
 }

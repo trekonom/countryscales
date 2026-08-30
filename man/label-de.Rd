@@ -3,26 +3,11 @@
 \name{label-de}
 \alias{label-de}
 \alias{label_number_de}
-\alias{number_de}
 \alias{label_percent_de}
-\alias{percent_de}
 \alias{label_currency_de}
-\alias{currency_de}
 \title{German Style Formatting of Numbers}
 \usage{
 label_number_de(
-  accuracy = 1,
-  scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-number_de(
-  x,
   accuracy = 1,
   scale = 1,
   prefix = "",
@@ -44,32 +29,7 @@ label_percent_de(
   ...
 )
 
-percent_de(
-  x,
-  accuracy = 1,
-  scale = 100,
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
 label_currency_de(
-  accuracy = 1,
-  scale = 1,
-  currency = "EUR",
-  prefix = NULL,
-  suffix = NULL,
-  big.mark = NULL,
-  decimal.mark = NULL,
-  trim = TRUE,
-  ...
-)
-
-currency_de(
-  x,
   accuracy = 1,
   scale = 1,
   currency = "EUR",
@@ -111,8 +71,6 @@ decimal point.  The default (\code{NULL}) retrieves the setting from the
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
-
-\item{x}{a numeric}
 
 \item{currency}{currency symbol}
 }
