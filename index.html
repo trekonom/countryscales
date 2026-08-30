@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">countryscales</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.9.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,7 +187,7 @@
 <p>Last but not least thanks to the authors of the <a href="https://scales.r-lib.org" class="external-link"><code>scales</code></a> package and the people at <a href="https://posit.co" class="external-link">Posit</a>. When I started with <code>countryscales</code> I thought that I simply have to provide some wrappers around function already provided by <a href="https://scales.r-lib.org" class="external-link"><code>scales</code></a>. But I quickly realised that localization is a complex world on its own.</p>
 <ul>
 <li><p>First, when it comes to formatting currencies, e.g. the correct positioning of the currency symbol and the minus sign, I realised that there are some cases which can’t be dealt with using <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> or <code><a href="https://scales.r-lib.org/reference/label_currency.html" class="external-link">scales::label_currency</a></code>. Hence, under the hood <code>countryscales</code> uses a modified version of <code>label_number</code> to format numbers as currencies.</p></li>
-<li><p>Second, I learend that minus signs, percent signs, … include <a href="https://en.wikipedia.org/wiki/Unicode_control_characters" class="external-link">Unicode control characters</a> in several locales for bidirectional text control. Unfortunatly, <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> does not allow to pass custom symbols for minus or plus symbols. Hence, under the hood <code>countryscales</code> uses a modified version of <code>label_number</code> to (mainly) account for Unicode control characters.</p></li>
+<li><p>Second, I learned that minus signs, percent signs, … include <a href="https://en.wikipedia.org/wiki/Unicode_control_characters" class="external-link">Unicode control characters</a> in several locales for bidirectional text control. Unfortunately, <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> does not allow to pass custom symbols for minus or plus symbols. Hence, under the hood <code>countryscales</code> uses a modified version of <code>label_number</code> to (mainly) account for Unicode control characters.</p></li>
 </ul>
 </li>
 </ul>

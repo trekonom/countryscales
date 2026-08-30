@@ -71,7 +71,7 @@ Miscellaneous Functions
 - [`show_locales()`](https://trekonom.github.io/countryscales/reference/show_locales.md)
   : Locales
 - [`demo_number()`](https://trekonom.github.io/countryscales/reference/demo_number.md)
-  : ggplo2 demo
+  : ggplot2 demo
 
 ## Data
 

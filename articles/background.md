@@ -52,7 +52,7 @@ to format numbers using country-specific style conventions.
 As a first example consider formatting a number according to style
 conventions used in Germany and several other European countries where a
 dot (`.`) is used as the big mark or grouping mark or thousands
-seperator and a comma (`,`) as the decimal mark.
+separator and a comma (`,`) as the decimal mark.
 
 Using
 [`scales::label_number`](https://scales.r-lib.org/reference/label_number.html)

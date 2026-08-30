@@ -100,11 +100,11 @@ label_currency_locale(
 
 - p_sep_by:
 
-  separator between currency symbol and positive monteary value
+  separator between currency symbol and positive monetary value
 
 - n_sep_by:
 
-  separator between currency symbol and negative monteary value
+  separator between currency symbol and negative monetary value
 
 - currency:
 

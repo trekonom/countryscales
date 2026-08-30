@@ -202,10 +202,10 @@ console.log(
     Hence, under the hood `countryscales` uses a modified version of
     `label_number` to format numbers as currencies.
 
-  - Second, I learend that minus signs, percent signs, … include
+  - Second, I learned that minus signs, percent signs, … include
     [Unicode control
     characters](https://en.wikipedia.org/wiki/Unicode_control_characters)
-    in several locales for bidirectional text control. Unfortunatly,
+    in several locales for bidirectional text control. Unfortunately,
     [`scales::label_number`](https://scales.r-lib.org/reference/label_number.html)
     does not allow to pass custom symbols for minus or plus symbols.
     Hence, under the hood `countryscales` uses a modified version of

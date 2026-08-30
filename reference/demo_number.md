@@ -1,6 +1,6 @@
-# ggplo2 demo
+# ggplot2 demo
 
-ggplo2 demo
+ggplot2 demo
 
 ## Usage
 
