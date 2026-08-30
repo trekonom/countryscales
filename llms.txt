@@ -311,10 +311,22 @@ Functions for formatting numbers.
   [`label_percent_pt()`](https://trekonom.github.io/countryscales/reference/label-pt.md)
   [`label_currency_pt()`](https://trekonom.github.io/countryscales/reference/label-pt.md)
   : Portuguese Style Formatting of Numbers
+- [`label_number_ru()`](https://trekonom.github.io/countryscales/reference/label-ru.md)
+  [`label_percent_ru()`](https://trekonom.github.io/countryscales/reference/label-ru.md)
+  [`label_currency_ru()`](https://trekonom.github.io/countryscales/reference/label-ru.md)
+  : Russian Style Formatting of Numbers
+- [`label_number_sa()`](https://trekonom.github.io/countryscales/reference/label-sa.md)
+  [`label_percent_sa()`](https://trekonom.github.io/countryscales/reference/label-sa.md)
+  [`label_currency_sa()`](https://trekonom.github.io/countryscales/reference/label-sa.md)
+  : Saudi Style Formatting of Numbers
 - [`label_number_se()`](https://trekonom.github.io/countryscales/reference/label-se.md)
   [`label_percent_se()`](https://trekonom.github.io/countryscales/reference/label-se.md)
   [`label_currency_se()`](https://trekonom.github.io/countryscales/reference/label-se.md)
   : Swedish Style Formatting of Numbers
+- [`label_number_tr()`](https://trekonom.github.io/countryscales/reference/label-tr.md)
+  [`label_percent_tr()`](https://trekonom.github.io/countryscales/reference/label-tr.md)
+  [`label_currency_tr()`](https://trekonom.github.io/countryscales/reference/label-tr.md)
+  : Turkish Style Formatting of Numbers
 - [`label_number_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)
   [`number_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)
   [`label_percent_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)
@@ -322,6 +334,10 @@ Functions for formatting numbers.
   [`label_currency_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)
   [`currency_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)
   : US Style Formatting of Numbers
+- [`label_number_za()`](https://trekonom.github.io/countryscales/reference/label-za.md)
+  [`label_percent_za()`](https://trekonom.github.io/countryscales/reference/label-za.md)
+  [`label_currency_za()`](https://trekonom.github.io/countryscales/reference/label-za.md)
+  : South African Style Formatting of Numbers
 
 ## Positional Scales
 
@@ -482,6 +498,20 @@ currencies.
   [`scale_y_percent_pt()`](https://trekonom.github.io/countryscales/reference/scale-pt.md)
   [`scale_y_currency_pt()`](https://trekonom.github.io/countryscales/reference/scale-pt.md)
   : Portuguese Style Positional Scales
+- [`scale_x_number_ru()`](https://trekonom.github.io/countryscales/reference/scale-ru.md)
+  [`scale_x_percent_ru()`](https://trekonom.github.io/countryscales/reference/scale-ru.md)
+  [`scale_x_currency_ru()`](https://trekonom.github.io/countryscales/reference/scale-ru.md)
+  [`scale_y_number_ru()`](https://trekonom.github.io/countryscales/reference/scale-ru.md)
+  [`scale_y_percent_ru()`](https://trekonom.github.io/countryscales/reference/scale-ru.md)
+  [`scale_y_currency_ru()`](https://trekonom.github.io/countryscales/reference/scale-ru.md)
+  : Russian Style Positional Scales
+- [`scale_x_number_sa()`](https://trekonom.github.io/countryscales/reference/scale-sa.md)
+  [`scale_x_percent_sa()`](https://trekonom.github.io/countryscales/reference/scale-sa.md)
+  [`scale_x_currency_sa()`](https://trekonom.github.io/countryscales/reference/scale-sa.md)
+  [`scale_y_number_sa()`](https://trekonom.github.io/countryscales/reference/scale-sa.md)
+  [`scale_y_percent_sa()`](https://trekonom.github.io/countryscales/reference/scale-sa.md)
+  [`scale_y_currency_sa()`](https://trekonom.github.io/countryscales/reference/scale-sa.md)
+  : Saudi Style Positional Scales
 - [`scale_x_number_se()`](https://trekonom.github.io/countryscales/reference/scale-se.md)
   [`scale_x_percent_se()`](https://trekonom.github.io/countryscales/reference/scale-se.md)
   [`scale_x_currency_se()`](https://trekonom.github.io/countryscales/reference/scale-se.md)
@@ -489,6 +519,13 @@ currencies.
   [`scale_y_percent_se()`](https://trekonom.github.io/countryscales/reference/scale-se.md)
   [`scale_y_currency_se()`](https://trekonom.github.io/countryscales/reference/scale-se.md)
   : Swedish Style Positional Scales
+- [`scale_x_number_tr()`](https://trekonom.github.io/countryscales/reference/scale-tr.md)
+  [`scale_x_percent_tr()`](https://trekonom.github.io/countryscales/reference/scale-tr.md)
+  [`scale_x_currency_tr()`](https://trekonom.github.io/countryscales/reference/scale-tr.md)
+  [`scale_y_number_tr()`](https://trekonom.github.io/countryscales/reference/scale-tr.md)
+  [`scale_y_percent_tr()`](https://trekonom.github.io/countryscales/reference/scale-tr.md)
+  [`scale_y_currency_tr()`](https://trekonom.github.io/countryscales/reference/scale-tr.md)
+  : Turkish Style Positional Scales
 - [`scale_x_number_us()`](https://trekonom.github.io/countryscales/reference/scale-us.md)
   [`scale_y_number_us()`](https://trekonom.github.io/countryscales/reference/scale-us.md)
   [`scale_x_percent_us()`](https://trekonom.github.io/countryscales/reference/scale-us.md)
@@ -496,6 +533,13 @@ currencies.
   [`scale_x_currency_us()`](https://trekonom.github.io/countryscales/reference/scale-us.md)
   [`scale_y_currency_us()`](https://trekonom.github.io/countryscales/reference/scale-us.md)
   : US Style Positional Scales
+- [`scale_x_number_za()`](https://trekonom.github.io/countryscales/reference/scale-za.md)
+  [`scale_x_percent_za()`](https://trekonom.github.io/countryscales/reference/scale-za.md)
+  [`scale_x_currency_za()`](https://trekonom.github.io/countryscales/reference/scale-za.md)
+  [`scale_y_number_za()`](https://trekonom.github.io/countryscales/reference/scale-za.md)
+  [`scale_y_percent_za()`](https://trekonom.github.io/countryscales/reference/scale-za.md)
+  [`scale_y_currency_za()`](https://trekonom.github.io/countryscales/reference/scale-za.md)
+  : South African Style Positional Scales
 
 ## Misc
 
