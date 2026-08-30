@@ -365,12 +365,19 @@ scale_y_currency_locale(
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-demo_number(c(-1e6, 1e6), scale_name = "number_locale", locale = "fr-FR")
-demo_number(c(-1, 1), scale_name = "percent_locale", locale = "it-IT")
-demo_number(c(-1e4, 1e4),
-  scale_name = "currency_locale",
-  locale = "ja-JP", currency = "JPY"
-)
-} # }
+# not rendered via demo_number(): several locales' group/currency signs
+# aren't in the check device's font, so only the (unrendered) scale
+# objects are shown
+scale_x_number_locale(locale = "fr-FR")
+#> <ScaleContinuousPosition>
+#>  Range:  
+#>  Limits:    0 --    1
+scale_x_percent_locale(locale = "it-IT")
+#> <ScaleContinuousPosition>
+#>  Range:  
+#>  Limits:    0 --    1
+scale_x_currency_locale(locale = "ja-JP", currency = "JPY")
+#> <ScaleContinuousPosition>
+#>  Range:  
+#>  Limits:    0 --    1
 ```

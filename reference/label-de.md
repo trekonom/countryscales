@@ -145,19 +145,12 @@ currency_de(
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-require(scales)
-demo_continuous(
-  c(-1e6, 1e6),
-  labels = label_number_de()
-)
-demo_continuous(
-  c(-1, 1),
-  labels = label_percent_de(accuracy = .01)
-)
-demo_continuous(
-  c(-1, 1),
-  labels = label_currency_de(accuracy = .1)
-)
-} # }
+# rendered directly (rather than via scales::demo_continuous()) because
+# several locales' group/currency signs aren't in the check device's font
+label_number_de()(c(-1e6, 0, 1e6))
+#> [1] "-1.000.000" "0"          "1.000.000" 
+label_percent_de(accuracy = .01)(c(-1, 0, 1))
+#> [1] "-100,00 %" "0,00 %"    "100,00 %" 
+label_currency_de(accuracy = .1)(c(-1e6, 0, 1e6))
+#> [1] "-1.000.000,0 €" "0,0 €"          "1.000.000,0 €" 
 ```

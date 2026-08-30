@@ -121,22 +121,15 @@ label_currency_locale(
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-require(scales)
-demo_continuous(
-  c(-1e6, 1e6),
-  labels = label_number_locale(locale = "fr-FR")
-)
-demo_continuous(
-  c(-1, 1),
-  label_percent_locale(locale = "it-IT", accuracy = .01)
-)
-demo_continuous(
-  c(-1, 1),
-  labels = label_currency_locale(
-    locale = "ja-JP", accuracy = .1,
-    currency = "JPY"
-  )
-)
-} # }
+# rendered directly (rather than via scales::demo_continuous()) because
+# several locales' group/currency signs aren't in the check device's font
+label_number_locale(locale = "fr-FR")(c(-1e6, 0, 1e6))
+#> [1] "-1 000 000" "0"          "1 000 000" 
+label_percent_locale(locale = "it-IT", accuracy = .01)(c(-1, 0, 1))
+#> [1] "-100,00%" "0,00%"    "100,00%" 
+label_currency_locale(
+  locale = "ja-JP", accuracy = .1,
+  currency = "JPY"
+)(c(-1e4, 0, 1e4))
+#> [1] "-￥10,000.0" "￥0.0"       "￥10,000.0" 
 ```

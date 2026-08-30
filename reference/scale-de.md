@@ -355,9 +355,24 @@ scale_y_currency_de(
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
 demo_number(c(-1e6, 1e6), scale_name = "number_de")
+#> scale_x_number_de()
+
+scale_x_number_de()
+#> <ScaleContinuousPosition>
+#>  Range:  
+#>  Limits:    0 --    1
 demo_number(c(-1, 1), scale_name = "percent_de")
-demo_number(c(-1e4, 1e4), scale_name = "currency_de")
-} # }
+#> scale_x_percent_de()
+
+scale_x_percent_de()
+#> <ScaleContinuousPosition>
+#>  Range:  
+#>  Limits:    0 --    1
+# not rendered via demo_number(): the euro sign isn't in the check
+# device's font, so only the (unrendered) scale object is shown
+scale_x_currency_de()
+#> <ScaleContinuousPosition>
+#>  Range:  
+#>  Limits:    0 --    1
 ```

@@ -358,13 +358,22 @@ scale_y_currency_ch(
 demo_number(c(-1e6, 1e6), scale_name = "number_ch")
 #> scale_x_number_ch()
 
-# scale_x_number_ch()
+scale_x_number_ch()
+#> <ScaleContinuousPosition>
+#>  Range:  
+#>  Limits:    0 --    1
 demo_number(c(-1, 1), scale_name = "percent_ch")
 #> scale_x_percent_ch()
 
-# scale_x_percent_ch()
+scale_x_percent_ch()
+#> <ScaleContinuousPosition>
+#>  Range:  
+#>  Limits:    0 --    1
 demo_number(c(-1e4, 1e4), scale_name = "currency_ch")
 #> scale_x_currency_ch()
 
-# scale_x_currency_ch()
+scale_x_currency_ch()
+#> <ScaleContinuousPosition>
+#>  Range:  
+#>  Limits:    0 --    1
 ```
