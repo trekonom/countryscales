@@ -47,7 +47,7 @@ number_de <- function(x, accuracy = 1, scale = 1,
 #' @rdname label-de
 #' @export
 label_percent_de <- function(accuracy = 1, scale = 100,
-                             prefix = "", suffix = NULL,
+                             prefix = NULL, suffix = NULL,
                              big.mark = NULL, decimal.mark = NULL,
                              trim = TRUE, ...) {
   label_percent_locale(
@@ -63,7 +63,7 @@ label_percent_de <- function(accuracy = 1, scale = 100,
 #' @rdname label-de
 #' @export
 percent_de <- function(x, accuracy = 1, scale = 100,
-                       prefix = "", suffix = NULL,
+                       prefix = NULL, suffix = NULL,
                        big.mark = NULL, decimal.mark = NULL,
                        trim = TRUE, ...) {
   label_percent_de(

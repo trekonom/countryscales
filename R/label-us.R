@@ -47,7 +47,7 @@ number_us <- function(x, accuracy = 1, scale = 1,
 #' @rdname label-us
 #' @export
 label_percent_us <- function(accuracy = 1, scale = 100,
-                             prefix = "", suffix = NULL,
+                             prefix = NULL, suffix = NULL,
                              big.mark = NULL, decimal.mark = NULL,
                              trim = TRUE, ...) {
   label_percent_locale(
@@ -63,7 +63,7 @@ label_percent_us <- function(accuracy = 1, scale = 100,
 #' @rdname label-us
 #' @export
 percent_us <- function(x, accuracy = 1, scale = 100,
-                       prefix = "", suffix = NULL,
+                       prefix = NULL, suffix = NULL,
                        big.mark = NULL, decimal.mark = NULL,
                        trim = TRUE, ...) {
   label_percent_us(
