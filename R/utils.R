@@ -3,9 +3,37 @@
 }
 
 
-check_locale <- function(x) {
-  x <- match.arg(x, unique(countryscales::locales$locale))
-  countryscales::locales[countryscales::locales$locale %in% x, ]
+check_locale <- function(x, call = rlang::caller_env()) {
+  valid <- unique(countryscales::locales$locale)
+
+  if (is.character(x) && length(x) == 1 && x %in% valid) {
+    return(countryscales::locales[countryscales::locales$locale == x, ])
+  }
+
+  shown <- if (is.character(x) && length(x) == 1) {
+    sprintf('"%s"', x)
+  } else {
+    paste(format(x), collapse = ", ")
+  }
+
+  suggestions <- if (is.character(x) && length(x) == 1) {
+    agrep(x, valid, max.distance = 0.2, value = TRUE)
+  }
+
+  rlang::abort(
+    c(
+      sprintf("`locale` must be a valid locale code, not %s.", shown),
+      if (length(suggestions) > 0) {
+        c(i = sprintf(
+          "Did you mean %s?",
+          paste(sprintf('"%s"', suggestions), collapse = " or ")
+        ))
+      },
+      c(i = "Run `show_locales()` to see all supported locale codes.")
+    ),
+    class = "countryscales_error_invalid_locale",
+    call = call
+  )
 }
 
 check_mark <- function(x, locale, what) {
