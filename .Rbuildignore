@@ -13,3 +13,4 @@
 ^doc$
 ^Meta$
 ^CLAUDE\.md$
+^cran-comments\.md$
