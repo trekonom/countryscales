@@ -4,16 +4,108 @@ template:
 reference:
 - title: Axis labels
   desc: |
-    Functions for formatting numbers.
+    General-purpose functions for formatting numbers in decimal format,
+    as percentages, or as currencies, according to any supported locale.
   contents:
-  - matches("^label_.*?_locale")
-  - starts_with("label_")
+  - label_number_locale
+  - label_percent_locale
+  - label_currency_locale
 - title: Positional Scales
   desc: |
-    Functions for formatting positional scales as numbers, percents or currencies.
+    General-purpose functions for labelling ggplot2 axes as numbers,
+    percentages, or currencies, according to any supported locale.
   contents:
-  - matches("^scale_.*?_locale")
-  - starts_with("scale_")
+  - scale_x_number_locale
+  - scale_y_number_locale
+  - scale_x_percent_locale
+  - scale_y_percent_locale
+  - scale_x_currency_locale
+  - scale_y_currency_locale
+- title: Countries
+  desc: |
+    Ready-to-use label and scale functions pinned to a specific country's
+    formatting conventions.
+- subtitle: Argentina
+  contents:
+  - ends_with("_ar")
+- subtitle: Australia
+  contents:
+  - ends_with("_au")
+- subtitle: Austria
+  contents:
+  - ends_with("_at")
+- subtitle: Brazil
+  contents:
+  - ends_with("_br")
+- subtitle: Canada
+  contents:
+  - ends_with("_ca")
+- subtitle: China
+  contents:
+  - ends_with("_cn")
+- subtitle: Denmark
+  contents:
+  - ends_with("_dk")
+- subtitle: Finland
+  contents:
+  - ends_with("_fi")
+- subtitle: France
+  contents:
+  - ends_with("_fr")
+- subtitle: Germany
+  contents:
+  - ends_with("_de")
+- subtitle: Indonesia
+  contents:
+  - ends_with("_id")
+- subtitle: Ireland
+  contents:
+  - ends_with("_ie")
+- subtitle: Italy
+  contents:
+  - ends_with("_it")
+- subtitle: Japan
+  contents:
+  - ends_with("_jp")
+- subtitle: Mexico
+  contents:
+  - ends_with("_mx")
+- subtitle: Norway
+  contents:
+  - ends_with("_no")
+- subtitle: Portugal
+  contents:
+  - ends_with("_pt")
+- subtitle: Russia
+  contents:
+  - ends_with("_ru")
+- subtitle: Saudi Arabia
+  contents:
+  - ends_with("_sa")
+- subtitle: South Africa
+  contents:
+  - ends_with("_za")
+- subtitle: South Korea
+  contents:
+  - ends_with("_kr")
+- subtitle: Spain
+  contents:
+  - ends_with("_es")
+- subtitle: Sweden
+  contents:
+  - ends_with("_se")
+- subtitle: Switzerland
+  contents:
+  - ends_with("_ch")
+- subtitle: Turkey
+  contents:
+  - ends_with("_tr")
+- subtitle: United Kingdom
+  contents:
+  - ends_with("_gb")
+- subtitle: United States
+  contents:
+  - ends_with("_us")
 - title: Misc
   desc: |
     Miscellaneous Functions
@@ -29,4 +121,3 @@ reference:
   - currencies
   - countries
   - g20
-
