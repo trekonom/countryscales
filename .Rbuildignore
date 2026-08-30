@@ -10,3 +10,5 @@
 ^\.github$
 ^index\.Rmd$
 ^index\.md$
+^doc$
+^Meta$
