@@ -221,6 +221,10 @@ Functions for formatting numbers.
   [`label_percent_locale()`](https://trekonom.github.io/countryscales/reference/label-locale.md)
   [`label_currency_locale()`](https://trekonom.github.io/countryscales/reference/label-locale.md)
   : Formatting numbers
+- [`label_number_at()`](https://trekonom.github.io/countryscales/reference/label-at.md)
+  [`label_percent_at()`](https://trekonom.github.io/countryscales/reference/label-at.md)
+  [`label_currency_at()`](https://trekonom.github.io/countryscales/reference/label-at.md)
+  : Austrian Style Formatting of Numbers
 - [`label_number_ch()`](https://trekonom.github.io/countryscales/reference/label-ch.md)
   [`number_ch()`](https://trekonom.github.io/countryscales/reference/label-ch.md)
   [`label_percent_ch()`](https://trekonom.github.io/countryscales/reference/label-ch.md)
@@ -235,6 +239,30 @@ Functions for formatting numbers.
   [`label_currency_de()`](https://trekonom.github.io/countryscales/reference/label-de.md)
   [`currency_de()`](https://trekonom.github.io/countryscales/reference/label-de.md)
   : German Style Formatting of Numbers
+- [`label_number_es()`](https://trekonom.github.io/countryscales/reference/label-es.md)
+  [`label_percent_es()`](https://trekonom.github.io/countryscales/reference/label-es.md)
+  [`label_currency_es()`](https://trekonom.github.io/countryscales/reference/label-es.md)
+  : Spanish Style Formatting of Numbers
+- [`label_number_fr()`](https://trekonom.github.io/countryscales/reference/label-fr.md)
+  [`label_percent_fr()`](https://trekonom.github.io/countryscales/reference/label-fr.md)
+  [`label_currency_fr()`](https://trekonom.github.io/countryscales/reference/label-fr.md)
+  : French Style Formatting of Numbers
+- [`label_number_gb()`](https://trekonom.github.io/countryscales/reference/label-gb.md)
+  [`label_percent_gb()`](https://trekonom.github.io/countryscales/reference/label-gb.md)
+  [`label_currency_gb()`](https://trekonom.github.io/countryscales/reference/label-gb.md)
+  : British Style Formatting of Numbers
+- [`label_number_ie()`](https://trekonom.github.io/countryscales/reference/label-ie.md)
+  [`label_percent_ie()`](https://trekonom.github.io/countryscales/reference/label-ie.md)
+  [`label_currency_ie()`](https://trekonom.github.io/countryscales/reference/label-ie.md)
+  : Irish Style Formatting of Numbers
+- [`label_number_it()`](https://trekonom.github.io/countryscales/reference/label-it.md)
+  [`label_percent_it()`](https://trekonom.github.io/countryscales/reference/label-it.md)
+  [`label_currency_it()`](https://trekonom.github.io/countryscales/reference/label-it.md)
+  : Italian Style Formatting of Numbers
+- [`label_number_pt()`](https://trekonom.github.io/countryscales/reference/label-pt.md)
+  [`label_percent_pt()`](https://trekonom.github.io/countryscales/reference/label-pt.md)
+  [`label_currency_pt()`](https://trekonom.github.io/countryscales/reference/label-pt.md)
+  : Portuguese Style Formatting of Numbers
 - [`label_number_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)
   [`number_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)
   [`label_percent_us()`](https://trekonom.github.io/countryscales/reference/label-us.md)
@@ -255,6 +283,13 @@ currencies.
   [`scale_x_currency_locale()`](https://trekonom.github.io/countryscales/reference/scale-locale.md)
   [`scale_y_currency_locale()`](https://trekonom.github.io/countryscales/reference/scale-locale.md)
   : Formatted Positional Scales
+- [`scale_x_number_at()`](https://trekonom.github.io/countryscales/reference/scale-at.md)
+  [`scale_x_percent_at()`](https://trekonom.github.io/countryscales/reference/scale-at.md)
+  [`scale_x_currency_at()`](https://trekonom.github.io/countryscales/reference/scale-at.md)
+  [`scale_y_number_at()`](https://trekonom.github.io/countryscales/reference/scale-at.md)
+  [`scale_y_percent_at()`](https://trekonom.github.io/countryscales/reference/scale-at.md)
+  [`scale_y_currency_at()`](https://trekonom.github.io/countryscales/reference/scale-at.md)
+  : Austrian Style Positional Scales
 - [`scale_x_number_ch()`](https://trekonom.github.io/countryscales/reference/scale-ch.md)
   [`scale_y_number_ch()`](https://trekonom.github.io/countryscales/reference/scale-ch.md)
   [`scale_x_percent_ch()`](https://trekonom.github.io/countryscales/reference/scale-ch.md)
@@ -269,6 +304,48 @@ currencies.
   [`scale_x_currency_de()`](https://trekonom.github.io/countryscales/reference/scale-de.md)
   [`scale_y_currency_de()`](https://trekonom.github.io/countryscales/reference/scale-de.md)
   : German Style Positional Scales
+- [`scale_x_number_es()`](https://trekonom.github.io/countryscales/reference/scale-es.md)
+  [`scale_x_percent_es()`](https://trekonom.github.io/countryscales/reference/scale-es.md)
+  [`scale_x_currency_es()`](https://trekonom.github.io/countryscales/reference/scale-es.md)
+  [`scale_y_number_es()`](https://trekonom.github.io/countryscales/reference/scale-es.md)
+  [`scale_y_percent_es()`](https://trekonom.github.io/countryscales/reference/scale-es.md)
+  [`scale_y_currency_es()`](https://trekonom.github.io/countryscales/reference/scale-es.md)
+  : Spanish Style Positional Scales
+- [`scale_x_number_fr()`](https://trekonom.github.io/countryscales/reference/scale-fr.md)
+  [`scale_x_percent_fr()`](https://trekonom.github.io/countryscales/reference/scale-fr.md)
+  [`scale_x_currency_fr()`](https://trekonom.github.io/countryscales/reference/scale-fr.md)
+  [`scale_y_number_fr()`](https://trekonom.github.io/countryscales/reference/scale-fr.md)
+  [`scale_y_percent_fr()`](https://trekonom.github.io/countryscales/reference/scale-fr.md)
+  [`scale_y_currency_fr()`](https://trekonom.github.io/countryscales/reference/scale-fr.md)
+  : French Style Positional Scales
+- [`scale_x_number_gb()`](https://trekonom.github.io/countryscales/reference/scale-gb.md)
+  [`scale_x_percent_gb()`](https://trekonom.github.io/countryscales/reference/scale-gb.md)
+  [`scale_x_currency_gb()`](https://trekonom.github.io/countryscales/reference/scale-gb.md)
+  [`scale_y_number_gb()`](https://trekonom.github.io/countryscales/reference/scale-gb.md)
+  [`scale_y_percent_gb()`](https://trekonom.github.io/countryscales/reference/scale-gb.md)
+  [`scale_y_currency_gb()`](https://trekonom.github.io/countryscales/reference/scale-gb.md)
+  : British Style Positional Scales
+- [`scale_x_number_ie()`](https://trekonom.github.io/countryscales/reference/scale-ie.md)
+  [`scale_x_percent_ie()`](https://trekonom.github.io/countryscales/reference/scale-ie.md)
+  [`scale_x_currency_ie()`](https://trekonom.github.io/countryscales/reference/scale-ie.md)
+  [`scale_y_number_ie()`](https://trekonom.github.io/countryscales/reference/scale-ie.md)
+  [`scale_y_percent_ie()`](https://trekonom.github.io/countryscales/reference/scale-ie.md)
+  [`scale_y_currency_ie()`](https://trekonom.github.io/countryscales/reference/scale-ie.md)
+  : Irish Style Positional Scales
+- [`scale_x_number_it()`](https://trekonom.github.io/countryscales/reference/scale-it.md)
+  [`scale_x_percent_it()`](https://trekonom.github.io/countryscales/reference/scale-it.md)
+  [`scale_x_currency_it()`](https://trekonom.github.io/countryscales/reference/scale-it.md)
+  [`scale_y_number_it()`](https://trekonom.github.io/countryscales/reference/scale-it.md)
+  [`scale_y_percent_it()`](https://trekonom.github.io/countryscales/reference/scale-it.md)
+  [`scale_y_currency_it()`](https://trekonom.github.io/countryscales/reference/scale-it.md)
+  : Italian Style Positional Scales
+- [`scale_x_number_pt()`](https://trekonom.github.io/countryscales/reference/scale-pt.md)
+  [`scale_x_percent_pt()`](https://trekonom.github.io/countryscales/reference/scale-pt.md)
+  [`scale_x_currency_pt()`](https://trekonom.github.io/countryscales/reference/scale-pt.md)
+  [`scale_y_number_pt()`](https://trekonom.github.io/countryscales/reference/scale-pt.md)
+  [`scale_y_percent_pt()`](https://trekonom.github.io/countryscales/reference/scale-pt.md)
+  [`scale_y_currency_pt()`](https://trekonom.github.io/countryscales/reference/scale-pt.md)
+  : Portuguese Style Positional Scales
 - [`scale_x_number_us()`](https://trekonom.github.io/countryscales/reference/scale-us.md)
   [`scale_y_number_us()`](https://trekonom.github.io/countryscales/reference/scale-us.md)
   [`scale_x_percent_us()`](https://trekonom.github.io/countryscales/reference/scale-us.md)
