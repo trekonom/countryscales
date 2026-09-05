@@ -8,6 +8,12 @@
 </div>
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://img.shields.io/badge/CRAN-not%20on%20CRAN%20yet-lightgrey)](https://CRAN.R-project.org/package=countryscales)
+[![Codecov test
+coverage](https://codecov.io/gh/trekonom/countryscales/graph/badge.svg)](https://app.codecov.io/gh/trekonom/countryscales)
 <!-- badges: end -->
 
 `countryscales` extends [`scales`](https://scales.r-lib.org) and
@@ -41,7 +47,19 @@ library(dplyr, warn.conflicts = FALSE)
 
 g20 <- countryscales::g20 |>
   # India is not supported
-  filter(iso2c != "IN") |>
+  filter(iso2c != "IN")
+
+# gapminder's classic per-country colors (Hans Rosling's bubble charts),
+# keyed to match g20$country: "Korea, Rep." is gapminder's name for South
+# Korea, and gapminder's 142-country palette doesn't cover Russia at all,
+# so it gets a manually chosen fallback color
+country_colors <- gapminder::country_colors[
+  recode(g20$country, "South Korea" = "Korea, Rep.")
+] |>
+  setNames(g20$country)
+country_colors[["Russia"]] <- "#707070"
+
+g20 <- g20 |>
   mutate(
     x = factor(rep(1:2, 9)),
     y = factor(rep(9:1, each = 2)),
@@ -53,12 +71,16 @@ g20 <- countryscales::g20 |>
     )
   )
 
+names(country_colors)[names(country_colors) == "United States"] <- "the United States"
+names(country_colors)[names(country_colors) == "United Kingdom"] <- "the United Kingdom"
+
 ggplot(g20, aes(x = x, y = y)) +
   geom_label(
     aes(label = paste(value, "in", country), fill = country),
     label.padding = unit(5, "pt"), label.r = unit(8, "pt"),
     color = "white"
   ) +
+  scale_fill_manual(values = country_colors) +
   theme_void() +
   labs(
     title = "1 million USD are formatted as"
@@ -66,7 +88,7 @@ ggplot(g20, aes(x = x, y = y)) +
   guides(fill = "none")
 ```
 
-<img src="man/figures/README-locale-g20-1.png" width="100%" />
+<img src="man/figures/README-locale-g20-1.png" alt="Grid of 18 colored labels arranged two per row, one for each G20 country except India. Each label shows how 1,000,000 US dollars is written using that country's own number and currency conventions, for example '1.000.000 $' for Germany and '1,000,000 US$' for Saudi Arabia. Labels are colored individually per country using gapminder's classic palette. Currency symbol placement, thousands-separator choice, and spacing all differ across countries even though the underlying value is identical." width="100%" />
 
 As another example, let’s look at formatting a chart according to German
 style conventions, where a dot (`.`) is used as the big mark.
@@ -111,7 +133,7 @@ base +
   labs(title = "German style conventions.")
 ```
 
-<img src="man/figures/README-locale-de-1.png" width="100%" />
+<img src="man/figures/README-locale-de-1.png" alt="Horizontal bar chart titled 'German style conventions.' showing total 2015 population by region, from Asia (about 4.3 billion, longest bar) down to Europe (about 830 million, shortest bar), with Africa and the Americas in between. Axis tick labels and the value label on each bar are formatted with German number conventions, using a period as the thousands separator, for example '4.306.430.000' for Asia." width="100%" />
 
 `countryscales` also has some handy functions for common locales. For
 instance, you can use `label_number_ch` and `scale_x_number_ch` to
@@ -132,7 +154,7 @@ base +
   labs(title = "Swiss style conventions.")
 ```
 
-<img src="man/figures/README-locale-ch-1.png" width="100%" />
+<img src="man/figures/README-locale-ch-1.png" alt="Horizontal bar chart titled 'Swiss style conventions.', showing the same 2015 population-by-region comparison as the German-style chart above, but formatted with Swiss number conventions: an apostrophe as the thousands separator, for example '4'306'430'000' for Asia, used for both the axis tick labels and the value label on each bar." width="100%" />
 
 ## Note on supported locales
 
