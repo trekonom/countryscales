@@ -54,7 +54,7 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "", suffix = "",
     "parens", "custom"
   ))
   if (!is.null(scale_cut)) {
-    cut <- scale_cut(x,
+    cut <- apply_scale_cut(x,
       breaks = scale_cut, scale = scale,
       accuracy = accuracy, suffix = suffix
     )

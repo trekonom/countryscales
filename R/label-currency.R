@@ -69,13 +69,18 @@ currency <- function(x,
   n_sep_by <- arg_match(n_sep_by)
 
   ### COPY AND PASTE from scales::label_number
+  # currency() has no free-text `suffix` argument of its own (its prefix/
+  # suffix are reserved for the currency symbol and sign) -- the scale_cut
+  # suffix (e.g. "K"/"M") gets appended to the formatted number below,
+  # before the currency-symbol wrapping happens.
+  scale_cut_suffix <- ""
   if (!is.null(scale_cut)) {
-    cut <- scale_cut(x,
+    cut <- apply_scale_cut(x,
       breaks = scale_cut, scale = scale,
-      accuracy = accuracy, suffix = suffix
+      accuracy = accuracy, suffix = ""
     )
     scale <- cut$scale
-    suffix <- cut$suffix
+    scale_cut_suffix <- cut$suffix
     accuracy <- cut$accuracy
   }
   accuracy <- accuracy %||% precision(x * scale)
@@ -95,6 +100,7 @@ currency <- function(x,
       scientific = FALSE, ...
     )
   }
+  ret <- paste0(ret, scale_cut_suffix)
   ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
   ###
 
@@ -171,7 +177,6 @@ currency <- function(x,
   }
 
   ret <- paste0(prefix, ret, suffix)
-  ret[sign > 0] <- paste0(p_sign, ret[sign > 0])
 
   ret[is.na(x)] <- NA
   names(ret) <- names(x)
@@ -179,6 +184,38 @@ currency <- function(x,
 }
 
 # Helpers -----------------------------------------------------------------
+
+### COPY AND PASTE from scales pkg (renamed from `scale_cut` to avoid
+### colliding with the `scale_cut` argument of number()/currency(), which
+### holds the `breaks` vector this function is called with)
+apply_scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
+  breaks <- sort(breaks, na.last = TRUE)
+
+  break_suffix <- as.character(cut(abs(x * scale),
+    breaks = c(unname(breaks), Inf), labels = c(names(breaks)), right = FALSE
+  ))
+  break_suffix[is.na(break_suffix)] <- ""
+
+  bad_break <- ((x * scale / breaks[break_suffix]) %% 1 != 0) %|% FALSE
+  if (any(bad_break)) {
+    lower_break <- breaks[match(break_suffix[bad_break], names(breaks)) - 1]
+    lower_break[lower_break == 0] <- 1
+    improved_break <- (x[bad_break] * scale / lower_break) %% 1 == 0
+    power10_break <- breaks[break_suffix[bad_break]] / lower_break
+    power10_break <- log10(power10_break) %% 1 == 0
+    break_suffix[bad_break][improved_break & !power10_break] <-
+      names(lower_break[improved_break & !power10_break])
+  }
+
+  break_scale <- scale * unname(1 / breaks[break_suffix])
+  break_scale[which(break_scale %in% c(Inf, NA))] <- scale
+  break_scale[abs(x) == 0 | is.na(break_scale)] <- 1
+
+  suffix <- paste0(break_suffix, suffix)
+  accuracy <- accuracy %||% stats::ave(x * break_scale, break_scale, FUN = precision)
+
+  list(scale = break_scale, suffix = suffix, accuracy = accuracy)
+}
 
 ### COPY AND PASTE from scales pkg
 precision <- function(x) {

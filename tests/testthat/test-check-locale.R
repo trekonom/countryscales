@@ -29,6 +29,23 @@ test_that("check_locale suggests a close match for a likely typo", {
   expect_match(conditionMessage(err), '"de-DE"', fixed = TRUE)
 })
 
+test_that("check_locale errors informatively for a non-string input", {
+  expect_error(
+    check_locale(123),
+    class = "countryscales_error_invalid_locale"
+  )
+  expect_error(
+    check_locale(123),
+    regexp = "123",
+    fixed = TRUE
+  )
+  expect_error(
+    check_locale(c("de-DE", "fr-FR")),
+    regexp = "de-DE, fr-FR",
+    fixed = TRUE
+  )
+})
+
 test_that("label_number/percent/currency_locale error informatively on an invalid locale", {
   expect_error(
     label_number_locale(locale = "not-a-locale"),
