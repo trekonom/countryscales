@@ -8,6 +8,12 @@
 </div>
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/countryscales)](https://CRAN.R-project.org/package=countryscales)
+[![Codecov test
+coverage](https://codecov.io/gh/trekonom/countryscales/graph/badge.svg)](https://app.codecov.io/gh/trekonom/countryscales)
 <!-- badges: end -->
 
 `countryscales` extends [`scales`](https://scales.r-lib.org) and

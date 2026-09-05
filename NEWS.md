@@ -11,9 +11,8 @@ Initial CRAN release.
   numbering system (grouping by threes then twos) are not supported, as
   they deviate from the standard grouping this package implements.
 * Dedicated `_de()`, `_ch()`, and `_us()` wrapper families (e.g.
-  `label_number_de()`/`number_de()`, `label_percent_ch()`/`percent_ch()`,
-  `label_currency_us()`/`currency_us()`) provide ready-to-use formatters
-  for Germany, Switzerland, and the United States.
+  `label_number_de()`, `label_percent_ch()`, `label_currency_us()`) provide
+  ready-to-use formatters for Germany, Switzerland, and the United States.
 * `label_number_xx()`/`label_percent_xx()`/`label_currency_xx()` and their
   `scale_x/y_number/percent/currency_xx()` counterparts additionally cover
   24 more locales (#4): France (`fr`), the United Kingdom (`gb`), Italy
