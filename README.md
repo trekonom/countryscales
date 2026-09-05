@@ -11,7 +11,7 @@
 
 [![R-CMD-check](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/countryscales)](https://CRAN.R-project.org/package=countryscales)
+status](https://img.shields.io/badge/CRAN-not%20on%20CRAN%20yet-lightgrey)](https://CRAN.R-project.org/package=countryscales)
 [![Codecov test
 coverage](https://codecov.io/gh/trekonom/countryscales/graph/badge.svg)](https://app.codecov.io/gh/trekonom/countryscales)
 <!-- badges: end -->
@@ -47,7 +47,19 @@ library(dplyr, warn.conflicts = FALSE)
 
 g20 <- countryscales::g20 |>
   # India is not supported
-  filter(iso2c != "IN") |>
+  filter(iso2c != "IN")
+
+# gapminder's classic per-country colors (Hans Rosling's bubble charts),
+# keyed to match g20$country: "Korea, Rep." is gapminder's name for South
+# Korea, and gapminder's 142-country palette doesn't cover Russia at all,
+# so it gets a manually chosen fallback color
+country_colors <- gapminder::country_colors[
+  recode(g20$country, "South Korea" = "Korea, Rep.")
+] |>
+  setNames(g20$country)
+country_colors[["Russia"]] <- "#707070"
+
+g20 <- g20 |>
   mutate(
     x = factor(rep(1:2, 9)),
     y = factor(rep(9:1, each = 2)),
@@ -59,12 +71,16 @@ g20 <- countryscales::g20 |>
     )
   )
 
+names(country_colors)[names(country_colors) == "United States"] <- "the United States"
+names(country_colors)[names(country_colors) == "United Kingdom"] <- "the United Kingdom"
+
 ggplot(g20, aes(x = x, y = y)) +
   geom_label(
     aes(label = paste(value, "in", country), fill = country),
     label.padding = unit(5, "pt"), label.r = unit(8, "pt"),
     color = "white"
   ) +
+  scale_fill_manual(values = country_colors) +
   theme_void() +
   labs(
     title = "1 million USD are formatted as"
