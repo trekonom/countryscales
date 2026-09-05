@@ -127,19 +127,3 @@ label_currency_locale <- function(accuracy = NULL, scale = 1,
     ...
   )
 }
-
-prefix_currency <- function(locale, currency) {
-  if (is.na(locale[["p_cs_precedes"]]) || isFALSE(locale[["p_cs_precedes"]])) {
-    return("")
-  } else {
-    currency
-  }
-}
-
-suffix_currency <- function(locale, currency) {
-  if (is.na(locale[["p_cs_precedes"]]) || isTRUE(locale[["p_cs_precedes"]])) {
-    return("")
-  } else {
-    currency
-  }
-}

@@ -25,20 +25,6 @@ number_scale <- function(aesthetics, scale_name, palette,
                          prefix = "", suffix = "",
                          big.mark = " ", decimal.mark = ".",
                          trim = TRUE, ...) {
-
-  if (is.waive(labels)) {
-    labels <- label_number(
-      accuracy = accuracy,
-      scale = scale,
-      prefix = prefix,
-      suffix = suffix,
-      big.mark = big.mark,
-      decimal.mark = decimal.mark,
-      trim = trim,
-      ...
-    )
-  }
-
   continuous_scale(
     aesthetics = aesthetics,
     palette = palette,

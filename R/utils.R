@@ -2,6 +2,11 @@
   if (!is.null(a)) a else b
 }
 
+# Vectorized NA-coalesce, used by apply_scale_cut() (R/label-currency.R)
+"%|%" <- function(a, b) {
+  ifelse(is.na(a), b, a)
+}
+
 
 check_locale <- function(x, call = rlang::caller_env()) {
   valid <- unique(countryscales::locales$locale)
@@ -50,11 +55,6 @@ check_big_currency <- function(x, locale) {
 
 check_decimal_currency <- function(x, locale) {
   check_mark(x, locale, "mon_decimal_point")
-}
-
-check_suffix <- function(x, locale, suffix = "%") {
-  x <- check_mark(x, locale, "p_sep_by_space")
-  paste0(strrep(" ", x), suffix)
 }
 
 check_decimal <- function(x, locale) {
