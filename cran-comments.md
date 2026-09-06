@@ -10,7 +10,15 @@ This is a new release — countryscales' first CRAN submission.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 0 notes locally and on the GitHub Actions CI matrix.
+
+win-builder (both devel and release) reports 0 errors | 0 warnings | 1 note:
+
+> Possibly misspelled words in DESCRIPTION: CLDR (20:17)
+
+CLDR is the Unicode Common Locale Data Repository, the data source this
+package is built on; it's spelled correctly and referenced elsewhere in the
+DESCRIPTION as well.
 
 ## Downstream dependencies
 
