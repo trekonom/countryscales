@@ -14,6 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+## The problem
+
 The `scales` package provides a family of easy to use functions
 like `scales::label_number` or `scales::label_percent` to format numbers in
 decimal format, as percentages or currencies, which could also be
@@ -21,7 +23,7 @@ passed to the `labels` argument of `ggplot2`s family of scale functions to
 format axes or legends.
 
 However, let's say you have to prepare a report or charts where you have to use
-country specific style conventions to display numbers which differ from the
+country-specific style conventions to display numbers which differ from the
 default anglo-american style.
 
 While that could be achieved with the `scales` package as well, in practice
@@ -74,12 +76,16 @@ later you probably put these helpers inside package.
 And that's the goal of `countryscales`: Providing out-of-the-box helpers to
 format numbers using country-specific style conventions.
 
-As a first example consider formatting a number `r x <- 12345689.987654321`
-according to style conventions used in Germany and several other European
-countries where a dot (`.`) is used as the big mark or grouping mark or
-thousands separator and a comma (`,`) as the decimal mark.
+```{r, include = FALSE}
+x <- 12345689.987654321
+```
 
-Using `scales::label_number` this requires to switch the default decimal and big
+As a first example consider formatting a number according to style
+conventions used in Germany and several other European countries where a
+dot (`.`) is used as the big mark or grouping mark or thousands separator
+and a comma (`,`) as the decimal mark.
+
+Using `scales::label_number` this requires switching the default decimal and big
 marks:
 ```{r}
 library(scales)
@@ -164,3 +170,27 @@ p +
   # Format numbers as percentages
   scale_x_number_de(expand = c(0, 0, .05, 0))
 ```
+
+## Beyond Germany
+
+Every example above uses `label_number_de()`/`scale_x_number_de()`, but
+that's just the tip of the iceberg. Under the hood, all of these delegate
+to a general-purpose locale engine, `label_number_locale()`/
+`scale_x_number_locale()` (and their `_percent_`/`_currency_`
+counterparts), which work with any of the `r nrow(countryscales::locales)`
+locale codes `countryscales` supports -- run `show_locales()` to list them
+all. On top of that engine, `countryscales` also ships the same
+ready-to-use `_de()`-style convenience family for 27 countries, from
+Argentina to the United States (see the
+[reference index](https://trekonom.github.io/countryscales/reference/index.html#countries)
+for the full list).
+
+Getting locale-specific formatting right also involves more than just the
+decimal and grouping marks shown here: correct currency symbol and sign
+positioning (which side of the number, with or without a space) and
+locale-correct percent-sign placement and spacing are full of exceptions
+that `scales::label_number()`/`label_currency()` don't attempt to solve.
+`countryscales` handles these under the hood using a modified version of
+`label_number()` -- see the
+[README's Credits section](https://trekonom.github.io/countryscales/index.html#credits)
+for the full story.
