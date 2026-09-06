@@ -45,6 +45,20 @@ cumbersome and annoying as you always have to
   to display numbers on the x axis as percentages using the style convention
   found in many European countries.
 
+As of `scales` 1.4.0 (released 2025-04-24), you no longer have to repeat
+`big.mark`/`decimal.mark` on every single call within a session — a new
+`scales::number_options(decimal.mark = ",", big.mark = ".")` sets these (and
+`style_positive`/`style_negative`, and currency-specific equivalents) as
+global defaults for every subsequent `label_number()`/`label_currency()` call.
+That closes part of the gap above for a *single* country's conventions
+applied for the rest of a session — but it's still one global default at a
+time. It doesn't help if you need several countries' conventions side by
+side in the same report or chart (like the G20 example in the
+[README](https://trekonom.github.io/countryscales/)), and it doesn't touch
+the harder problems `countryscales` also handles under the hood: correct
+currency symbol/sign positioning and locale-correct percent-sign placement
+and spacing.
+
 ## The solution
 
 A first and simple solution to this problem would be to add some simple wrappers
