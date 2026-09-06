@@ -1,4 +1,4 @@
-# countryscales 0.2.0
+# countryscales 0.3.0
 
 Initial CRAN release.
 
@@ -27,3 +27,11 @@ Initial CRAN release.
   `_percent_`/`_currency_` and `_de`/`_ch`/`_us` counterparts label
   `ggplot2` axes directly using the same locale-aware formatting.
 * `show_locales()` lists all supported locale codes.
+* Fixed `scale_cut` (e.g. `scale_cut = scales::cut_short_scale()`, for
+  "1K"/"1M"-style suffixes), which is accepted by `label_number_locale()`
+  and `label_currency_locale()` (and so by every `_xx()` wrapper) but
+  always errored when actually used, due to an internal naming collision.
+* Fixed a latent bug in currency formatting where a locale with a
+  non-empty positive sign could have had that sign doubled on positive
+  amounts. Invisible for every currently supported locale (all have an
+  empty positive sign), but incorrect in principle — now fixed.
