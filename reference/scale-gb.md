@@ -344,6 +344,10 @@ scale_y_currency_gb(
 
   currency symbol
 
+## Value
+
+A `ggplot2` scale, for use in a `+`-chained plot construction.
+
 ## Details
 
 - the `number` ones format axis text in decimal format.

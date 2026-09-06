@@ -110,6 +110,11 @@ label_currency_locale(
 
   currency symbol
 
+## Value
+
+A labelling function that takes a numeric vector and returns a character
+vector.
+
 ## Details
 
 - `label_number_locale` formats numbers in decimal format.

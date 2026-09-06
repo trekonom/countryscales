@@ -22,6 +22,10 @@ demo_number(x, scale_name, ...)
 
   further arguments to be passed to the scale
 
+## Value
+
+A `ggplot` object, invisibly printed as a demo of the requested scale.
+
 ## Examples
 
 ``` r
