@@ -1,5 +1,7 @@
 # Background
 
+## The problem
+
 The `scales` package provides a family of easy to use functions like
 [`scales::label_number`](https://scales.r-lib.org/reference/label_number.html)
 or
@@ -9,7 +11,7 @@ could also be passed to the `labels` argument of `ggplot2`s family of
 scale functions to format axes or legends.
 
 However, let’s say you have to prepare a report or charts where you have
-to use country specific style conventions to display numbers which
+to use country-specific style conventions to display numbers which
 differ from the default anglo-american style.
 
 While that could be achieved with the `scales` package as well, in
@@ -34,6 +36,21 @@ and annoying as you always have to
   to display numbers on the x axis as percentages using the style
   convention found in many European countries.
 
+As of `scales` 1.4.0 (released 2025-04-24), you no longer have to repeat
+`big.mark`/`decimal.mark` on every single call within a session — a new
+`scales::number_options(decimal.mark = ",", big.mark = ".")` sets these
+(and `style_positive`/`style_negative`, and currency-specific
+equivalents) as global defaults for every subsequent
+[`label_number()`](https://scales.r-lib.org/reference/label_number.html)/[`label_currency()`](https://scales.r-lib.org/reference/label_currency.html)
+call. That closes part of the gap above for a *single* country’s
+conventions applied for the rest of a session — but it’s still one
+global default at a time. It doesn’t help if you need several countries’
+conventions side by side in the same report or chart (like the G20
+example in the [README](https://trekonom.github.io/countryscales/)), and
+it doesn’t touch the harder problems `countryscales` also handles under
+the hood: correct currency symbol/sign positioning and locale-correct
+percent-sign placement and spacing.
+
 ## The solution
 
 A first and simple solution to this problem would be to add some simple
@@ -56,7 +73,7 @@ separator and a comma (`,`) as the decimal mark.
 
 Using
 [`scales::label_number`](https://scales.r-lib.org/reference/label_number.html)
-this requires to switch the default decimal and big marks:
+this requires switching the default decimal and big marks:
 
 ``` r
 
@@ -156,3 +173,33 @@ p +
 ```
 
 ![](background_files/figure-html/style-countryscales-1.png)
+
+## Beyond Germany
+
+Every example above uses
+[`label_number_de()`](https://trekonom.github.io/countryscales/reference/label-de.md)/[`scale_x_number_de()`](https://trekonom.github.io/countryscales/reference/scale-de.md),
+but that’s just the tip of the iceberg. Under the hood, all of these
+delegate to a general-purpose locale engine,
+[`label_number_locale()`](https://trekonom.github.io/countryscales/reference/label-locale.md)/
+[`scale_x_number_locale()`](https://trekonom.github.io/countryscales/reference/scale-locale.md)
+(and their `_percent_`/`_currency_` counterparts), which work with any
+of the 764 locale codes `countryscales` supports – run
+[`show_locales()`](https://trekonom.github.io/countryscales/reference/show_locales.md)
+to list them all. On top of that engine, `countryscales` also ships the
+same ready-to-use `_de()`-style convenience family for 27 countries,
+from Argentina to the United States (see the [reference
+index](https://trekonom.github.io/countryscales/reference/index.html#countries)
+for the full list).
+
+Getting locale-specific formatting right also involves more than just
+the decimal and grouping marks shown here: correct currency symbol and
+sign positioning (which side of the number, with or without a space) and
+locale-correct percent-sign placement and spacing are full of exceptions
+that
+[`scales::label_number()`](https://scales.r-lib.org/reference/label_number.html)/[`label_currency()`](https://scales.r-lib.org/reference/label_currency.html)
+don’t attempt to solve. `countryscales` handles these under the hood
+using a modified version of
+[`label_number()`](https://scales.r-lib.org/reference/label_number.html)
+– see the [README’s Credits
+section](https://trekonom.github.io/countryscales/index.html#credits)
+for the full story.

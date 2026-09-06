@@ -64,6 +64,9 @@
 
     
     
+<div class="section level2">
+<h2 id="the-problem">The problem<a class="anchor" aria-label="anchor" href="#the-problem"></a>
+</h2>
 <p>The <code>scales</code> package provides a family of easy to use
 functions like <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> or
 <code><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">scales::label_percent</a></code> to format numbers in decimal format,
@@ -71,7 +74,7 @@ as percentages or currencies, which could also be passed to the
 <code>labels</code> argument of <code>ggplot2</code>s family of scale
 functions to format axes or legends.</p>
 <p>However, let’s say you have to prepare a report or charts where you
-have to use country specific style conventions to display numbers which
+have to use country-specific style conventions to display numbers which
 differ from the default anglo-american style.</p>
 <p>While that could be achieved with the <code>scales</code> package as
 well, in practice formatting numbers and styling axes quickly becomes
@@ -94,6 +97,22 @@ argument of <code>scale_xxx_yyy</code> so you end up with</p>
 convention found in many European countries.</p>
 </li>
 </ul>
+<p>As of <code>scales</code> 1.4.0 (released 2025-04-24), you no longer
+have to repeat <code>big.mark</code>/<code>decimal.mark</code> on every
+single call within a session — a new
+<code>scales::number_options(decimal.mark = ",", big.mark = ".")</code>
+sets these (and <code>style_positive</code>/<code>style_negative</code>,
+and currency-specific equivalents) as global defaults for every
+subsequent <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number()</a></code>/<code><a href="https://scales.r-lib.org/reference/label_currency.html" class="external-link">label_currency()</a></code>
+call. That closes part of the gap above for a <em>single</em> country’s
+conventions applied for the rest of a session — but it’s still one
+global default at a time. It doesn’t help if you need several countries’
+conventions side by side in the same report or chart (like the G20
+example in the <a href="https://trekonom.github.io/countryscales/">README</a>), and it
+doesn’t touch the harder problems <code>countryscales</code> also
+handles under the hood: correct currency symbol/sign positioning and
+locale-correct percent-sign placement and spacing.</p>
+</div>
 <div class="section level2">
 <h2 id="the-solution">The solution<a class="anchor" aria-label="anchor" href="#the-solution"></a>
 </h2>
@@ -113,7 +132,7 @@ conventions used in Germany and several other European countries where a
 dot (<code>.</code>) is used as the big mark or grouping mark or
 thousands separator and a comma (<code>,</code>) as the decimal
 mark.</p>
-<p>Using <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> this requires to switch the
+<p>Using <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> this requires switching the
 default decimal and big marks:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org" class="external-link">scales</a></span><span class="op">)</span></span>
@@ -188,7 +207,33 @@ same could be achieved with less typing like so:</p>
 <span>  <span class="fu"><a href="../reference/scale-de.html">scale_x_number_de</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">.05</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="background_files/figure-html/style-countryscales-1.png" class="r-plt" alt="" width="700"></p>
 </div>
-  </main>
+<div class="section level2">
+<h2 id="beyond-germany">Beyond Germany<a class="anchor" aria-label="anchor" href="#beyond-germany"></a>
+</h2>
+<p>Every example above uses
+<code><a href="../reference/label-de.html">label_number_de()</a></code>/<code><a href="../reference/scale-de.html">scale_x_number_de()</a></code>, but
+that’s just the tip of the iceberg. Under the hood, all of these
+delegate to a general-purpose locale engine,
+<code><a href="../reference/label-locale.html">label_number_locale()</a></code>/ <code><a href="../reference/scale-locale.html">scale_x_number_locale()</a></code>
+(and their <code>_percent_</code>/<code>_currency_</code> counterparts),
+which work with any of the 764 locale codes <code>countryscales</code>
+supports – run <code><a href="../reference/show_locales.html">show_locales()</a></code> to list them all. On top of
+that engine, <code>countryscales</code> also ships the same ready-to-use
+<code>_de()</code>-style convenience family for 27 countries, from
+Argentina to the United States (see the <a href="https://trekonom.github.io/countryscales/reference/index.html#countries">reference
+index</a> for the full list).</p>
+<p>Getting locale-specific formatting right also involves more than just
+the decimal and grouping marks shown here: correct currency symbol and
+sign positioning (which side of the number, with or without a space) and
+locale-correct percent-sign placement and spacing are full of exceptions
+that <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number()</a></code>/<code><a href="https://scales.r-lib.org/reference/label_currency.html" class="external-link">label_currency()</a></code>
+don’t attempt to solve. <code>countryscales</code> handles these under
+the hood using a modified version of <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number()</a></code> – see
+the <a href="https://trekonom.github.io/countryscales/index.html#credits">README’s
+Credits section</a> for the full story.</p>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
