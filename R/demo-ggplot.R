@@ -4,6 +4,9 @@
 #' @param scale_name scale name
 #' @param ... further arguments to be passed to the scale
 #'
+#' @return A `ggplot` object, invisibly printed as a demo of the requested
+#'     scale.
+#'
 #' @export
 #'
 #' @examples

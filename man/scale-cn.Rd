@@ -279,6 +279,9 @@ width (see \code{\link[base:format]{base::format()}}).}
 
 \item{currency}{currency symbol}
 }
+\value{
+A \code{ggplot2} scale, for use in a \code{+}-chained plot construction.
+}
 \description{
 The scale_xxx_xxx family of functions makes it easy to format axis text
 in decimal format, as percentages or as currencies.

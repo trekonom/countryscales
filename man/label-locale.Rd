@@ -87,6 +87,10 @@ monetary value}
 
 \item{currency}{currency symbol}
 }
+\value{
+A labelling function that takes a numeric vector and returns a
+character vector.
+}
 \description{
 The label_xxx_locale family of functions makes it easy to format numbers
 in decimal format, as percentages or as currencies.

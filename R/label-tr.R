@@ -9,6 +9,9 @@
 #'
 #' @inheritParams label_number_locale
 #'
+#' @return A labelling function that takes a numeric vector and returns a
+#'     character vector.
+#'
 #' @name label-tr
 #'
 #' @export

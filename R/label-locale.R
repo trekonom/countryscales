@@ -15,6 +15,9 @@
 #'     monetary value
 #' @param currency currency symbol
 #'
+#' @return A labelling function that takes a numeric vector and returns a
+#'     character vector.
+#'
 #' @name label-locale
 #'
 #' @example inst/ex/ex-label-locale.R
