@@ -27,6 +27,12 @@ behind why this package exists.
 
 ## Installation
 
+You can install `countryscales` from CRAN using:
+
+``` r
+install.packages("countryscales")
+```
+
 You can install the development version of `countryscales` from GitHub
 using:
 
