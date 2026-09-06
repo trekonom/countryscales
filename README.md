@@ -22,6 +22,9 @@ make it easy to display numbers or label axis text on positional scales
 in decimal format, as percentages or currencies using country- or
 locale-specific style conventions.
 
+See `vignette("background", package = "countryscales")` for the story
+behind why this package exists.
+
 ## Installation
 
 You can install the development version of `countryscales` from GitHub
@@ -33,7 +36,7 @@ remotes::install_github("trekonom/countryscales")
 
 ## Usage
 
-The most common use case for countryscales is to customize the
+The most common use case for `countryscales` is to customize the
 appearance of axis and legend labels or format numbers added as labels
 to a plot using country-specific style conventions.
 
@@ -135,9 +138,13 @@ base +
 
 <img src="man/figures/README-locale-de-1.png" alt="Horizontal bar chart titled 'German style conventions.' showing total 2015 population by region, from Asia (about 4.3 billion, longest bar) down to Europe (about 830 million, shortest bar), with Africa and the Americas in between. Axis tick labels and the value label on each bar are formatted with German number conventions, using a period as the thousands separator, for example '4.306.430.000' for Asia." width="100%" />
 
-`countryscales` also has some handy functions for common locales. For
-instance, you can use `label_number_ch` and `scale_x_number_ch` to
-format the plot using Swiss style conventions:
+`countryscales` also ships ready-to-use functions for 27 countries —
+from Argentina to the United States — each with a `label_number_xx()`/
+`scale_x_number_xx()` family pinned to that country’s own locale (see
+the [full
+list](https://trekonom.github.io/countryscales/reference/index.html#countries)
+in the reference index). For instance, you can use `label_number_ch` and
+`scale_x_number_ch` to format the plot using Swiss style conventions:
 
 ``` r
 base +
@@ -162,12 +169,14 @@ base +
 Common Locale Data Repository
 ([CLDR](https://en.wikipedia.org/wiki/Common_Locale_Data_Repository))
 provided for easy use in R by the
-[`i18n`](https://rich-iannone.github.io/i18n/) package. Right now
-`countryscales` supports 552 of the 574 locales listed in `i18n`. Not
-supported are locales which deviate from the international norm for
-grouping digits by threes. This includes locales using the [Indian
-numbering system](https://en.wikipedia.org/wiki/Indian_numbering_system)
-which
+[`i18n`](https://rich-iannone.github.io/i18n/) package. `i18n` lists 574
+locales; `countryscales` supports 552 of them directly, plus a further
+set of bare-language-code aliases (e.g. `"en"`, which resolves to a
+sensible default regional variant), for 764 usable locale codes in total
+— run `show_locales()` to list them all. Not supported are locales which
+deviate from the international norm for grouping digits by threes. This
+includes locales using the [Indian numbering
+system](https://en.wikipedia.org/wiki/Indian_numbering_system) which
 
 > groups the rightmost three digits together (until the hundreds place),
 > and thereafter groups by sets of two digits.
@@ -182,13 +191,15 @@ that `label_currency_locale` correctly formats numbers as currencies in
 the German locale, the output is checked against the output of the JS
 code
 
-    const number = 123456;
+``` js
+const number = 123456;
 
-    console.log(
-      new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(
-        number,
-      ),
-    );
+console.log(
+  new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(
+    number,
+  ),
+);
+```
 
 ## Credits
 
@@ -198,14 +209,14 @@ code
   Repository](https://cldr.unicode.org) which provide all the data to
   support the world’s languages in software.
 
-- Thanks to [Rich Ianonne](https://github.com/rich-iannone) for
+- Thanks to [Rich Iannone](https://github.com/rich-iannone) for
   providing the CLDR data for easy use in R via the
   [`i18n`](https://rich-iannone.github.io/i18n/) package. Additionally,
-  the design of hex logo for the `countryscales` package was heavily
+  the design of the hex logo for the `countryscales` package was heavily
   inspired by the `i18n` hex logo.
 
-- Thanks to [Bob Rudis](https://rud.is), who similar in spirit to what
-  `countryscales` has in mind provides convenience functions
+- Thanks to [Bob Rudis](https://rud.is), who, similar in spirit to what
+  `countryscales` has in mind, provides convenience functions
   `scale_x/y_percent/number/dollar` for
   [`ggplot2`](https://ggplot2.tidyverse.org) in the
   [hrbrthemes](https://github.com/hrbrmstr/hrbrthemes) package, which
@@ -215,7 +226,7 @@ code
 - Last but not least thanks to the authors of the
   [`scales`](https://scales.r-lib.org) package and the people at
   [Posit](https://posit.co). When I started with `countryscales` I
-  thought that I simply have to provide some wrappers around function
+  thought that I simply had to provide some wrappers around functions
   already provided by [`scales`](https://scales.r-lib.org). But I
   quickly realised that localization is a complex world on its own.
 
@@ -226,11 +237,11 @@ code
     hood `countryscales` uses a modified version of `label_number` to
     format numbers as currencies.
 
-  - Second, I learned that minus signs, percent signs, … include
-    [Unicode control
+  - Second, I learned that minus signs, percent signs, and so on,
+    include [Unicode control
     characters](https://en.wikipedia.org/wiki/Unicode_control_characters)
     in several locales for bidirectional text control. Unfortunately,
-    `scales::label_number` does not allow to pass custom symbols for
+    `scales::label_number` does not allow passing custom symbols for
     minus or plus symbols. Hence, under the hood `countryscales` uses a
     modified version of `label_number` to (mainly) account for Unicode
     control characters.
