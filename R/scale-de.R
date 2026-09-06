@@ -9,6 +9,8 @@
 #'
 #' @inheritParams scale_x_number_locale
 #'
+#' @return A `ggplot2` scale, for use in a `+`-chained plot construction.
+#'
 #' @name scale-de
 #'
 #' @example inst/ex/ex-scale-de.R

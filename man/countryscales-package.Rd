@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Make it easy to display numbers using country style conventions.
+Format numbers, percentages and currencies, and label 'ggplot2' axes, using country- or locale-specific conventions such as the thousands separator, decimal mark, currency symbol placement, and sign placement. Locale data is sourced from the Unicode Common Locale Data Repository (CLDR) via the 'i18n' package, covering several hundred locales in addition to dedicated helpers for Germany, Switzerland and the United States.
 }
 \seealso{
 Useful links:
@@ -24,6 +24,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Stefan Moog \email{moogs@gmx.de}
   \item  scales authors (Authors of included code from the scales package)
 }
 

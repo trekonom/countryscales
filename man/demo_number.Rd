@@ -13,6 +13,10 @@ demo_number(x, scale_name, ...)
 
 \item{...}{further arguments to be passed to the scale}
 }
+\value{
+A \code{ggplot} object, invisibly printed as a demo of the requested
+scale.
+}
 \description{
 ggplot2 demo
 }

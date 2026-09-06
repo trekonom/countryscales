@@ -12,6 +12,8 @@
 #' @param currency currency symbol
 #' @param locale locale string. Defaults to "en-US"
 #'
+#' @return A `ggplot2` scale, for use in a `+`-chained plot construction.
+#'
 #' @name scale-locale
 #'
 #' @example inst/ex/ex-scale-locale.R
