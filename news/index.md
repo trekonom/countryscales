@@ -1,6 +1,6 @@
 # Changelog
 
-## countryscales 0.2.0
+## countryscales 0.3.0
 
 Initial CRAN release.
 
@@ -38,3 +38,14 @@ Initial CRAN release.
   label `ggplot2` axes directly using the same locale-aware formatting.
 - [`show_locales()`](https://trekonom.github.io/countryscales/reference/show_locales.md)
   lists all supported locale codes.
+- Fixed `scale_cut` (e.g. `scale_cut = scales::cut_short_scale()`, for
+  “1K”/“1M”-style suffixes), which is accepted by
+  [`label_number_locale()`](https://trekonom.github.io/countryscales/reference/label-locale.md)
+  and
+  [`label_currency_locale()`](https://trekonom.github.io/countryscales/reference/label-locale.md)
+  (and so by every `_xx()` wrapper) but always errored when actually
+  used, due to an internal naming collision.
+- Fixed a latent bug in currency formatting where a locale with a
+  non-empty positive sign could have had that sign doubled on positive
+  amounts. Invisible for every currently supported locale (all have an
+  empty positive sign), but incorrect in principle — now fixed.
