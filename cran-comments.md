@@ -18,15 +18,13 @@ This is a resubmission. In this version I have:
 
 0 errors | 0 warnings | 0 notes locally and on the GitHub Actions CI matrix.
 
-<!-- TODO before resubmitting: re-run devtools::check_win_devel() /
-     check_win_release() against these fixes and refresh the numbers below —
-     the DESCRIPTION change may shift the word-position in the "possibly
-     misspelled words" note below (it should still fire, since CLDR is still
-     an unrecognized word), but this needs to be confirmed against a real
-     win-builder run rather than assumed. -->
+With `remote = TRUE` (i.e. CRAN's own incoming checks enabled), `devtools::check()`
+additionally reports the standard note expected for any first submission:
 
-win-builder (both devel and release) previously reported 0 errors | 0
-warnings | 1 note:
+> New submission
+
+win-builder (both devel and release, re-checked 2026-09-19/20 against these
+fixes) reports 0 errors | 0 warnings | 1 note:
 
 > Possibly misspelled words in DESCRIPTION: CLDR (20:17)
 
