@@ -59,28 +59,44 @@
 </h1>
 </div>
 <!-- badges: start -->
-<!-- badges: end -->
+
 <p><code>countryscales</code> extends <a href="https://scales.r-lib.org" class="external-link"><code>scales</code></a> and <a href="https://ggplot2.tidyverse.org" class="external-link"><code>ggplot2</code></a> by providing functions to make it easy to display numbers or label axis text on positional scales in decimal format, as percentages or currencies using country- or locale-specific style conventions.</p>
+<p>See <code><a href="articles/background.html">vignette("background", package = "countryscales")</a></code> for the story behind why this package exists.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of <code>countryscales</code> from GitHub using:</p>
+<p>You can install <code>countryscales</code> from CRAN using:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"countryscales"</span><span class="op">)</span></span></code></pre></div>
+<p>You can install the development version of <code>countryscales</code> from GitHub using:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"trekonom/countryscales"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>The most common use case for countryscales is to customize the appearance of axis and legend labels or format numbers added as labels to a plot using country-specific style conventions.</p>
+<p>The most common use case for <code>countryscales</code> is to customize the appearance of axis and legend labels or format numbers added as labels to a plot using country-specific style conventions.</p>
 <p>Here’s an example showing how 1 million USD are formatted in the G20 countries:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trekonom/countryscales" class="external-link">countryscales</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">g20</span> <span class="op">&lt;-</span> <span class="fu">countryscales</span><span class="fu">::</span><span class="va"><a href="reference/g20.html">g20</a></span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># India is not supported</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">iso2c</span> <span class="op">!=</span> <span class="st">"IN"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">iso2c</span> <span class="op">!=</span> <span class="st">"IN"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># gapminder's classic per-country colors (Hans Rosling's bubble charts),</span></span>
+<span><span class="co"># keyed to match g20$country: "Korea, Rep." is gapminder's name for South</span></span>
+<span><span class="co"># Korea, and gapminder's 142-country palette doesn't cover Russia at all,</span></span>
+<span><span class="co"># so it gets a manually chosen fallback color</span></span>
+<span><span class="va">country_colors</span> <span class="op">&lt;-</span> <span class="fu">gapminder</span><span class="fu">::</span><span class="va">country_colors</span><span class="op">[</span></span>
+<span>  <span class="fu">recode</span><span class="op">(</span><span class="va">g20</span><span class="op">$</span><span class="va">country</span>, <span class="st">"South Korea"</span> <span class="op">=</span> <span class="st">"Korea, Rep."</span><span class="op">)</span></span>
+<span><span class="op">]</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames</a></span><span class="op">(</span><span class="va">g20</span><span class="op">$</span><span class="va">country</span><span class="op">)</span></span>
+<span><span class="va">country_colors</span><span class="op">[[</span><span class="st">"Russia"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"#707070"</span></span>
+<span></span>
+<span><span class="va">g20</span> <span class="op">&lt;-</span> <span class="va">g20</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">1</span>, each <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -92,20 +108,24 @@
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">country_colors</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">country_colors</span><span class="op">)</span> <span class="op">==</span> <span class="st">"United States"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"the United States"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">country_colors</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">country_colors</span><span class="op">)</span> <span class="op">==</span> <span class="st">"United Kingdom"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"the United Kingdom"</span></span>
+<span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">g20</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">value</span>, <span class="st">"in"</span>, <span class="va">country</span><span class="op">)</span>, fill <span class="op">=</span> <span class="va">country</span><span class="op">)</span>,</span>
 <span>    label.padding <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">5</span>, <span class="st">"pt"</span><span class="op">)</span>, label.r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">8</span>, <span class="st">"pt"</span><span class="op">)</span>,</span>
 <span>    color <span class="op">=</span> <span class="st">"white"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">country_colors</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"1 million USD are formatted as"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-locale-g20-1.png" width="100%"></p>
+<p><img src="reference/figures/README-locale-g20-1.png" alt="Grid of 18 colored labels arranged two per row, one for each G20 country except India. Each label shows how 1,000,000 US dollars is written using that country's own number and currency conventions, for example '1.000.000 $' for Germany and '1,000,000 US$' for Saudi Arabia. Labels are colored individually per country using gapminder's classic palette. Currency symbol placement, thousands-separator choice, and spacing all differ across countries even though the underlying value is identical." width="100%"></p>
 <p>As another example, let’s look at formatting a chart according to German style conventions, where a dot (<code>.</code>) is used as the big mark.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="va">gapminder15</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">region</span>, wt <span class="op">=</span> <span class="va">pop</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
@@ -122,7 +142,7 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
 <p>With the <code>countryscales</code> package we can use the <code>scale_x/y_xxx_locale</code> and <code>label_xxx_locale</code> functions to add labels and format the axis of the base plot according to German style conventions like this:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
@@ -138,9 +158,9 @@
 <span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.05</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"German style conventions."</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-locale-de-1.png" width="100%"></p>
-<p><code>countryscales</code> also has some handy functions for common locales. For instance, you can use <code>label_number_ch</code> and <code>scale_x_number_ch</code> to format the plot using Swiss style conventions:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-locale-de-1.png" alt="Horizontal bar chart titled 'German style conventions.' showing total 2015 population by region, from Asia (about 4.3 billion, longest bar) down to Europe (about 830 million, shortest bar), with Africa and the Americas in between. Axis tick labels and the value label on each bar are formatted with German number conventions, using a period as the thousands separator, for example '4.306.430.000' for Asia." width="100%"></p>
+<p><code>countryscales</code> also ships ready-to-use functions for 27 countries — from Argentina to the United States — each with a <code>label_number_xx()</code>/ <code>scale_x_number_xx()</code> family pinned to that country’s own locale (see the <a href="https://trekonom.github.io/countryscales/reference/index.html#countries">full list</a> in the reference index). For instance, you can use <code>label_number_ch</code> and <code>scale_x_number_ch</code> to format the plot using Swiss style conventions:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
@@ -153,12 +173,12 @@
 <span>    expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.05</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Swiss style conventions."</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-locale-ch-1.png" width="100%"></p>
+<p><img src="reference/figures/README-locale-ch-1.png" alt="Horizontal bar chart titled 'Swiss style conventions.', showing the same 2015 population-by-region comparison as the German-style chart above, but formatted with Swiss number conventions: an apostrophe as the thousands separator, for example '4'306'430'000' for Asia, used for both the axis tick labels and the value label on each bar." width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="note-on-supported-locales">Note on supported locales<a class="anchor" aria-label="anchor" href="#note-on-supported-locales"></a>
 </h2>
-<p><code>countryscales</code> uses data on locale-specific numbering formats from the Common Locale Data Repository (<a href="https://en.wikipedia.org/wiki/Common_Locale_Data_Repository" class="external-link">CLDR</a>) provided for easy use in R by the <a href="https://rich-iannone.github.io/i18n/" class="external-link"><code>i18n</code></a> package. Right now <code>countryscales</code> supports 552 of the 574 locales listed in <code>i18n</code>. Not supported are locales which deviate from the international norm for grouping digits by threes. This includes locales using the <a href="https://en.wikipedia.org/wiki/Indian_numbering_system" class="external-link">Indian numbering system</a> which</p>
+<p><code>countryscales</code> uses data on locale-specific numbering formats from the Common Locale Data Repository (<a href="https://en.wikipedia.org/wiki/Common_Locale_Data_Repository" class="external-link">CLDR</a>) provided for easy use in R by the <a href="https://rich-iannone.github.io/i18n/" class="external-link"><code>i18n</code></a> package. <code>i18n</code> lists 574 locales; <code>countryscales</code> supports 552 of them directly, plus a further set of bare-language-code aliases (e.g. <code>"en"</code>, which resolves to a sensible default regional variant), for 764 usable locale codes in total — run <code><a href="reference/show_locales.html">show_locales()</a></code> to list them all. Not supported are locales which deviate from the international norm for grouping digits by threes. This includes locales using the <a href="https://en.wikipedia.org/wiki/Indian_numbering_system" class="external-link">Indian numbering system</a> which</p>
 <blockquote>
 <p>groups the rightmost three digits together (until the hundreds place), and thereafter groups by sets of two digits.</p>
 </blockquote>
@@ -167,13 +187,13 @@
 <h2 id="note-on-tests">Note on tests<a class="anchor" aria-label="anchor" href="#note-on-tests"></a>
 </h2>
 <p>The <code>label_xxx_locale</code> family of functions are tested against the output of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat" class="external-link">Intl.NumberFormat</a> to ensure correctness for each supported locale. For example, to test that <code>label_currency_locale</code> correctly formats numbers as currencies in the German locale, the output is checked against the output of the JS code</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>const number <span class="ot">=</span> <span class="dv">123456</span>;</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">console.log</span>(</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  new <span class="fu">Intl.NumberFormat</span>(<span class="st">'de-DE'</span>, { style<span class="sc">:</span> <span class="st">'currency'</span>, currency<span class="sc">:</span> <span class="st">'USD'</span> })<span class="fu">.format</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>    number,</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  ),</span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="kw">const</span> number <span class="op">=</span> <span class="dv">123456</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="kw">new</span> <span class="bu">Intl</span><span class="op">.</span><span class="fu">NumberFormat</span>(<span class="st">'de-DE'</span><span class="op">,</span> { <span class="dt">style</span><span class="op">:</span> <span class="st">'currency'</span><span class="op">,</span> <span class="dt">currency</span><span class="op">:</span> <span class="st">'USD'</span> })<span class="op">.</span><span class="fu">format</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>    number<span class="op">,</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  )<span class="op">,</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="credits">Credits<a class="anchor" aria-label="anchor" href="#credits"></a>
@@ -181,13 +201,13 @@
 <p><code>countryscales</code> would not be possible without the work by other people:</p>
 <ul>
 <li><p>Thanks to the people who contributed to the <a href="https://cldr.unicode.org" class="external-link">Common Locale Data Repository</a> which provide all the data to support the world’s languages in software.</p></li>
-<li><p>Thanks to <a href="https://github.com/rich-iannone" class="external-link">Rich Ianonne</a> for providing the CLDR data for easy use in R via the <a href="https://rich-iannone.github.io/i18n/" class="external-link"><code>i18n</code></a> package. Additionally, the design of hex logo for the <code>countryscales</code> package was heavily inspired by the <code>i18n</code> hex logo.</p></li>
-<li><p>Thanks to <a href="https://rud.is" class="external-link">Bob Rudis</a>, who similar in spirit to where I started provides convenience functions <code>scale_x/y_percent/number/dollar</code> for <code>ggplo2</code> via <a href="https://github.com/hrbrmstr/hrbrthemes" class="external-link">hrbrthemes</a> package, which served as blueprints for the <code>scale_x/y_percent/number/currency_locale</code> family of functions.</p></li>
+<li><p>Thanks to <a href="https://github.com/rich-iannone" class="external-link">Rich Iannone</a> for providing the CLDR data for easy use in R via the <a href="https://rich-iannone.github.io/i18n/" class="external-link"><code>i18n</code></a> package. Additionally, the design of the hex logo for the <code>countryscales</code> package was heavily inspired by the <code>i18n</code> hex logo.</p></li>
+<li><p>Thanks to <a href="https://rud.is" class="external-link">Bob Rudis</a>, who, similar in spirit to what <code>countryscales</code> has in mind, provides convenience functions <code>scale_x/y_percent/number/dollar</code> for <a href="https://ggplot2.tidyverse.org" class="external-link"><code>ggplot2</code></a> in the <a href="https://github.com/hrbrmstr/hrbrthemes" class="external-link">hrbrthemes</a> package, which served as blueprints for the <code>scale_x/y_percent/number/currency_locale</code> family of functions.</p></li>
 <li>
-<p>Last but not least thanks to the authors of the <a href="https://scales.r-lib.org" class="external-link"><code>scales</code></a> package and the people at <a href="https://posit.co" class="external-link">Posit</a>. When I started with <code>countryscales</code> I thought that I simply have to provide some wrappers around function already provided by <a href="https://scales.r-lib.org" class="external-link"><code>scales</code></a>. But I quickly realised that localization is a complex world on its own.</p>
+<p>Last but not least thanks to the authors of the <a href="https://scales.r-lib.org" class="external-link"><code>scales</code></a> package and the people at <a href="https://posit.co" class="external-link">Posit</a>. When I started with <code>countryscales</code> I thought that I simply had to provide some wrappers around functions already provided by <a href="https://scales.r-lib.org" class="external-link"><code>scales</code></a>. But I quickly realised that localization is a complex world on its own.</p>
 <ul>
 <li><p>First, when it comes to formatting currencies, e.g. the correct positioning of the currency symbol and the minus sign, I realised that there are some cases which can’t be dealt with using <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> or <code><a href="https://scales.r-lib.org/reference/label_currency.html" class="external-link">scales::label_currency</a></code>. Hence, under the hood <code>countryscales</code> uses a modified version of <code>label_number</code> to format numbers as currencies.</p></li>
-<li><p>Second, I learned that minus signs, percent signs, … include <a href="https://en.wikipedia.org/wiki/Unicode_control_characters" class="external-link">Unicode control characters</a> in several locales for bidirectional text control. Unfortunately, <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> does not allow to pass custom symbols for minus or plus symbols. Hence, under the hood <code>countryscales</code> uses a modified version of <code>label_number</code> to (mainly) account for Unicode control characters.</p></li>
+<li><p>Second, I learned that minus signs, percent signs, and so on, include <a href="https://en.wikipedia.org/wiki/Unicode_control_characters" class="external-link">Unicode control characters</a> in several locales for bidirectional text control. Unfortunately, <code><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">scales::label_number</a></code> does not allow passing custom symbols for minus or plus symbols. Hence, under the hood <code>countryscales</code> uses a modified version of <code>label_number</code> to (mainly) account for Unicode control characters.</p></li>
 </ul>
 </li>
 </ul>
@@ -227,7 +247,14 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=countryscales" class="external-link"><img src="https://www.r-pkg.org/badges/version/countryscales" alt="CRAN status"></a></li>
+<li><a href="https://app.codecov.io/gh/trekonom/countryscales" class="external-link"><img src="https://codecov.io/gh/trekonom/countryscales/graph/badge.svg" alt="Codecov test coverage"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
