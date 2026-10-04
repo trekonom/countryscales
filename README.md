@@ -11,7 +11,7 @@
 
 [![R-CMD-check](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml)
 [![CRAN
-status](https://img.shields.io/badge/CRAN-not%20on%20CRAN%20yet-lightgrey)](https://CRAN.R-project.org/package=countryscales)
+status](https://www.r-pkg.org/badges/version/countryscales)](https://CRAN.R-project.org/package=countryscales)
 [![Codecov test
 coverage](https://codecov.io/gh/trekonom/countryscales/graph/badge.svg)](https://app.codecov.io/gh/trekonom/countryscales)
 <!-- badges: end -->
