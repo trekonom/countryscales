@@ -2,6 +2,8 @@
 
 ## countryscales 0.3.0
 
+CRAN release: 2026-09-29
+
 Initial CRAN release.
 
 - [`label_number_locale()`](https://trekonom.github.io/countryscales/reference/label-locale.md),
