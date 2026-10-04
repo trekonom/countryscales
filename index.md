@@ -1,9 +1,15 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- index.md is generated from index.Rmd. Please edit that file -->
 
 # countryscales
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/trekonom/countryscales/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/countryscales)](https://CRAN.R-project.org/package=countryscales)
+[![Codecov test
+coverage](https://codecov.io/gh/trekonom/countryscales/graph/badge.svg)](https://app.codecov.io/gh/trekonom/countryscales)
 <!-- badges: end -->
 
 `countryscales` extends [`scales`](https://scales.r-lib.org) and
@@ -12,7 +18,16 @@ make it easy to display numbers or label axis text on positional scales
 in decimal format, as percentages or currencies using country- or
 locale-specific style conventions.
 
+See `vignette("background", package = "countryscales")` for the story
+behind why this package exists.
+
 ## Installation
+
+You can install `countryscales` from CRAN using:
+
+``` r
+install.packages("countryscales")
+```
 
 You can install the development version of `countryscales` from GitHub
 using:
@@ -23,7 +38,7 @@ remotes::install_github("trekonom/countryscales")
 
 ## Usage
 
-The most common use case for countryscales is to customize the
+The most common use case for `countryscales` is to customize the
 appearance of axis and legend labels or format numbers added as labels
 to a plot using country-specific style conventions.
 
@@ -37,7 +52,19 @@ library(dplyr, warn.conflicts = FALSE)
 
 g20 <- countryscales::g20 |>
   # India is not supported
-  filter(iso2c != "IN") |>
+  filter(iso2c != "IN")
+
+# gapminder's classic per-country colors (Hans Rosling's bubble charts),
+# keyed to match g20$country: "Korea, Rep." is gapminder's name for South
+# Korea, and gapminder's 142-country palette doesn't cover Russia at all,
+# so it gets a manually chosen fallback color
+country_colors <- gapminder::country_colors[
+  recode(g20$country, "South Korea" = "Korea, Rep.")
+] |>
+  setNames(g20$country)
+country_colors[["Russia"]] <- "#707070"
+
+g20 <- g20 |>
   mutate(
     x = factor(rep(1:2, 9)),
     y = factor(rep(9:1, each = 2)),
@@ -49,12 +76,16 @@ g20 <- countryscales::g20 |>
     )
   )
 
+names(country_colors)[names(country_colors) == "United States"] <- "the United States"
+names(country_colors)[names(country_colors) == "United Kingdom"] <- "the United Kingdom"
+
 ggplot(g20, aes(x = x, y = y)) +
   geom_label(
     aes(label = paste(value, "in", country), fill = country),
     label.padding = unit(5, "pt"), label.r = unit(8, "pt"),
     color = "white"
   ) +
+  scale_fill_manual(values = country_colors) +
   theme_void() +
   labs(
     title = "1 million USD are formatted as"
@@ -62,7 +93,7 @@ ggplot(g20, aes(x = x, y = y)) +
   guides(fill = "none")
 ```
 
-<img src="man/figures/README-locale-g20-1.png" width="100%" />
+<img src="man/figures/README-locale-g20-1.png" alt="Grid of 18 colored labels arranged two per row, one for each G20 country except India. Each label shows how 1,000,000 US dollars is written using that country's own number and currency conventions, for example '1.000.000 $' for Germany and '1,000,000 US$' for Saudi Arabia. Labels are colored individually per country using gapminder's classic palette. Currency symbol placement, thousands-separator choice, and spacing all differ across countries even though the underlying value is identical." width="100%" />
 
 As another example, let’s look at formatting a chart according to German
 style conventions, where a dot (`.`) is used as the big mark.
@@ -107,11 +138,15 @@ base +
   labs(title = "German style conventions.")
 ```
 
-<img src="man/figures/README-locale-de-1.png" width="100%" />
+<img src="man/figures/README-locale-de-1.png" alt="Horizontal bar chart titled 'German style conventions.' showing total 2015 population by region, from Asia (about 4.3 billion, longest bar) down to Europe (about 830 million, shortest bar), with Africa and the Americas in between. Axis tick labels and the value label on each bar are formatted with German number conventions, using a period as the thousands separator, for example '4.306.430.000' for Asia." width="100%" />
 
-`countryscales` also has some handy functions for common locales. For
-instance, you can use `label_number_ch` and `scale_x_number_ch` to
-format the plot using Swiss style conventions:
+`countryscales` also ships ready-to-use functions for 27 countries —
+from Argentina to the United States — each with a `label_number_xx()`/
+`scale_x_number_xx()` family pinned to that country’s own locale (see
+the [full
+list](https://trekonom.github.io/countryscales/reference/index.html#countries)
+in the reference index). For instance, you can use `label_number_ch` and
+`scale_x_number_ch` to format the plot using Swiss style conventions:
 
 ``` r
 base +
@@ -128,7 +163,7 @@ base +
   labs(title = "Swiss style conventions.")
 ```
 
-<img src="man/figures/README-locale-ch-1.png" width="100%" />
+<img src="man/figures/README-locale-ch-1.png" alt="Horizontal bar chart titled 'Swiss style conventions.', showing the same 2015 population-by-region comparison as the German-style chart above, but formatted with Swiss number conventions: an apostrophe as the thousands separator, for example '4'306'430'000' for Asia, used for both the axis tick labels and the value label on each bar." width="100%" />
 
 ## Note on supported locales
 
@@ -136,12 +171,14 @@ base +
 Common Locale Data Repository
 ([CLDR](https://en.wikipedia.org/wiki/Common_Locale_Data_Repository))
 provided for easy use in R by the
-[`i18n`](https://rich-iannone.github.io/i18n/) package. Right now
-`countryscales` supports 552 of the 574 locales listed in `i18n`. Not
-supported are locales which deviate from the international norm for
-grouping digits by threes. This includes locales using the [Indian
-numbering system](https://en.wikipedia.org/wiki/Indian_numbering_system)
-which
+[`i18n`](https://rich-iannone.github.io/i18n/) package. `i18n` lists 574
+locales; `countryscales` supports 552 of them directly, plus a further
+set of bare-language-code aliases (e.g. `"en"`, which resolves to a
+sensible default regional variant), for 764 usable locale codes in total
+— run `show_locales()` to list them all. Not supported are locales which
+deviate from the international norm for grouping digits by threes. This
+includes locales using the [Indian numbering
+system](https://en.wikipedia.org/wiki/Indian_numbering_system) which
 
 > groups the rightmost three digits together (until the hundreds place),
 > and thereafter groups by sets of two digits.
@@ -156,13 +193,15 @@ that `label_currency_locale` correctly formats numbers as currencies in
 the German locale, the output is checked against the output of the JS
 code
 
-    const number = 123456;
+``` js
+const number = 123456;
 
-    console.log(
-      new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(
-        number,
-      ),
-    );
+console.log(
+  new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(
+    number,
+  ),
+);
+```
 
 ## Credits
 
@@ -172,15 +211,16 @@ code
   Repository](https://cldr.unicode.org) which provide all the data to
   support the world’s languages in software.
 
-- Thanks to [Rich Ianonne](https://github.com/rich-iannone) for
+- Thanks to [Rich Iannone](https://github.com/rich-iannone) for
   providing the CLDR data for easy use in R via the
   [`i18n`](https://rich-iannone.github.io/i18n/) package. Additionally,
-  the design of hex logo for the `countryscales` package was heavily
+  the design of the hex logo for the `countryscales` package was heavily
   inspired by the `i18n` hex logo.
 
-- Thanks to [Bob Rudis](https://rud.is), who similar in spirit to where
-  I started provides convenience functions
-  `scale_x/y_percent/number/dollar` for `ggplo2` via
+- Thanks to [Bob Rudis](https://rud.is), who, similar in spirit to what
+  `countryscales` has in mind, provides convenience functions
+  `scale_x/y_percent/number/dollar` for
+  [`ggplot2`](https://ggplot2.tidyverse.org) in the
   [hrbrthemes](https://github.com/hrbrmstr/hrbrthemes) package, which
   served as blueprints for the
   `scale_x/y_percent/number/currency_locale` family of functions.
@@ -188,7 +228,7 @@ code
 - Last but not least thanks to the authors of the
   [`scales`](https://scales.r-lib.org) package and the people at
   [Posit](https://posit.co). When I started with `countryscales` I
-  thought that I simply have to provide some wrappers around function
+  thought that I simply had to provide some wrappers around functions
   already provided by [`scales`](https://scales.r-lib.org). But I
   quickly realised that localization is a complex world on its own.
 
@@ -199,11 +239,11 @@ code
     hood `countryscales` uses a modified version of `label_number` to
     format numbers as currencies.
 
-  - Second, I learned that minus signs, percent signs, … include
-    [Unicode control
+  - Second, I learned that minus signs, percent signs, and so on,
+    include [Unicode control
     characters](https://en.wikipedia.org/wiki/Unicode_control_characters)
     in several locales for bidirectional text control. Unfortunately,
-    `scales::label_number` does not allow to pass custom symbols for
+    `scales::label_number` does not allow passing custom symbols for
     minus or plus symbols. Hence, under the hood `countryscales` uses a
     modified version of `label_number` to (mainly) account for Unicode
     control characters.
