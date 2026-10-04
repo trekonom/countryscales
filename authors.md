@@ -13,15 +13,15 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/trekonom/countryscales/blob/v0.3.0/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/trekonom/countryscales/blob/main/DESCRIPTION)
 
 Moog S, scales authors (2026). *countryscales: Country Scales*. R
-package version 0.3.0, <https://github.com/trekonom/countryscales>.
+package version 0.3.0.9000, <https://github.com/trekonom/countryscales>.
 
     @Manual{,
       title = {countryscales: Country Scales},
       author = {Stefan Moog and {scales authors}},
       year = {2026},
-      note = {R package version 0.3.0},
+      note = {R package version 0.3.0.9000},
       url = {https://github.com/trekonom/countryscales},
     }

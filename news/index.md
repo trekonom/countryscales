@@ -1,5 +1,7 @@
 # Changelog
 
+## countryscales (development version)
+
 ## countryscales 0.3.0
 
 CRAN release: 2026-09-29
